@@ -11,7 +11,7 @@ List<Recipe> mockresultlist = [
     "30 min.",
   ),
   Recipe(
-   "Grüne Bohnen",
+    "Grüne Bohnen",
     "Variante 1: Die Bohnen putzen. Zwiebeln und Knoblauch klein schneiden und in etwas Butter oder Margarine anbraten. Die Bohnen dazu...",
     "https://www.chefkoch.de/rezepte/3166211471333987/Gruene-Bohnen.html",
     "https://static.chefkoch-cdn.de/rs/bilder/316621/gruene-bohnen-938192-150x150.jpg",
