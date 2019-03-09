@@ -1,4 +1,4 @@
-import 'package:ckfl/Recipe.dart';
+import 'package:cka/Recipe.dart';
 
 var grueneImSpeckMantel = RecipeDetail(
   title: "Grüne Bohnen im Speckmantel",
