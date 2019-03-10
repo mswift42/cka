@@ -15,6 +15,23 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       initialRoute: '/',
+      routes: {
+        '/': (context) => RecipeSearch(),
+      },
+    );
+  }
+}
+
+class RecipeSearch extends StatefulWidget {
+  @override
+  _RecipeSearchState createState() => _RecipeSearchState();
+}
+
+class _RecipeSearchState extends State<RecipeSearch> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
     );
   }
 }
