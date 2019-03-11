@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => RecipeSearch(),
+        '/recipegrid': (context) => RecipeGrid(),
       },
     );
   }
@@ -40,3 +41,11 @@ class _RecipeSearchState extends State<RecipeSearch> {
     );
   }
 }
+
+class RecipeGrid extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
