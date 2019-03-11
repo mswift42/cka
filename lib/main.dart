@@ -30,8 +30,13 @@ class RecipeSearch extends StatefulWidget {
 class _RecipeSearchState extends State<RecipeSearch> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('CK'),
+      ),
+      body: Column(
+        children: <Widget>[],
+      ),
     );
   }
 }
