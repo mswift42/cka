@@ -61,3 +61,10 @@ class RecipeIngredient {
 
   RecipeIngredient(this.amount, this.ingredient);
 }
+
+class SearchQuery {
+  String searchterm;
+  int page;
+
+  SearchQuery(this.searchterm, this.page);
+}
