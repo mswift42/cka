@@ -44,8 +44,9 @@ class _RecipeSearchState extends State<RecipeSearch> {
 
 class RecipeGrid extends StatelessWidget {
   @override
+  final SearchQuery searchQuery;
+  RecipeGrid(this.searchQuery);
   Widget build(BuildContext context) {
     return Container();
   }
 }
-
