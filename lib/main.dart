@@ -1,3 +1,4 @@
+import 'package:cka/Recipe.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => RecipeSearch(),
-        '/recipegrid': (context) => RecipeGrid(),
+        '/recipegrid': (context) => RecipeGrid(SearchQuery("", 0)),
       },
     );
   }
@@ -43,9 +44,9 @@ class _RecipeSearchState extends State<RecipeSearch> {
 }
 
 class RecipeGrid extends StatelessWidget {
-  @override
   final SearchQuery searchQuery;
   RecipeGrid(this.searchQuery);
+  @override
   Widget build(BuildContext context) {
     return Container();
   }
