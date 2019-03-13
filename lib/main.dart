@@ -30,6 +30,13 @@ class RecipeSearch extends StatefulWidget {
 }
 
 class _RecipeSearchState extends State<RecipeSearch> {
+  String searchquery = '';
+  final controller = TextEditingController();
+
+  void _setSearchQueryText() {
+    searchquery = controller.text;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +52,9 @@ class _RecipeSearchState extends State<RecipeSearch> {
 
 class RecipeGrid extends StatelessWidget {
   final SearchQuery searchQuery;
+
   RecipeGrid(this.searchQuery);
+
   @override
   Widget build(BuildContext context) {
     return Container();
