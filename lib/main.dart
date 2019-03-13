@@ -50,6 +50,12 @@ class _RecipeSearchState extends State<RecipeSearch> {
     super.dispose();
   }
 
+  void _searchRecipe(String inp) {
+    Navigator.pushNamed(
+      context, '/recipegrid', 
+      arguments: SearchQuery(searchquery, 0));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
