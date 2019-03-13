@@ -38,6 +38,19 @@ class _RecipeSearchState extends State<RecipeSearch> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    controller.addListener(_setSearchQueryText);
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(_setSearchQueryText);
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
