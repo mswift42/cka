@@ -57,7 +57,15 @@ class _RecipeSearchState extends State<RecipeSearch> {
         title: Text('CK'),
       ),
       body: Column(
-        children: <Widget>[],
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: TextField(
+              controller: controller,
+              onSubmitted: _searchRecipe,
+            ),
+          )
+        ],
       ),
     );
   }
