@@ -100,10 +100,26 @@ class RecipeGrid extends StatelessWidget {
         children: <Widget>[
           GridView.extent(
             maxCrossAxisExtent: 480.00,
-            children: <Widget>[],
+            children: recipes.map((i) => RecipeSearchItem(recipe: i)).toList(),
           )
         ],
       ),
     );
+  }
+}
+
+class RecipeSearchItem extends StatefulWidget {
+  final Recipe recipe;
+
+  RecipeSearchItem({this.recipe});
+
+  @override
+  _RecipeSearchItemState createState() => _RecipeSearchItemState();
+}
+
+class _RecipeSearchItemState extends State<RecipeSearchItem> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
