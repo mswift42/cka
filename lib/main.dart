@@ -1,5 +1,6 @@
 import 'package:cka/Recipe.dart';
 import 'package:flutter/material.dart';
+import 'package:cka/mockrecipes.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => RecipeSearch(),
-        '/recipegrid': (context) => RecipeGrid(SearchQuery("", 0)),
+        '/recipegrid': (context) =>
+            RecipeGrid(SearchQuery("", 0), mockresultlist),
       },
     );
   }
@@ -51,9 +53,14 @@ class _RecipeSearchState extends State<RecipeSearch> {
   }
 
   void _searchRecipe(String inp) {
-    Navigator.pushNamed(
-      context, '/recipegrid', 
-      arguments: SearchQuery(searchquery, 0));
+    // Navigator.pushNamed(
+    //   context, '/recipegrid',
+    //   arguments: SearchQuery(searchquery, 120));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                RecipeGrid(SearchQuery(inp, 0), mockresultlist)));
   }
 
   @override
@@ -79,11 +86,24 @@ class _RecipeSearchState extends State<RecipeSearch> {
 
 class RecipeGrid extends StatelessWidget {
   final SearchQuery searchQuery;
+  final List<Recipe> recipes;
 
-  RecipeGrid(this.searchQuery);
+  RecipeGrid(this.searchQuery, this.recipes);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(searchQuery.searchterm),
+      ),
+      body: Column(
+        children: <Widget>[
+          GridView.extent(
+            maxCrossAxisExtent: 480.00,
+            children: <Widget>[],
+          )
+        ],
+      ),
+    );
   }
 }
