@@ -1,6 +1,7 @@
 import 'package:cka/Recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:cka/mockrecipes.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 void main() => runApp(MyApp());
 
@@ -122,16 +123,16 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
   Widget build(BuildContext context) {
     return GridTile(
       child: Hero(
-          tag: widget.recipe.thumbnail,
-          child: CachedNetworkImage(
-            image: widget.recipe.thumbnail,
-            fit: BoxFit.cover,
-          ),
+        tag: widget.recipe.thumbnail,
+        child: CachedNetworkImage(
+          imageUrl: widget.recipe.thumbnail,
+          fit: BoxFit.cover,
+        ),
       ),
       footer: GridTileBar(
         backgroundColor: Colors.black54,
         title: Text(widget.recipe.title),
-          subtitle: Text(widget.recipe.rating),
+        subtitle: Text(widget.recipe.rating),
       ),
     );
   }
