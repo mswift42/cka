@@ -97,16 +97,16 @@ class RecipeGrid extends StatelessWidget {
       appBar: AppBar(
         title: Text(searchQuery.searchterm),
       ),
-      body: Expanded(
-        child: Column(
-          children: <Widget>[
-            GridView.extent(
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: GridView.extent(
               maxCrossAxisExtent: 480.00,
               children:
                   recipes.map((i) => RecipeSearchItem(recipe: i)).toList(),
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
