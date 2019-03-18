@@ -122,6 +122,24 @@ class RecipeSearchItem extends StatefulWidget {
 }
 
 class _RecipeSearchItemState extends State<RecipeSearchItem> {
+  void _showRecipe(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      AppBar appBar = AppBar(title: Text(widget.recipe.title));
+      return Scaffold(
+          appBar: appBar,
+          body: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 0.5,
+              vertical: 0.2,
+            ),
+            child: Hero(
+              tag: widget.recipe.thumbnail,
+              child: _RecipeViewer(recipe: widget.recipe),
+            ),
+          ));
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
