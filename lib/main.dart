@@ -124,18 +124,21 @@ class RecipeSearchItem extends StatefulWidget {
 class _RecipeSearchItemState extends State<RecipeSearchItem> {
   @override
   Widget build(BuildContext context) {
-    return GridTile(
-      child: Hero(
-        tag: widget.recipe.thumbnail,
-        child: CachedNetworkImage(
-          imageUrl: widget.recipe.thumbnail,
-          fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () => _showRecipe(context),
+      child: GridTile(
+        child: Hero(
+          tag: widget.recipe.thumbnail,
+          child: CachedNetworkImage(
+            imageUrl: widget.recipe.thumbnail,
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
-      footer: GridTileBar(
-        backgroundColor: Colors.black54,
-        title: Text(widget.recipe.title),
-        subtitle: Text(widget.recipe.rating),
+        footer: GridTileBar(
+          backgroundColor: Colors.black54,
+          title: Text(widget.recipe.title),
+          subtitle: Text(widget.recipe.rating),
+        ),
       ),
     );
   }
