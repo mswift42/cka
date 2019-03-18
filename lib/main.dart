@@ -174,9 +174,13 @@ class __RecipeViewerState extends State<_RecipeViewer> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        CachedNetworkImage(
-          imageUrl: widget.recipe.thumbnail,
-          fit: BoxFit.fitWidth,
+        FractionallySizedBox(
+          heightFactor: 0.6,
+          widthFactor: 1.0,
+          child: CachedNetworkImage(
+            imageUrl: widget.recipe.thumbnail,
+            fit: BoxFit.contain,
+          ),
         ),
         Text(widget.recipe.title)
       ],
