@@ -161,3 +161,25 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
     );
   }
 }
+
+class _RecipeViewer extends StatefulWidget {
+  final Recipe recipe;
+  _RecipeViewer({this.recipe});
+  @override
+  __RecipeViewerState createState() => __RecipeViewerState();
+}
+
+class __RecipeViewerState extends State<_RecipeViewer> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        CachedNetworkImage(
+          imageUrl: widget.recipe.thumbnail,
+          fit: BoxFit.fitWidth,
+        ),
+        Text(widget.recipe.title)
+      ],
+    );
+  }
+}
