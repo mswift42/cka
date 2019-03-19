@@ -164,7 +164,9 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
 
 class _RecipeViewer extends StatefulWidget {
   final Recipe recipe;
+
   _RecipeViewer({this.recipe});
+
   @override
   __RecipeViewerState createState() => __RecipeViewerState();
 }
@@ -196,9 +198,8 @@ class __RecipeViewerState extends State<_RecipeViewer> {
           Expanded(
             child: Column(
               children: <Widget>[
-                Text(widget.recipe.title),
-                Text(widget.recipe.difficulty),
-                Text(widget.recipe.preptime),
+                _recipeViewInfoRow("Difficulty: ", widget.recipe.difficulty),
+                _recipeViewInfoRow("Preptime: ", widget.recipe.preptime),
               ],
             ),
           ),
@@ -207,13 +208,19 @@ class __RecipeViewerState extends State<_RecipeViewer> {
     );
   }
 
-  Row _recipeViewInfoRow(String rowLabel, String rowInfo) {
-    return Row(
-      children: <Widget>[
-        Text(rowLabel),
-        Text(rowInfo),
-      ],
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget _recipeViewInfoRow(String rowLabel, String rowInfo) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 20.0,
+        horizontal: 8.0,
+      ),
+      child: Row(
+        children: <Widget>[
+          Text(rowLabel),
+          Text(rowInfo),
+        ],
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      ),
     );
   }
 }
