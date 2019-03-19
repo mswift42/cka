@@ -194,10 +194,26 @@ class __RecipeViewerState extends State<_RecipeViewer> {
             ),
           ),
           Expanded(
-            child: Text(widget.recipe.title),
+            child: Column(
+              children: <Widget>[
+                Text(widget.recipe.title),
+                Text(widget.recipe.difficulty),
+                Text(widget.recipe.preptime),
+              ],
+            ),
           ),
         ],
       ),
+    );
+  }
+
+  Row _recipeViewInfoRow(String rowLabel, String rowInfo) {
+    return Row(
+      children: <Widget>[
+        Text(rowLabel),
+        Text(rowInfo),
+      ],
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
     );
   }
 }
