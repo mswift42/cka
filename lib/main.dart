@@ -181,18 +181,21 @@ class __RecipeViewerState extends State<_RecipeViewer> {
         maxWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Expanded(
-            child: FractionallySizedBox(
-              heightFactor: 0.6,
-              widthFactor: 1.0,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: _size.height / 3.0,
+                minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+              ),
               child: CachedNetworkImage(
                 imageUrl: widget.recipe.thumbnail,
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
               ),
             ),
           ),
-          Expanded(child: Text(widget.recipe.title)),
+          Text(widget.recipe.title),
         ],
       ),
     );
