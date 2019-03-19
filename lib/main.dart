@@ -172,18 +172,29 @@ class _RecipeViewer extends StatefulWidget {
 class __RecipeViewerState extends State<_RecipeViewer> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        FractionallySizedBox(
-          heightFactor: 0.6,
-          widthFactor: 1.0,
-          child: CachedNetworkImage(
-            imageUrl: widget.recipe.thumbnail,
-            fit: BoxFit.contain,
+    final Size _size = MediaQuery.of(context).size;
+    const double _kRecipeViewerMaxWidth = 460.0;
+    final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxHeight: _size.height,
+        maxWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+      ),
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: FractionallySizedBox(
+              heightFactor: 0.6,
+              widthFactor: 1.0,
+              child: CachedNetworkImage(
+                imageUrl: widget.recipe.thumbnail,
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
-        ),
-        Text(widget.recipe.title)
-      ],
+          Expanded(child: Text(widget.recipe.title)),
+        ],
+      ),
     );
   }
 }
