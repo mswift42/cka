@@ -187,7 +187,7 @@ class __RecipeViewerState extends State<_RecipeViewer> {
         children: <Widget>[
           ConstrainedBox(
             constraints: BoxConstraints(
-              maxHeight: _size.height / 2.8,
+              maxHeight: _size.height / 1.8,
               minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
             ),
             child: CachedNetworkImage(
@@ -197,7 +197,9 @@ class __RecipeViewerState extends State<_RecipeViewer> {
           ),
           Expanded(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
+                _recipeViewInfoRow("Rating", widget.recipe.rating),
                 _recipeViewInfoRow("Difficulty: ", widget.recipe.difficulty),
                 _recipeViewInfoRow("Preptime: ", widget.recipe.preptime),
               ],
