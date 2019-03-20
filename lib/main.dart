@@ -177,37 +177,44 @@ class __RecipeViewerState extends State<_RecipeViewer> {
     final Size _size = MediaQuery.of(context).size;
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxHeight: _size.height,
-        maxWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: _size.height / 1.8,
-              minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+    return GestureDetector(
+      onTap: () => _showRecipeDetail(),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: _size.height,
+          maxWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: _size.height / 1.8,
+                minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+              ),
+              child: CachedNetworkImage(
+                imageUrl: widget.recipe.thumbnail,
+                fit: BoxFit.cover,
+              ),
             ),
-            child: CachedNetworkImage(
-              imageUrl: widget.recipe.thumbnail,
-              fit: BoxFit.cover,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  _recipeViewInfoRow("Rating", widget.recipe.rating),
+                  _recipeViewInfoRow("Difficulty: ", widget.recipe.difficulty),
+                  _recipeViewInfoRow("Preptime: ", widget.recipe.preptime),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                _recipeViewInfoRow("Rating", widget.recipe.rating),
-                _recipeViewInfoRow("Difficulty: ", widget.recipe.difficulty),
-                _recipeViewInfoRow("Preptime: ", widget.recipe.preptime),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
+  }
+
+  void _showRecipeDetail() {
+
   }
 
   Widget _recipeViewInfoRow(String rowLabel, String rowInfo) {
