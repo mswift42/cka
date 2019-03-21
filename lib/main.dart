@@ -2,6 +2,7 @@ import 'package:cka/Recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cka/mockrecipedetail.dart';
 
 void main() => runApp(MyApp());
 
@@ -218,7 +219,7 @@ class __RecipeViewerState extends State<_RecipeViewer> {
       AppBar appBar = AppBar(title: Text(widget.recipe.title));
       return Scaffold(
         appBar: appBar,
-        body: _RecipeDetailView(url: widget.recipe.url),
+        body: _RecipeDetailView(recipeDetail: grueneImSpeckMantel),
       );
     }));
   }
@@ -237,5 +238,35 @@ class __RecipeViewerState extends State<_RecipeViewer> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       ),
     );
+  }
+}
+
+class _RecipeDetailView extends StatelessWidget {
+  final RecipeDetail recipeDetail;
+
+  _RecipeDetailView({this.recipeDetail});
+
+  @override
+
+  Widget build(BuildContext context) {
+
+    final Size _size = MediaQuery.of(context).size;
+    const double _kRecipeViewerMaxWidth = 460.0;
+    final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
+    return Container(
+        child: Column(
+      children: <Widget>[
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: _size.height / 2.0,
+            minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+          ),
+          child: CachedNetworkImage(
+            imageUrl: recipeDetail.thumbnail,
+            fit: BoxFit.fitWidth,
+          ),
+        ),
+      ],
+    ));
   }
 }
