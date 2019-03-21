@@ -214,7 +214,13 @@ class __RecipeViewerState extends State<_RecipeViewer> {
   }
 
   void _showRecipeDetail() {
-
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      AppBar appBar = AppBar(title: Text(widget.recipe.title));
+      return Scaffold(
+        appBar: appBar,
+        body: _RecipeDetailView(url: widget.recipe.url),
+      );
+    }));
   }
 
   Widget _recipeViewInfoRow(String rowLabel, String rowInfo) {
