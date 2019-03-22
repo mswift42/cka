@@ -241,15 +241,18 @@ class __RecipeViewerState extends State<_RecipeViewer> {
   }
 }
 
-class _RecipeDetailView extends StatelessWidget {
+class _RecipeDetailView extends StatefulWidget {
   final RecipeDetail recipeDetail;
 
   _RecipeDetailView({this.recipeDetail});
 
   @override
+  __RecipeDetailViewState createState() => __RecipeDetailViewState();
+}
 
+class __RecipeDetailViewState extends State<_RecipeDetailView> {
+  @override
   Widget build(BuildContext context) {
-
     final Size _size = MediaQuery.of(context).size;
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
@@ -262,7 +265,7 @@ class _RecipeDetailView extends StatelessWidget {
             minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
           ),
           child: CachedNetworkImage(
-            imageUrl: recipeDetail.thumbnail,
+            imageUrl: widget.recipeDetail.thumbnail,
             fit: BoxFit.fitWidth,
           ),
         ),
