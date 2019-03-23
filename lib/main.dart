@@ -257,28 +257,53 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     final Size _size = MediaQuery.of(context).size;
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
+
+    Widget _RecipeIngredientsView() {
+      return Column(
+        children: [
+          widget.recipeDetail.ingredients
+              .map((i) => Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      children: <Widget>[
+                        Text(i.amount + ' '),
+                        Text(i.ingredient),
+                      ],
+                    ),
+                  ))
+              .toList()
+        ],
+      );
+    }
+
     AppBar appBar = AppBar(
         title: Text(widget.recipeDetail.title),
         bottom: TabBar(tabs: <Widget>[
-          Tab(icon: Icon(Icons.info)),
           Tab(icon: Icon(Icons.list)),
           Tab(icon: Icon(Icons.description)),
+          Tab(icon: Icon(Icons.info)),
         ]));
-    return Scaffold(
-        appBar: appBar,
-        body: Column(
-          children: <Widget>[
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                maxHeight: _size.height / 2.0,
-                minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
-              ),
-              child: CachedNetworkImage(
-                imageUrl: widget.recipeDetail.thumbnail,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-          ],
-        ));
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+          appBar: appBar,
+          body: TabBarView(
+            children: <Widget>[
+//              ConstrainedBox(
+//                constraints: BoxConstraints(
+//                  maxHeight: _size.height / 2.0,
+//                  minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+//                ),
+//                child: CachedNetworkImage(
+//                  imageUrl: widget.recipeDetail.thumbnail,
+//                  fit: BoxFit.fitWidth,
+//                ),
+//              ),
+              _RecipeIngredientsView(),
+              _RecipeMethodView(),
+              _RecipeInfoView(),
+            ],
+          )),
+    );
   }
 }
