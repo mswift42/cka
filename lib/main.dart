@@ -257,22 +257,28 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     final Size _size = MediaQuery.of(context).size;
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
-    AppBar appBar = AppBar(title: Text(widget.recipeDetail.title));
+    AppBar appBar = AppBar(
+        title: Text(widget.recipeDetail.title),
+        bottom: TabBar(tabs: <Widget>[
+          Tab(icon: Icon(Icons.info)),
+          Tab(icon: Icon(Icons.list)),
+          Tab(icon: Icon(Icons.description)),
+        ]));
     return Scaffold(
-      appBar: appBar,
+        appBar: appBar,
         body: Column(
-      children: <Widget>[
-        ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: _size.height / 2.0,
-            minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
-          ),
-          child: CachedNetworkImage(
-            imageUrl: widget.recipeDetail.thumbnail,
-            fit: BoxFit.fitWidth,
-          ),
-        ),
-      ],
-    ));
+          children: <Widget>[
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: _size.height / 2.0,
+                minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+              ),
+              child: CachedNetworkImage(
+                imageUrl: widget.recipeDetail.thumbnail,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ],
+        ));
   }
 }
