@@ -1,8 +1,8 @@
-import 'package:cka/Recipe.dart';
-import 'package:flutter/material.dart';
-import 'package:cka/mockrecipes.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cka/Recipe.dart';
 import 'package:cka/mockrecipedetail.dart';
+import 'package:cka/mockrecipes.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -215,13 +215,13 @@ class __RecipeViewerState extends State<_RecipeViewer> {
   }
 
   void _showRecipeDetail() {
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      AppBar appBar = AppBar(title: Text(widget.recipe.title));
-      return Scaffold(
-        appBar: appBar,
-        body: _RecipeDetailView(recipeDetail: grueneImSpeckMantel),
-      );
-    }));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (BuildContext context) {
+        return _RecipeDetailView(
+            context: context, recipeDetail: grueneImSpeckMantel);
+      }),
+    );
   }
 
   Widget _recipeViewInfoRow(String rowLabel, String rowInfo) {
@@ -242,9 +242,10 @@ class __RecipeViewerState extends State<_RecipeViewer> {
 }
 
 class _RecipeDetailView extends StatefulWidget {
+  final BuildContext context;
   final RecipeDetail recipeDetail;
 
-  _RecipeDetailView({this.recipeDetail});
+  _RecipeDetailView({this.context, this.recipeDetail});
 
   @override
   __RecipeDetailViewState createState() => __RecipeDetailViewState();
@@ -256,8 +257,10 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     final Size _size = MediaQuery.of(context).size;
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
-    return Container(
-        child: Column(
+    AppBar appBar = AppBar(title: Text(widget.recipeDetail.title));
+    return Scaffold(
+      appBar: appBar,
+        body: Column(
       children: <Widget>[
         ConstrainedBox(
           constraints: BoxConstraints(
