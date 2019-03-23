@@ -202,9 +202,13 @@ class __RecipeViewerState extends State<_RecipeViewer> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  _recipeViewInfoRow("Rating", widget.recipe.rating),
-                  _recipeViewInfoRow("Difficulty: ", widget.recipe.difficulty),
-                  _recipeViewInfoRow("Preptime: ", widget.recipe.preptime),
+                  new _RecipeInfoRow(
+                      rowLabel: "Rating", rowInfo: widget.recipe.rating),
+                  new _RecipeInfoRow(
+                      rowLabel: "Difficulty: ",
+                      rowInfo: widget.recipe.difficulty),
+                  new _RecipeInfoRow(
+                      rowLabel: "Preptime: ", rowInfo: widget.recipe.preptime),
                 ],
               ),
             ),
@@ -223,8 +227,20 @@ class __RecipeViewerState extends State<_RecipeViewer> {
       }),
     );
   }
+}
 
-  Widget _recipeViewInfoRow(String rowLabel, String rowInfo) {
+class _RecipeInfoRow extends StatelessWidget {
+  const _RecipeInfoRow({
+    Key key,
+    @required this.rowLabel,
+    @required this.rowInfo,
+  }) : super(key: key);
+
+  final String rowLabel;
+  final String rowInfo;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 20.0,
@@ -288,6 +304,35 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
       );
     }
 
+    Widget _recipeInfoView() {
+      return Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.fromLTRB(0.5, 0, 0.5, 10.0),
+            child: SizedBox(
+              width: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+              height: _size.height / 3.0,
+              child: CachedNetworkImage(
+                imageUrl: widget.recipeDetail.thumbnail,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          _RecipeInfoRow(
+              rowLabel: "Difficulty", rowInfo: widget.recipeDetail.difficulty),
+          _RecipeInfoRow(
+              rowLabel: "Rating", rowInfo: widget.recipeDetail.rating),
+          _RecipeInfoRow(
+              rowLabel: "Preptime", rowInfo: widget.recipeDetail.preptime),
+          _RecipeInfoRow(
+              rowLabel: "Cooking Time",
+              rowInfo: widget.recipeDetail.cookingtime == ""
+                  ? "N.A"
+                  : widget.recipeDetail.cookingtime),
+        ],
+      );
+    }
+
     AppBar appBar = AppBar(
         title: Text(widget.recipeDetail.title),
         bottom: TabBar(tabs: <Widget>[
@@ -313,7 +358,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 //              ),
               _recipeIngredientsView(),
               _recipeMethodView(),
-              _RecipeInfoView(),
+              _recipeInfoView(),
             ],
           )),
     );
