@@ -223,7 +223,7 @@ class __RecipeViewerState extends State<_RecipeViewer> {
       context,
       MaterialPageRoute(builder: (BuildContext context) {
         return _RecipeDetailView(
-            context: context, recipeDetail: grueneImSpeckMantel);
+            context: context, recipeDetail: schupfnudel);
       }),
     );
   }
@@ -276,8 +276,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
     Widget _recipeIngredientsView() {
       return Column(
-        children: [
-          widget.recipeDetail.ingredients
+          children: widget.recipeDetail.ingredients
               .map((i) => Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Row(
@@ -287,9 +286,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
                       ],
                     ),
                   ))
-              .toList()
-        ],
-      );
+              .toList());
     }
 
     Widget _recipeMethodView() {
