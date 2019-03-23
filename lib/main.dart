@@ -258,7 +258,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
 
-    Widget _RecipeIngredientsView() {
+    Widget _recipeIngredientsView() {
       return Column(
         children: [
           widget.recipeDetail.ingredients
@@ -272,6 +272,18 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
                     ),
                   ))
               .toList()
+        ],
+      );
+    }
+
+    Widget _recipeMethodView() {
+      return Column(
+        children: <Widget>[
+          CachedNetworkImage(
+              fit: BoxFit.fitWidth, imageUrl: widget.recipeDetail.thumbnail),
+          SingleChildScrollView(
+              padding: EdgeInsets.all(8.0),
+              child: Text(widget.recipeDetail.method)),
         ],
       );
     }
@@ -299,8 +311,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 //                  fit: BoxFit.fitWidth,
 //                ),
 //              ),
-              _RecipeIngredientsView(),
-              _RecipeMethodView(),
+              _recipeIngredientsView(),
+              _recipeMethodView(),
               _RecipeInfoView(),
             ],
           )),
