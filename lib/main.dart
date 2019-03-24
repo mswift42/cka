@@ -222,8 +222,7 @@ class __RecipeViewerState extends State<_RecipeViewer> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (BuildContext context) {
-        return _RecipeDetailView(
-            context: context, recipeDetail: schupfnudel);
+        return _RecipeDetailView(context: context, recipeDetail: schupfnudel);
       }),
     );
   }
@@ -276,17 +275,22 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
     Widget _recipeIngredientsView() {
       return Column(
-          children: widget.recipeDetail.ingredients
-              .map((i) => Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: <Widget>[
-                        Text(i.amount + ' '),
-                        Text(i.ingredient),
-                      ],
-                    ),
-                  ))
-              .toList());
+        children: [
+          ListView(
+              shrinkWrap: true,
+              children: widget.recipeDetail.ingredients
+                  .map((i) => Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Row(
+                          children: <Widget>[
+                            Text(i.amount + ' '),
+                            Text(i.ingredient),
+                          ],
+                        ),
+                      ))
+                  .toList()),
+        ],
+      );
     }
 
     Widget _recipeMethodView() {
@@ -343,16 +347,6 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
           appBar: appBar,
           body: TabBarView(
             children: <Widget>[
-//              ConstrainedBox(
-//                constraints: BoxConstraints(
-//                  maxHeight: _size.height / 2.0,
-//                  minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
-//                ),
-//                child: CachedNetworkImage(
-//                  imageUrl: widget.recipeDetail.thumbnail,
-//                  fit: BoxFit.fitWidth,
-//                ),
-//              ),
               _recipeIngredientsView(),
               _recipeMethodView(),
               _recipeInfoView(),
