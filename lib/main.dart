@@ -199,17 +199,22 @@ class __RecipeViewerState extends State<_RecipeViewer> {
               ),
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  new _RecipeInfoRow(
-                      rowLabel: "Rating", rowInfo: widget.recipe.rating),
-                  new _RecipeInfoRow(
-                      rowLabel: "Difficulty: ",
-                      rowInfo: widget.recipe.difficulty),
-                  new _RecipeInfoRow(
-                      rowLabel: "Preptime: ", rowInfo: widget.recipe.preptime),
-                ],
+              child: Opacity(
+                opacity: 0.8,
+                child: Column(
+
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new _RecipeInfoRow(
+                        rowLabel: "Rating", rowInfo: widget.recipe.rating),
+                    new _RecipeInfoRow(
+                        rowLabel: "Difficulty: ",
+                        rowInfo: widget.recipe.difficulty),
+                    new _RecipeInfoRow(
+                        rowLabel: "Preptime: ",
+                        rowInfo: widget.recipe.preptime),
+                  ],
+                ),
               ),
             ),
           ],
