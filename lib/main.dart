@@ -3,6 +3,7 @@ import 'package:cka/Recipe.dart';
 import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:flutter/material.dart';
+import 'package:palette_generator/palette_generator.dart';
 
 void main() => runApp(MyApp());
 
@@ -173,6 +174,7 @@ class _RecipeViewer extends StatefulWidget {
 }
 
 class __RecipeViewerState extends State<_RecipeViewer> {
+  PaletteGenerator generator;
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
@@ -202,7 +204,6 @@ class __RecipeViewerState extends State<_RecipeViewer> {
               child: Opacity(
                 opacity: 0.8,
                 child: Column(
-
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     new _RecipeInfoRow(
