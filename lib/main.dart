@@ -4,6 +4,7 @@ import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
+import 'dart:async';
 
 void main() => runApp(MyApp());
 
@@ -175,6 +176,12 @@ class _RecipeViewer extends StatefulWidget {
 
 class __RecipeViewerState extends State<_RecipeViewer> {
   PaletteGenerator generator;
+
+  Future<void> _updatePaletteGenerator(ImageProvider image) async {
+    generator = await PaletteGenerator.fromImageProvider(image);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
