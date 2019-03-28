@@ -217,8 +217,8 @@ class __RecipeViewerState extends State<_RecipeViewer> {
               // ),
             ),
             Expanded(
-              child: Opacity(
-                opacity: 0.8,
+              child: Container(
+                color: generator.darkMutedColor.color,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
