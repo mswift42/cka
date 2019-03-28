@@ -218,7 +218,8 @@ class __RecipeViewerState extends State<_RecipeViewer> {
             ),
             Expanded(
               child: Container(
-                color: generator.darkMutedColor.color,
+                color: (generator.colors == null) ? Colors.white : 
+                generator.darkMutedColor.color,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
