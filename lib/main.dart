@@ -176,10 +176,18 @@ class _RecipeViewer extends StatefulWidget {
 
 class __RecipeViewerState extends State<_RecipeViewer> {
   PaletteGenerator generator;
+  ImageProvider image;
 
   Future<void> _updatePaletteGenerator(ImageProvider image) async {
     generator = await PaletteGenerator.fromImageProvider(image);
     setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    image = Image.network(widget.recipe.thumbnail).image;
+    _updatePaletteGenerator(image);
   }
 
   @override
@@ -202,10 +210,11 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                 maxHeight: _size.height / 1.8,
                 minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
               ),
-              child: CachedNetworkImage(
-                imageUrl: widget.recipe.thumbnail,
-                fit: BoxFit.cover,
-              ),
+              child: Image(image: image),
+              // CachedNetworkImage(
+              //   imageUrl: widget.recipe.thumbnail,
+              //   fit: BoxFit.cover,
+              // ),
             ),
             Expanded(
               child: Opacity(
