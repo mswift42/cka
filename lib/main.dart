@@ -1,10 +1,11 @@
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cka/Recipe.dart';
 import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
-import 'dart:async';
 
 void main() => runApp(MyApp());
 
@@ -218,8 +219,9 @@ class __RecipeViewerState extends State<_RecipeViewer> {
             ),
             Expanded(
               child: Container(
-                color: (generator.colors == null) ? Colors.white : 
-                generator.darkMutedColor.color,
+                color: (generator == null)
+                    ? Colors.white
+                    : generator.darkMutedColor.color,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -270,7 +272,9 @@ class _RecipeInfoRow extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          Text(rowLabel),
+          Expanded(
+            child: Text(rowLabel),
+          ),
           Text(rowInfo),
         ],
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
