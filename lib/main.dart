@@ -211,7 +211,7 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                 maxHeight: _size.height / 1.8,
                 minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
               ),
-              child: Image(image: image),
+              child: Image(image: image, fit: BoxFit.fitWidth),
               // CachedNetworkImage(
               //   imageUrl: widget.recipe.thumbnail,
               //   fit: BoxFit.cover,
