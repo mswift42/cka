@@ -187,6 +187,8 @@ class __RecipeViewerState extends State<_RecipeViewer> {
   @override
   void initState() {
     super.initState();
+    var cn = CachedNetworkImage(imageUrl: widget.recipe.thumbnail).imageBuilder;
+  image = 
     image = Image.network(widget.recipe.thumbnail).image;
     _updatePaletteGenerator(image);
   }
@@ -211,17 +213,18 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                 maxHeight: _size.height / 1.8,
                 minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
               ),
-              child: Image(image: image, fit: BoxFit.fitWidth),
-              // CachedNetworkImage(
-              //   imageUrl: widget.recipe.thumbnail,
-              //   fit: BoxFit.cover,
-              // ),
+              child: 
+      //        Image(image: image, fit: BoxFit.fitWidth),
+              CachedNetworkImage(
+                imageUrl: widget.recipe.thumbnail,
+                fit: BoxFit.cover,
+              ),
             ),
             Expanded(
               child: Container(
                 color: (generator == null)
                     ? Colors.white
-                    : generator.darkMutedColor.color,
+                    : generator.lightVibrantColor.color ?? Colors.white,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
