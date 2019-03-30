@@ -188,8 +188,7 @@ class __RecipeViewerState extends State<_RecipeViewer> {
   void initState() {
     super.initState();
     var cn = CachedNetworkImage(imageUrl: widget.recipe.thumbnail).imageBuilder;
-  image = 
-    image = Image.network(widget.recipe.thumbnail).image;
+    image = image = Image.network(widget.recipe.thumbnail).image;
     _updatePaletteGenerator(image);
   }
 
@@ -213,9 +212,9 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                 maxHeight: _size.height / 1.8,
                 minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
               ),
-              child: 
-      //        Image(image: image, fit: BoxFit.fitWidth),
-              CachedNetworkImage(
+              child:
+                  //        Image(image: image, fit: BoxFit.fitWidth),
+                  CachedNetworkImage(
                 imageUrl: widget.recipe.thumbnail,
                 fit: BoxFit.cover,
               ),
@@ -261,13 +260,16 @@ class _RecipeInfoRow extends StatelessWidget {
     Key key,
     @required this.rowLabel,
     @required this.rowInfo,
+    @required this.rowTextColor,
   }) : super(key: key);
 
   final String rowLabel;
   final String rowInfo;
+  final Color rowTextColor;
 
   @override
   Widget build(BuildContext context) {
+    TextStyle ts = TextStyle(color: rowTextColor);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 20.0,
@@ -276,9 +278,9 @@ class _RecipeInfoRow extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: Text(rowLabel),
+            child: Text(rowLabel, style: ts),
           ),
-          Text(rowInfo),
+          Text(rowInfo, style: ts),
         ],
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       ),
