@@ -228,13 +228,23 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     new _RecipeInfoRow(
-                        rowLabel: "Rating", rowInfo: widget.recipe.rating),
+                      rowLabel: "Rating",
+                      rowInfo: widget.recipe.rating,
+                      rowTextColor: generator.lightVibrantColor.bodyTextColor ??
+                          Colors.black,
+                    ),
                     new _RecipeInfoRow(
-                        rowLabel: "Difficulty: ",
-                        rowInfo: widget.recipe.difficulty),
+                      rowLabel: "Difficulty: ",
+                      rowInfo: widget.recipe.difficulty,
+                      rowTextColor: generator.lightVibrantColor.bodyTextColor ??
+                          Colors.black,
+                    ),
                     new _RecipeInfoRow(
-                        rowLabel: "Preptime: ",
-                        rowInfo: widget.recipe.preptime),
+                      rowLabel: "Preptime: ",
+                      rowInfo: widget.recipe.preptime,
+                      rowTextColor: generator.lightVibrantColor.bodyTextColor ??
+                          Colors.black,
+                    ),
                   ],
                 ),
               ),
