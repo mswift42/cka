@@ -187,7 +187,6 @@ class __RecipeViewerState extends State<_RecipeViewer> {
   @override
   void initState() {
     super.initState();
-    var cn = CachedNetworkImage(imageUrl: widget.recipe.thumbnail).imageBuilder;
     image = image = Image.network(widget.recipe.thumbnail).image;
     _updatePaletteGenerator(image);
   }
@@ -270,7 +269,7 @@ class _RecipeInfoRow extends StatelessWidget {
     Key key,
     @required this.rowLabel,
     @required this.rowInfo,
-    @required this.rowTextColor,
+    this.rowTextColor,
   }) : super(key: key);
 
   final String rowLabel;
