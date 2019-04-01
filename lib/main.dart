@@ -6,6 +6,7 @@ import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
+import 'package:cka/image_chache.dart' show Icache;
 
 void main() => runApp(MyApp());
 
@@ -126,6 +127,8 @@ class RecipeSearchItem extends StatefulWidget {
 }
 
 class _RecipeSearchItemState extends State<RecipeSearchItem> {
+  Image image;
+  Icache imageCache;
   void _showRecipe(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
       AppBar appBar = AppBar(title: Text(widget.recipe.title));
@@ -145,14 +148,24 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    imageCache.cachedImage(widget.recipe.thumbnail).then((image) {
+      setState(() {
+        image = image;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => _showRecipe(context),
       child: GridTile(
         child: Hero(
           tag: widget.recipe.thumbnail,
-          child: CachedNetworkImage(
-            imageUrl: widget.recipe.thumbnail,
+          child: Image(
+            image: image.image,
             fit: BoxFit.cover,
           ),
         ),
