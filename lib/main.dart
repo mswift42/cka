@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cka/Recipe.dart';
+import 'package:cka/image_chache.dart' show Icache;
 import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
-import 'package:cka/image_chache.dart' show Icache;
 
 void main() => runApp(MyApp());
 
@@ -150,6 +150,7 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
   @override
   void initState() {
     super.initState();
+    imageCache = new Icache();
     imageCache.cachedImage(widget.recipe.thumbnail).then((image) {
       setState(() {
         image = image;
