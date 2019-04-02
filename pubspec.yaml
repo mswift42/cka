@@ -26,6 +26,7 @@ dependencies:
   cached_network_image: ^0.7.0
   palette_generator: ^0.1.1
   flutter_cache_manager: ^0.3.2
+  transparent_image: ^1.0.0
 
 dev_dependencies:
   flutter_test:
