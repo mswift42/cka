@@ -7,6 +7,7 @@ import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 void main() => runApp(MyApp());
 
@@ -129,6 +130,7 @@ class RecipeSearchItem extends StatefulWidget {
 class _RecipeSearchItemState extends State<RecipeSearchItem> {
   Image image;
   Icache imageCache;
+
   void _showRecipe(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
       AppBar appBar = AppBar(title: Text(widget.recipe.title));
@@ -165,10 +167,17 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
       child: GridTile(
         child: Hero(
           tag: widget.recipe.thumbnail,
-          child: Image(
-            image: image.image,
-            fit: BoxFit.cover,
+          child: FadeInImage.memoryNetwork(
+            placeholder: kTransparentImage,
+            image: widget.recipe.thumbnail,
+            fit: BoxFit.fitWidth,
           ),
+//          (image == null) ?
+//              Image.memory(kTransparentImage),
+
+//          Image(
+//            image: image ?? Image.memory(kTransparentImage),
+//            fit: BoxFit.cover,
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black54,
