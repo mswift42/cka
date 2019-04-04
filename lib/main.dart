@@ -210,7 +210,7 @@ class __RecipeViewerState extends State<_RecipeViewer> {
   @override
   void initState() {
     super.initState();
-    image = image = Image.network(widget.recipe.thumbnail).image;
+    image = Image.network(widget.recipe.thumbnail).image;
     _updatePaletteGenerator(image);
   }
 
@@ -361,7 +361,10 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
       return Column(
         children: <Widget>[
           CachedNetworkImage(
-              fit: BoxFit.fitWidth, imageUrl: widget.recipeDetail.thumbnail),
+            fit: BoxFit.fitWidth,
+            imageUrl: widget.recipeDetail.thumbnail,
+            placeholder: (context, url) => CircularProgressIndicator(),
+          ),
           SingleChildScrollView(
               padding: EdgeInsets.all(8.0),
               child: Text(widget.recipeDetail.method)),
@@ -380,6 +383,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
               child: CachedNetworkImage(
                 imageUrl: widget.recipeDetail.thumbnail,
                 fit: BoxFit.fitWidth,
+                placeholder: (context, url) => CircularProgressIndicator(),
               ),
             ),
           ),
