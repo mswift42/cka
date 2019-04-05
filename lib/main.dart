@@ -167,9 +167,9 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
       child: GridTile(
         child: Hero(
           tag: widget.recipe.thumbnail,
-          child: FadeInImage.memoryNetwork(
-            placeholder: kTransparentImage,
-            image: widget.recipe.thumbnail,
+          child: FadeInImage(
+            placeholder: MemoryImage(kTransparentImage),
+            image: CachedNetworkImageProvider(widget.recipe.thumbnail),
             fit: BoxFit.fitWidth,
           ),
 //          (image == null) ?
@@ -237,10 +237,12 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                 maxHeight: _size.height / 1.8,
                 minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
               ),
-              child: Image(image: image, fit: BoxFit.fitWidth),
-//                  CachedNetworkImage(
-//                imageUrl: widget.recipe.thumbnail,
-//                fit: BoxFit.cover,
+              child:
+                  //        Image(image: image, fit: BoxFit.fitWidth),
+                  CachedNetworkImage(
+                imageUrl: widget.recipe.thumbnail,
+                fit: BoxFit.cover,
+              ),
             ),
             Expanded(
               child: Container(
