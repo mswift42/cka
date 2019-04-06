@@ -238,7 +238,6 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                 minWidth: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
               ),
               child:
-                  //        Image(image: image, fit: BoxFit.fitWidth),
                   CachedNetworkImage(
                 imageUrl: widget.recipe.thumbnail,
                 fit: BoxFit.fitWidth,
@@ -246,9 +245,8 @@ class __RecipeViewerState extends State<_RecipeViewer> {
             ),
             Expanded(
               child: Container(
-                color: (generator == null)
-                    ? Colors.white
-                    : generator.lightVibrantColor.color ?? Colors.white,
+                color:
+                    generator?.lightVibrantColor?.color ?? Colors.white,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
