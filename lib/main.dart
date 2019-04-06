@@ -241,7 +241,7 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                   //        Image(image: image, fit: BoxFit.fitWidth),
                   CachedNetworkImage(
                 imageUrl: widget.recipe.thumbnail,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitWidth,
               ),
             ),
             Expanded(
@@ -255,20 +255,23 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                     new _RecipeInfoRow(
                       rowLabel: "Rating",
                       rowInfo: widget.recipe.rating,
-                      rowTextColor: generator.lightVibrantColor.bodyTextColor ??
-                          Colors.black,
+                      rowTextColor:
+                          generator?.lightVibrantColor?.bodyTextColor ??
+                              Colors.black,
                     ),
                     new _RecipeInfoRow(
                       rowLabel: "Difficulty: ",
                       rowInfo: widget.recipe.difficulty,
-                      rowTextColor: generator.lightVibrantColor.bodyTextColor ??
-                          Colors.black,
+                      rowTextColor:
+                          generator?.lightVibrantColor?.bodyTextColor ??
+                              Colors.black,
                     ),
                     new _RecipeInfoRow(
                       rowLabel: "Preptime: ",
                       rowInfo: widget.recipe.preptime,
-                      rowTextColor: generator.lightVibrantColor.bodyTextColor ??
-                          Colors.black,
+                      rowTextColor:
+                          generator?.lightVibrantColor?.bodyTextColor ??
+                              Colors.black,
                     ),
                   ],
                 ),
