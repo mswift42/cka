@@ -31,4 +31,11 @@ class CKDocument {
     String ckbody = await ck.getCKPage();
     return parse(ckbody);
   }
+
+
+}
+
+class CKDocSelection {
+  Node cknode; 
+  CKDocSelection(this.cknode);
 }
