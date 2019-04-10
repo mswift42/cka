@@ -27,9 +27,8 @@ class CKDocument {
   CKDocument(this.searchterm, this.page);
 
   Future<Document> getDoc() async {
-    ck = new CKBody(searchterm, page);
-    ckbody = await ck.getCKPage();
-    return ckbody;
+    CKBody ck = CKBody(searchterm, page);
+    String ckbody = await ck.getCKPage();
+    return parse(ckbody);
   }
-
 }
