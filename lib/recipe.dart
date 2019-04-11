@@ -75,11 +75,12 @@ class SearchQuery {
 
 const CKPrefix = 'https://www.chefkoch.de';
 
-class CKBody {
+
+class CKDocument {
   String searchterm;
   String page;
 
-  CKBody(this.searchterm, this.page);
+  CKDocument(this.searchterm, this.page);
 
   Future<String> getCKPage() async {
     http.Response response = await http.get(queryUrl());
@@ -89,17 +90,10 @@ class CKBody {
   String queryUrl() {
     return '$CKPrefix/rs/s$page/$searchterm/Rezepte.html#more2';
   }
-}
 
-class CKDocument {
-  String searchterm;
-  String page;
-
-  CKDocument(this.searchterm, this.page);
 
   Future<Document> getDoc() async {
-    CKBody ck = CKBody(searchterm, page);
-    String ckbody = await ck.getCKPage();
+    String ckbody = await getCKPage();
     return parse(ckbody);
   }
 }
