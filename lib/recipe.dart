@@ -106,13 +106,26 @@ class CKDocSelection {
   }
 
   String subtitle() {
-    var sub =
-        cknode.querySelector(".search-list-item-subtitle").text;
+    var sub = cknode.querySelector(".search-list-item-subtitle").text;
     return sub.trim().replaceAll("\n", "");
   }
 
   String url() {
     var url = cknode.querySelector(".search-list-item > a");
     return CKPrefix + url.attributes["href"];
+  }
+
+  String thumbnail() {
+    var thumb = cknode.querySelector("picture > img").attributes["srcset"];
+    if (thumb.startsWith("data:image")) {
+      thumb = cknode.querySelector("picture > img").attributes["data-srcset"];
+    }
+    return thumb;
+  }
+
+  String rating() {
+    return cknode
+        .querySelector(".search-list-item-uservote-starts")
+        .attributes["title"];
   }
 }
