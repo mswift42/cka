@@ -75,7 +75,6 @@ class SearchQuery {
 
 const CKPrefix = 'https://www.chefkoch.de';
 
-
 class CKDocument {
   String searchterm;
   String page;
@@ -91,7 +90,6 @@ class CKDocument {
     return '$CKPrefix/rs/s$page/$searchterm/Rezepte.html#more2';
   }
 
-
   Future<Document> getDoc() async {
     String ckbody = await getCKPage();
     return parse(ckbody);
@@ -99,7 +97,17 @@ class CKDocument {
 }
 
 class CKDocSelection {
-  Node cknode;
+  Element cknode;
 
   CKDocSelection(this.cknode);
+
+  String title() {
+    return cknode.getElementsByClassName("search-list-item-title")[0].text;
+  }
+
+  String subtitle() {
+    var sub =
+        cknode.getElementsByClassName("search-list-item-subtitle")[0].text;
+    return sub.trim().replaceAll("\n", "");
+  }
 }
