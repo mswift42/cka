@@ -102,12 +102,17 @@ class CKDocSelection {
   CKDocSelection(this.cknode);
 
   String title() {
-    return cknode.getElementsByClassName("search-list-item-title")[0].text;
+    return cknode.querySelector(".search-list-item-title").text;
   }
 
   String subtitle() {
     var sub =
-        cknode.getElementsByClassName("search-list-item-subtitle")[0].text;
+        cknode.querySelector(".search-list-item-subtitle").text;
     return sub.trim().replaceAll("\n", "");
+  }
+
+  String url() {
+    var url = cknode.querySelector(".search-list-item > a");
+    return CKPrefix + url.attributes["href"];
   }
 }
