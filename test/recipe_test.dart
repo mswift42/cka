@@ -11,6 +11,8 @@ void main() {
       var body = parse(contents);
       var ckdocsel = CKDocSelection(body.querySelector('.search-list-item'));
       expect(ckdocsel.title(), 'Grüne Bohnen im Speckmantel');
+      expect(ckdocsel.subtitle(),
+          "Bohnen waschen und die Spitzen abschneiden. Bohnenkraut, Knoblauch, zerdrückte Pfefferkörner und Salz mit Öl kurz anrösten. 2 Lite...");
     });
   });
 }
