@@ -30,6 +30,7 @@ dependencies:
   html: ^0.14.0
 
 dev_dependencies:
+  test:
   flutter_test:
     sdk: flutter
 
