@@ -128,11 +128,11 @@ class CKDocSelection {
         .querySelector(".search-list-item-uservote-starts")
         .attributes["title"];
   }
-  
+
   String difficulty() {
     return cknode.querySelector(".search-list-item-difficulty").text;
   }
-  
+
   String preptime() {
     return cknode.querySelector(".search-list-item-preptime").text;
   }
