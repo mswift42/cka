@@ -145,4 +145,9 @@ class RecipeDetailDocument {
   String title() {
     return cdoc.querySelector(".page-title").text;
   }
+
+  String rating() {
+    var rat = cdoc.querySelector(".rating__average-rating").text;
+    return rat.replaceFirst('ø', '').replaceAll(",", ".");
+  }
 }
