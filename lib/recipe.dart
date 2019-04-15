@@ -150,4 +150,20 @@ class RecipeDetailDocument {
     var rat = cdoc.querySelector(".rating__average-rating").text;
     return rat.replaceFirst('ø', '').replaceAll(",", ".");
   }
+
+  Map <String, String> _prepInfo() {
+    var result = Map();
+    var preptext = cdoc
+        .querySelector("#preparation-info")
+        .text
+        .replaceAll("\n", "")
+        .replaceAll("Koch-/Backzeit", "Kochzeit")
+        .replaceAll("keine Angabe", "NA");
+    var sections = preptext.split("/");
+    sections.forEach((i) {
+      var split = i.trim().split(":");
+      result[split[0]] = split[1].trim();
+    });
+    return result;
+  }
 }
