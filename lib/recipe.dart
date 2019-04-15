@@ -137,3 +137,12 @@ class CKDocSelection {
     return cknode.querySelector(".search-list-item-preptime").text;
   }
 }
+
+class RecipeDetailDocument {
+  Document cdoc;
+  RecipeDetailDocument(this.cdoc);
+
+  String title() {
+    return cdoc.querySelector(".page-title").text;
+  }
+}
