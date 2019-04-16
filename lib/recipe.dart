@@ -140,6 +140,7 @@ class CKDocSelection {
 
 class RecipeDetailDocument {
   Document cdoc;
+
   RecipeDetailDocument(this.cdoc);
 
   String title() {
@@ -151,7 +152,7 @@ class RecipeDetailDocument {
     return rat.replaceFirst('ø', '').replaceAll(",", ".");
   }
 
-  Map <String, String> _prepInfo() {
+  Map<String, String> _prepInfo() {
     var result = Map();
     var preptext = cdoc
         .querySelector("#preparation-info")
@@ -165,5 +166,17 @@ class RecipeDetailDocument {
       result[split[0]] = split[1].trim();
     });
     return result;
+  }
+
+  String difficulty(Map pi) {
+    return pi['Schwierigkeitsgrad'];
+  }
+
+  String preptime(Map pi) {
+    return pi['Arbeitszeit'];
+  }
+
+  String cookingtime(Map pi) {
+    return pi['Kochzeit'];
   }
 }
