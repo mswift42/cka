@@ -66,9 +66,9 @@ class RecipeDetail {
       difficulty: doc.difficulty(pi),
       preptime: doc.preptime(pi),
       cookingtime: doc.cookingtime(pi),
-      thumbnail: doc.thumbnail,
-      ingredients: doc.ingredients,
-      method: doc.method,
+      thumbnail: doc.thumbnail(),
+      ingredients: doc.ingredients(),
+      method: doc.method(),
     );
   }
 }
