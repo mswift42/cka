@@ -201,4 +201,15 @@ class RecipeDetailDocument {
   String method() {
     return cdoc.querySelector('#rezept-zubereitung').text.trim();
   }
+
+  List<RecipeIngredient> ingredients() {
+    var ingredients = List();
+    var ingtable = cdoc.querySelectorAll('.incredients>tbody>tr');
+    ingtable.forEach((i) {
+      var amount = i.querySelector('.amount').text.trim();
+      var ing = i.querySelector('td:nth-child(2)').text.trim();
+      ingredients.add(RecipeIngredient(amount, ing));
+    });
+    return ingredients;
+  }
 }
