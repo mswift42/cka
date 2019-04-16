@@ -139,7 +139,7 @@ class CKDocSelection {
 
   String rating() {
     return cknode
-        .querySelector(".search-list-item-uservote-starts")
+        .querySelector(".search-list-item-uservotes-stars")
         .attributes["title"];
   }
 
