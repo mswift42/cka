@@ -1,12 +1,11 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:cka/recipe.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:html/parser.dart';
+import 'package:test/test.dart';
 
 void main() {
-  test('parse ck results page', () async {
+  test('parse ck results page', () {
     File file = File('testhtml/bohnen.html');
     file.readAsString().then((String contents) {
       var body = parse(contents);
@@ -22,5 +21,13 @@ void main() {
       expect(ckdocsel.difficulty(), 'simpel');
       expect(ckdocsel.preptime(), '30 min.');
     });
+  });
+
+  test('parse Recipe detail page', () {
+    File file = File('test/testhtml/gruene_bohnen_im_speckmantel.html');
+    var contents = file.readAsStringSync();
+    var body = parse(contents);
+    var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Gruene Bohnen im Speckmantel');
   });
 }
