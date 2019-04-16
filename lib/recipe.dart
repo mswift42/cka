@@ -193,4 +193,12 @@ class RecipeDetailDocument {
   String cookingtime(Map pi) {
     return pi['Kochzeit'];
   }
+
+  String thumbnail() {
+    return cdoc.querySelector('.slideshow-image').attributes['src'];
+  }
+
+  String method() {
+    return cdoc.querySelector('#rezept-zubereitung').text.trim();
+  }
 }
