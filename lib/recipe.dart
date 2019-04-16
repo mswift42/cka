@@ -57,6 +57,20 @@ class RecipeDetail {
         ingredients: json['ingredients'],
         method: json['method']);
   }
+
+  factory RecipeDetail.fromDoc(RecipeDetailDocument doc) {
+    var pi = doc._prepInfo();
+    return RecipeDetail(
+      title: doc.title(),
+      rating: doc.rating(),
+      difficulty: doc.difficulty(pi),
+      preptime: doc.preptime(pi),
+      cookingtime: doc.cookingtime(pi),
+      thumbnail: doc.thumbnail,
+      ingredients: doc.ingredients,
+      method: doc.method,
+    );
+  }
 }
 
 class RecipeIngredient {
