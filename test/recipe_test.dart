@@ -12,7 +12,7 @@ void main() {
     var ckdocsel = CKDocSelection(body.querySelector('.search-list-item'));
     expect(ckdocsel.title(), 'Grüne Bohnen im Speckmantel');
     expect(ckdocsel.subtitle(),
-        "Bohnen waschen und die Spitzen abschneiden. Bohnenkraut, Knoblauch, zerdrückte Pfefferkörner und Salz mit Öl kurz anrösten. 2 Lite...");
+        "Bohnen waschen und die Spitzen abschneiden.Bohnenkraut, Knoblauch, zerdrückte Pfefferkörner und Salz mit Öl kurz anrösten. 2 Lite...");
     expect(ckdocsel.url(),
         'https://www.chefkoch.de/rezepte/563451154612271/Gruene-Bohnen-im-Speckmantel.html');
     expect(ckdocsel.thumbnail(),
@@ -27,6 +27,6 @@ void main() {
     var contents = file.readAsStringSync();
     var body = parse(contents);
     var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
-    expect(rd.title, 'Gruene Bohnen im Speckmantel');
+    expect(rd.title, 'Grüne Bohnen im Speckmantel');
   });
 }
