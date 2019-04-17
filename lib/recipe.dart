@@ -204,8 +204,8 @@ class RecipeDetailDocument {
     return cdoc.querySelector('#rezept-zubereitung').text.trim();
   }
 
-  List ingredients() {
-    var ingredients = List();
+  List<RecipeIngredient> ingredients() {
+    var ingredients = List<RecipeIngredient>();
     var ingtable = cdoc.querySelectorAll('.incredients>tbody>tr');
     ingtable.forEach((i) {
       var amount = i.querySelector('.amount').text.trim();
