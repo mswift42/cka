@@ -28,5 +28,9 @@ void main() {
     var body = parse(contents);
     var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Grüne Bohnen im Speckmantel');
+    expect(rd.difficulty, 'simpel');
+    expect(rd.thumbnail,
+        'https://static.chefkoch-cdn.de/ck.de/rezepte/56/56345/1124631-420x280-fix-gruene-bohnen-im-speckmantel.jpg');
+    expect(rd.preptime, 'ca. 30 Min.');
   });
 }
