@@ -138,9 +138,11 @@ class CKDocSelection {
   }
 
   String rating() {
-    return cknode
+    var rating = cknode
         .querySelector(".search-list-item-uservotes-stars")
         .attributes["title"];
+    var digregex = RegExp(r"\d\.\d*");
+    return digregex.stringMatch(rating);
   }
 
   String difficulty() {
