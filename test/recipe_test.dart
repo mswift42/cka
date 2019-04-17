@@ -32,5 +32,12 @@ void main() {
     expect(rd.thumbnail,
         'https://static.chefkoch-cdn.de/ck.de/rezepte/56/56345/1124631-420x280-fix-gruene-bohnen-im-speckmantel.jpg');
     expect(rd.preptime, 'ca. 30 Min.');
+    expect(rd.cookingtime, 'ca. 15 Min.');
+    expect(rd.ingredients[0].amount, '800\u00a0g');
+    expect(rd.ingredients[0].ingredient, 'Bohnen, frische');
+    expect(rd.ingredients[1].amount, '1\u00a0Bund');
+    expect(rd.ingredients[1].ingredient, 'Bohnenkraut');
+    expect(rd.ingredients[7].amount, '1\u00a0EL');
+    expect(rd.ingredients[7].ingredient, 'Butter');
   });
 }
