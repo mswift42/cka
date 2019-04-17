@@ -168,7 +168,7 @@ class RecipeDetailDocument {
     return rat.replaceFirst('ø', '').replaceAll(",", ".");
   }
 
-  Map<String, String> _prepInfo() {
+  Map _prepInfo() {
     var result = Map();
     var preptext = cdoc
         .querySelector("#preparation-info")
@@ -204,12 +204,12 @@ class RecipeDetailDocument {
     return cdoc.querySelector('#rezept-zubereitung').text.trim();
   }
 
-  List<RecipeIngredient> ingredients() {
+  List ingredients() {
     var ingredients = List();
     var ingtable = cdoc.querySelectorAll('.incredients>tbody>tr');
     ingtable.forEach((i) {
       var amount = i.querySelector('.amount').text.trim();
-      var ing = i.querySelector('td:nth-child(2)').text.trim();
+      var ing = i.querySelector('td:last-child').text.trim();
       ingredients.add(RecipeIngredient(amount, ing));
     });
     return ingredients;
