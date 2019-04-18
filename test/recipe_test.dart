@@ -32,6 +32,18 @@ void main() {
     expect(sel1.rating(), '4.36');
     expect(sel1.difficulty(), 'simpel');
     expect(sel1.preptime(), '10 min.');
+    var sel2 = CKDocSelection(selections[2]);
+    expect(sel2.title(), 'Schupfnudel - Bohnen - Pfanne');
+    expect(sel2.subtitle(),
+        'Pfannengericht mit Bohnen, Schinken, Schupfnudeln und Crème fraiche');
+    expect(sel2.url(),
+        'https://www.chefkoch.de/rezepte/1171381223217983/Schupfnudel-Bohnen-Pfanne.html');
+    expect(sel2.thumbnail(),
+        'https://static.chefkoch-cdn.de/rs/bilder/117138/schupfnudel-bohnen-pfanne-1156413-150x150.jpg');
+    expect(sel2.rating(), '4.37');
+    expect(sel2.difficulty(), 'normal');
+    expect(sel2.preptime(), '30 min.');
+
   });
 
   test('parse Recipe detail page', () {
