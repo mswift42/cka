@@ -43,7 +43,16 @@ void main() {
     expect(sel2.rating(), '4.37');
     expect(sel2.difficulty(), 'normal');
     expect(sel2.preptime(), '30 min.');
-
+    var sel3 = CKDocSelection(selections[3]);
+    expect(sel3.title(), 'Grüne Bohnen mit Speck');
+    expect(sel3.subtitle(), 'Speckbohnen');
+    expect(sel3.url(),
+        'https://www.chefkoch.de/rezepte/2406611380140966/Gruene-Bohnen-mit-Speck.html');
+    expect(sel3.thumbnail(),
+        'https://static.chefkoch-cdn.de/rs/bilder/240661/gruene-bohnen-mit-speck-1135575-150x150.jpg');
+    expect(sel3.rating(), '4.67');
+    expect(sel3.difficulty(), 'normal');
+    expect(sel3.preptime(), '25 min.');
   });
 
   test('parse Recipe detail page', () {
