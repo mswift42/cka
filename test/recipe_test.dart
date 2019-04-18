@@ -71,6 +71,18 @@ void main() {
     expect(sel1.rating(), '3.59');
     expect(sel1.difficulty(), 'normal');
     expect(sel1.preptime(), '25 min.');
+    var sel2 = CKDocSelection(selections[1]);
+    expect(
+        sel2.title(), 'Maulwurfkuchen mit Quark, saurer Sahne und Schlagsahne');
+    expect(sel2.subtitle(),
+        'Biskuitboden mit süßer, leicht säuerlicher Füllung und Bananen, für 14 Stück');
+    expect(sel2.url(),
+        'https://www.chefkoch.de/rezepte/2022801328087014/Maulwurfkuchen-mit-Quark-saurer-Sahne-und-Schlagsahne.html');
+    expect(sel2.thumbnail(),
+        'https://static.chefkoch-cdn.de/rs/bilder/202280/maulwurfkuchen-mit-quark-saurer-sahne-und-schlagsahne-1071992-150x150.jpg');
+    expect(sel2.rating(), '3.6');
+    expect(sel2.difficulty(), 'normal');
+    expect(sel2.preptime(), '75 min.');
   });
 
   test('parse Recipe detail page', () {
