@@ -168,8 +168,8 @@ class RecipeDetailDocument {
     return rat.replaceFirst('ø', '').replaceAll(",", ".");
   }
 
-  Map _prepInfo() {
-    var result = Map();
+  Map<String, String> _prepInfo() {
+    var result = Map<String, String>();
     var preptext = cdoc
         .querySelector("#preparation-info")
         .text
