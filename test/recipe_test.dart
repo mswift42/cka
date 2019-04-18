@@ -55,6 +55,24 @@ void main() {
     expect(sel3.preptime(), '25 min.');
   });
 
+  test('parse results page with sahne html file', () {
+    File file = File('test/testhtml/sahne.html');
+    var contents = file.readAsStringSync();
+    var body = parse(contents);
+    var selections = body.querySelectorAll('.search-list-item');
+    var sel1 = CKDocSelection(selections[0]);
+    expect(sel1.title(), 'Pasta mit Sahne - Rahm - Zitronen - Sauce');
+    expect(sel1.subtitle(),
+        'Pasta nach Packungsanleitung bissfest kochen. Abseihen und warm stellen.Inzwischen in einer großen Pfanne die Speckwürfel knuspr...');
+    expect(sel1.url(),
+        'https://www.chefkoch.de/rezepte/541291151424031/Pasta-mit-Sahne-Rahm-Zitronen-Sauce.html');
+    expect(sel1.thumbnail(),
+        'https://static.chefkoch-cdn.de/rs/bilder/54129/pasta-mit-sahne-rahm-zitronen-sauce-976379-150x150.jpg');
+    expect(sel1.rating(), '3.59');
+    expect(sel1.difficulty(), 'normal');
+    expect(sel1.preptime(), '25 min.');
+  });
+
   test('parse Recipe detail page', () {
     File file = File('test/testhtml/gruene_bohnen_im_speckmantel.html');
     var contents = file.readAsStringSync();
