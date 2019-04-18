@@ -20,6 +20,18 @@ void main() {
     expect(ckdocsel.rating(), '4.49');
     expect(ckdocsel.difficulty(), 'simpel');
     expect(ckdocsel.preptime(), '30 min.');
+    var selections = body.querySelectorAll('.search-list-item');
+    var sel1 = CKDocSelection(selections[1]);
+    expect(sel1.title(), 'Grüne Bohnen');
+    expect(sel1.subtitle(),
+        'Variante 1:Die Bohnen putzen. Zwiebeln und Knoblauch klein schneiden und in etwas Butter oder Margarine anbraten. Die Bohnen dazu...');
+    expect(sel1.thumbnail(),
+        'https://static.chefkoch-cdn.de/rs/bilder/316621/gruene-bohnen-938192-150x150.jpg');
+    expect(sel1.url(),
+        'https://www.chefkoch.de/rezepte/3166211471333987/Gruene-Bohnen.html');
+    expect(sel1.rating(), '4.36');
+    expect(sel1.difficulty(), 'simpel');
+    expect(sel1.preptime(), '10 min.');
   });
 
   test('parse Recipe detail page', () {
