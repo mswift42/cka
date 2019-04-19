@@ -85,12 +85,30 @@ void main() {
     var sel4 = CKDocSelection(selections[3]);
     expect(sel4.title(), 'Käse-Sahne-Dessert');
     expect(sel4.url(),
-        'https://www.chefkoch.de/rezepte/914011196708021/Kaese-Sahne-Des');
+        'https://www.chefkoch.de/rezepte/914011196708021/Kaese-Sahne-Dessert.html');
     expect(sel4.thumbnail(),
-        'https://static.chefkoch-cdn.de/rs/bilder/91401/kaese-sahne-dess');
+        'https://static.chefkoch-cdn.de/rs/bilder/91401/kaese-sahne-dessert-1002666-150x150.jpg');
     expect(sel4.rating(), '4.6');
     expect(sel4.difficulty(), 'simpel');
     expect(sel4.preptime(), '25 min.');
+    var sel5 = CKDocSelection(selections[10]);
+    expect(sel5.title(), 'Gebackene Quitten mit Schlagsahne');
+    expect(sel5.url(),
+        'https://www.chefkoch.de/rezepte/572911155974191/Gebackene-Quitten-mit-Schlagsahne.html');
+    expect(sel5.thumbnail(),
+        'https://static.chefkoch-cdn.de/rs/bilder/57291/gebackene-quitten-mit-schlagsahne-1151615-150x150.jpg');
+    expect(sel5.rating(), '4.29');
+    expect(sel5.difficulty(), 'simpel');
+    expect(sel5.preptime(), '20 min.');
+    var sel6 = CKDocSelection(selections[11]);
+    expect(sel6.title(), 'Wodka - Sahne - Likör');
+    expect(sel6.url(),
+        'https://www.chefkoch.de/rezepte/381531124489612/Wodka-Sahne-Likoer.html');
+    expect(sel6.thumbnail(),
+        'https://static.chefkoch-cdn.de/rs/bilder/38153/wodka-sahne-likoer-968928-150x150.jpg');
+    expect(sel6.rating(), '4.54');
+    expect(sel6.difficulty(), 'simpel');
+    expect(sel6.preptime(), '15 min.');
   });
 
   test('parse Recipe detail page', () {
