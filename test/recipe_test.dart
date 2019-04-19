@@ -83,6 +83,18 @@ void main() {
     expect(sel2.rating(), '3.6');
     expect(sel2.difficulty(), 'normal');
     expect(sel2.preptime(), '75 min.');
+    var sel3 = CKDocSelection(selections[2]);
+    expect(sel3.title(),
+        'Kleine Kartoffel - Speckknödel mit Pfifferlingen in Rahm');
+    expect(sel3.subtitle(),
+        'Speck in einer Pfanne kross auslassen. Kartoffeln waschen und in Salzwasser garen. Etwas abkühlen lassen, pellen und durch die K...');
+    expect(sel3.url(),
+        'https://www.chefkoch.de/rezepte/1112271217262021/Kleine-Kartoffel-Speckknoedel-mit-Pfifferlingen-in-Rahm.html');
+    expect(sel3.thumbnail(),
+        'https://static.chefkoch-cdn.de/rs/bilder/111227/kleine-kartoffel-speckknoedel-mit-pfifferlingen-in-rahm-117087-150x150.jpg');
+    expect(sel3.rating(), '4.23');
+    expect(sel3.difficulty(), 'normal');
+    expect(sel3.preptime(), '45 min.');
   });
 
   test('parse Recipe detail page', () {
