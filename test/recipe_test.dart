@@ -95,6 +95,13 @@ void main() {
     expect(sel3.rating(), '4.23');
     expect(sel3.difficulty(), 'normal');
     expect(sel3.preptime(), '45 min.');
+    var sel4 = CKDocSelection(selections[3]);
+    expect(sel4.title(), 'Käse-Sahne-Dessert');
+    expect(sel4.url(), 'https://www.chefkoch.de/rezepte/914011196708021/Kaese-Sahne-Des');
+    expect(sel4.thumbnail(), 'https://static.chefkoch-cdn.de/rs/bilder/91401/kaese-sahne-dess');
+    expect(sel4.rating(), '4.6');
+    expect(sel4.difficulty(), 'simpel');
+    expect(sel4.preptime(), '25 min.');
   });
 
   test('parse Recipe detail page', () {
