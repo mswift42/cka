@@ -4,25 +4,18 @@ import 'package:http/http.dart' as http;
 
 class Recipe {
   String title;
-  String subtitle;
   String url;
   String thumbnail;
   String rating;
   String difficulty;
   String preptime;
 
-  Recipe(this.title, this.subtitle, this.url, this.thumbnail, this.rating,
-      this.difficulty, this.preptime);
+  Recipe(this.title, this.url, this.thumbnail, this.rating, this.difficulty,
+      this.preptime);
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
-    return Recipe(
-        json['title'],
-        json['subtitle'],
-        json['url'],
-        json['thumbnail'],
-        json['rating'],
-        json['difficulty'],
-        json['preptime']);
+    return Recipe(json['title'], json['url'], json['thumbnail'], json['rating'],
+        json['difficulty'], json['preptime']);
   }
 }
 
@@ -117,11 +110,6 @@ class CKDocSelection {
 
   String title() {
     return cknode.querySelector(".search-list-item-title").text;
-  }
-
-  String subtitle() {
-    var sub = cknode.querySelector(".search-list-item-subtitle").text;
-    return sub.trim().replaceAll("\n", "");
   }
 
   String url() {
