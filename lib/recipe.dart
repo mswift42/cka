@@ -153,7 +153,7 @@ class RecipeDetailDocument {
 
   String rating() {
     var rat = cdoc.querySelector(".rating__average-rating").text;
-    return rat.replaceFirst('ø', '').replaceAll(",", ".");
+    return rat.replaceFirst('ø', '').replaceAll(",", ".").substring(1);
   }
 
   Map<String, String> _prepInfo() {
