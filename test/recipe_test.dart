@@ -128,5 +128,18 @@ void main() {
     expect(rd.ingredients[1].ingredient, 'Bohnenkraut');
     expect(rd.ingredients[7].amount, '1\u00a0EL');
     expect(rd.ingredients[7].ingredient, 'Butter');
+
+    file = File('test/testhtml/schupfnudel.html');
+    contents = file.readAsStringSync();
+    body = parse(contents);
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Schupfnudel - Bohnen - Pfanne');
+    expect(rd.difficulty, 'normal');
+    expect(rd.thumbnail,
+        'https://static.chefkoch-cdn.de/ck.de/rezepte/117/117138/1156413-420x280-fix-schupfnudel-bohnen-pfanne.jpg');
+    expect(rd.preptime, 'ca. 30 Min.');
+    expect(rd.cookingtime, '');
+    expect(rd.rating, '4.37');
+    expect(rd.ingredients.length, 8);
   });
 }
