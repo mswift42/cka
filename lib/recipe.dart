@@ -181,7 +181,7 @@ class RecipeDetailDocument {
   }
 
   String cookingtime(Map pi) {
-    return pi['Kochzeit'];
+    return pi['Kochzeit'] ?? 'N/A';
   }
 
   String thumbnail() {
