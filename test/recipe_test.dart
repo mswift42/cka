@@ -138,8 +138,16 @@ void main() {
     expect(rd.thumbnail,
         'https://static.chefkoch-cdn.de/ck.de/rezepte/117/117138/1156413-420x280-fix-schupfnudel-bohnen-pfanne.jpg');
     expect(rd.preptime, 'ca. 30 Min.');
-    expect(rd.cookingtime, '');
+    expect(rd.cookingtime, 'N/A');
     expect(rd.rating, '4.37');
     expect(rd.ingredients.length, 8);
+    expect(rd.ingredients[0].amount, '500\u00a0g');
+    expect(rd.ingredients[0].ingredient, 'Schupfnudeln (Kühlregal)');
+    expect(rd.ingredients[1].amount, '200\u00a0g');
+    expect(rd.ingredients[1].ingredient, 'Schinken, gekochter');
+    expect(rd.ingredients[6].amount, 'n. B.');
+    expect(rd.ingredients[6].ingredient, 'Salz und Pfeffer');
+    expect(rd.ingredients[7].amount, '');
+    expect(rd.ingredients[7].ingredient, 'Olivenöl');
   });
 }
