@@ -149,5 +149,28 @@ void main() {
     expect(rd.ingredients[6].ingredient, 'Salz und Pfeffer');
     expect(rd.ingredients[7].amount, '');
     expect(rd.ingredients[7].ingredient, 'Olivenöl');
+
+    file = File('test/testhtml/gruene_bohnen_mit_speck.html');
+    contents = file.readAsStringSync();
+    body = parse(contents);
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Grüne Bohnen mit Speck');
+    expect(rd.difficulty, 'normal');
+    expect(rd.thumbnail,
+        'https://static.chefkoch-cdn.de/ck.de/rezepte/240/240661/1135575-420x280-fix-gruene-bohnen-mit-speck.jpg');
+    expect(rd.preptime, 'ca. 25 Min.');
+    expect(rd.cookingtime, 'ca. 20 Min.');
+    expect(rd.rating, '4.67');
+    expect(rd.ingredients.length, 7);
+    expect(rd.ingredients[0].amount, '500\u00a0g');
+    expect(rd.ingredients[0].ingredient, 'Bohnen, grüne, frisch oder TK');
+    expect(rd.ingredients[1].amount, '1\u00a0Pck.');
+    expect(rd.ingredients[1].ingredient, 'Speck');
+    expect(rd.ingredients[2].amount, '30\u00a0g');
+    expect(rd.ingredients[2].ingredient, 'Butter');
+    expect(rd.ingredients[5].amount, '');
+    expect(rd.ingredients[5].ingredient, 'Pfeffer');
+    expect(rd.ingredients[6].amount, 'etwas');
+    expect(rd.ingredients[6].ingredient, 'Sonnenblumenöl');
   });
 }
