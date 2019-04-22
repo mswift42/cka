@@ -46,6 +46,15 @@ void main() {
     expect(sel3.rating(), '4.67');
     expect(sel3.difficulty(), 'normal');
     expect(sel3.preptime(), '25 min.');
+    var sel4 = CKDocSelection(selections[10]);
+    expect(sel4.title(), 'Hähnchenbrust in Schmand mit grünen Bohnen');
+    expect(sel4.url(),
+        'https://www.chefkoch.de/rezepte/1752251284713110/Haehnchenbrust-in-Schmand-mit-gruenen-Bohnen.html');
+    expect(sel4.thumbnail(),
+        'https://static.chefkoch-cdn.de/rs/bilder/175225/haehnchenbrust-in-schmand-mit-gruenen-bohnen-867585-150x150.jpg');
+    expect(sel4.difficulty(), 'simpel');
+    expect(sel4.rating(), '4.49');
+    expect(sel4.preptime(), '15 min.');
   });
 
   test('parse results page with sahne html file', () {
