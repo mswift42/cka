@@ -113,16 +113,14 @@ class CKDocSelection {
   }
 
   String url() {
-    var url = cknode.querySelector(".search-list-item > a");
+    var url = cknode.querySelector(".rsel-item > a");
     return CKPrefix + url.attributes["href"];
   }
 
   String thumbnail() {
-    var thumb = cknode.querySelector("picture > img").attributes["srcset"];
-    if (thumb.startsWith("data:image")) {
-      thumb = cknode.querySelector("picture > img").attributes["data-srcset"];
-    }
-    return thumb;
+    var thumbs =
+        cknode.querySelector(".ds-mb-left > amp-img").attributes["srcset"];
+    return thumbs.split('\n')[2].trim().replaceFirst(' 3x', '');
   }
 
   String rating() {
