@@ -12,7 +12,7 @@ void main() {
     var ckdocsel = CKDocSelection(body.querySelector('.rsel-item'));
     expect(ckdocsel.title(), 'Bohnen mit Bohnen - Wok');
     expect(ckdocsel.url(),
-        'https://www.chefkoch.de/rezepte/563451154612271/Gruene-Bohnen-im-Speckmantel.html');
+        'https://www.chefkoch.dehttps://www.chefkoch.de/rezepte/427941133819290/Bohnen-mit-Bohnen-Wok.html');
     expect(ckdocsel.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/56345/gruene-bohnen-im-speckmantel-1124631-150x150.jpg');
     expect(ckdocsel.rating(), '4.49');

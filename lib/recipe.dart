@@ -113,7 +113,7 @@ class CKDocSelection {
   }
 
   String url() {
-    var url = cknode.querySelector(".search-list-item > a");
+    var url = cknode.querySelector(".rsel-item > a");
     return CKPrefix + url.attributes["href"];
   }
 
