@@ -9,8 +9,8 @@ void main() {
     File file = File('test/testhtml/bohnen.html');
     var contents = file.readAsStringSync();
     var body = parse(contents);
-    var ckdocsel = CKDocSelection(body.querySelector('.search-list-item'));
-    expect(ckdocsel.title(), 'Grüne Bohnen im Speckmantel');
+    var ckdocsel = CKDocSelection(body.querySelector('.rsel-item'));
+    expect(ckdocsel.title(), 'Bohnen mit Bohnen - Wok');
     expect(ckdocsel.url(),
         'https://www.chefkoch.de/rezepte/563451154612271/Gruene-Bohnen-im-Speckmantel.html');
     expect(ckdocsel.thumbnail(),

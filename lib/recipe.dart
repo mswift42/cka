@@ -109,7 +109,7 @@ class CKDocSelection {
   CKDocSelection(this.cknode);
 
   String title() {
-    return cknode.querySelector(".search-list-item-title").text;
+    return cknode.querySelector(".ds-heading-link").text;
   }
 
   String url() {
