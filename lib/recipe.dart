@@ -121,11 +121,6 @@ class CKDocSelection {
     return thumbs.split('\n')[2].trim().replaceFirst(' 3x', '');
   }
 
-  String rating() {
-    var rating = cknode.querySelector(".ds-rating-stars");
-    var digregex = RegExp(r"\d\.\d*");
-    return digregex.stringMatch(rating);
-  }
 
   String difficulty() {
     return cknode.querySelector(".search-list-item-difficulty").text;
