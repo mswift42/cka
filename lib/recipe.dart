@@ -6,15 +6,13 @@ class Recipe {
   String title;
   String url;
   String thumbnail;
-  String rating;
   String difficulty;
   String preptime;
 
-  Recipe(this.title, this.url, this.thumbnail, this.rating, this.difficulty,
-      this.preptime);
+  Recipe(this.title, this.url, this.thumbnail, this.difficulty, this.preptime);
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
-    return Recipe(json['title'], json['url'], json['thumbnail'], json['rating'],
+    return Recipe(json['title'], json['url'], json['thumbnail'],
         json['difficulty'], json['preptime']);
   }
 }
@@ -94,7 +92,7 @@ class CKDocument {
   }
 
   String queryUrl() {
-    return '$CKPrefix/rs/s$page/$searchterm/Rezepte.html#more2';
+    return '$CKPrefix/rs/s${page}o8/$searchterm/Rezepte.html';
   }
 
   Future<Document> getDoc() async {
@@ -124,9 +122,7 @@ class CKDocSelection {
   }
 
   String rating() {
-    var rating = cknode
-        .querySelector(".search-list-item-uservotes-stars")
-        .attributes["title"];
+    var rating = cknode.querySelector(".ds-rating-stars");
     var digregex = RegExp(r"\d\.\d*");
     return digregex.stringMatch(rating);
   }
