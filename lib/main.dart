@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cka/recipe.dart';
 import 'package:cka/image_chache.dart' show Icache;
 import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
+import 'package:cka/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -182,7 +182,6 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
         footer: GridTileBar(
           backgroundColor: Colors.black54,
           title: Text(widget.recipe.title),
-          subtitle: Text(widget.recipe.rating),
         ),
       ),
     );
@@ -248,13 +247,6 @@ class __RecipeViewerState extends State<_RecipeViewer> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    new _RecipeInfoRow(
-                      rowLabel: "Rating",
-                      rowInfo: widget.recipe.rating,
-                      rowTextColor:
-                          generator?.lightVibrantColor?.bodyTextColor ??
-                              Colors.black,
-                    ),
                     new _RecipeInfoRow(
                       rowLabel: "Difficulty: ",
                       rowInfo: widget.recipe.difficulty,
