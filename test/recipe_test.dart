@@ -15,7 +15,6 @@ void main() {
         'https://www.chefkoch.dehttps://www.chefkoch.de/rezepte/427941133819290/Bohnen-mit-Bohnen-Wok.html');
     expect(ckdocsel.thumbnail(),
         'https://img.chefkoch-cdn.de/images/crop-414x414/amp/assets/images/recipe_fallback_image.jpg');
-    expect(ckdocsel.rating(), '4.49');
     expect(ckdocsel.difficulty(), 'simpel');
     expect(ckdocsel.preptime(), '30 min.');
     var selections = body.querySelectorAll('.search-list-item');
@@ -25,7 +24,6 @@ void main() {
         'https://static.chefkoch-cdn.de/rs/bilder/316621/gruene-bohnen-938192-150x150.jpg');
     expect(sel1.url(),
         'https://www.chefkoch.de/rezepte/3166211471333987/Gruene-Bohnen.html');
-    expect(sel1.rating(), '4.36');
     expect(sel1.difficulty(), 'simpel');
     expect(sel1.preptime(), '10 min.');
     var sel2 = CKDocSelection(selections[2]);
@@ -34,7 +32,6 @@ void main() {
         'https://www.chefkoch.de/rezepte/1171381223217983/Schupfnudel-Bohnen-Pfanne.html');
     expect(sel2.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/117138/schupfnudel-bohnen-pfanne-1156413-150x150.jpg');
-    expect(sel2.rating(), '4.37');
     expect(sel2.difficulty(), 'normal');
     expect(sel2.preptime(), '30 min.');
     var sel3 = CKDocSelection(selections[3]);
@@ -43,7 +40,6 @@ void main() {
         'https://www.chefkoch.de/rezepte/2406611380140966/Gruene-Bohnen-mit-Speck.html');
     expect(sel3.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/240661/gruene-bohnen-mit-speck-1135575-150x150.jpg');
-    expect(sel3.rating(), '4.67');
     expect(sel3.difficulty(), 'normal');
     expect(sel3.preptime(), '25 min.');
     var sel4 = CKDocSelection(selections[10]);
@@ -53,7 +49,6 @@ void main() {
     expect(sel4.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/175225/haehnchenbrust-in-schmand-mit-gruenen-bohnen-867585-150x150.jpg');
     expect(sel4.difficulty(), 'simpel');
-    expect(sel4.rating(), '4.49');
     expect(sel4.preptime(), '15 min.');
   });
 
@@ -68,7 +63,6 @@ void main() {
         'https://www.chefkoch.de/rezepte/541291151424031/Pasta-mit-Sahne-Rahm-Zitronen-Sauce.html');
     expect(sel1.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/54129/pasta-mit-sahne-rahm-zitronen-sauce-976379-150x150.jpg');
-    expect(sel1.rating(), '3.59');
     expect(sel1.difficulty(), 'normal');
     expect(sel1.preptime(), '25 min.');
     var sel2 = CKDocSelection(selections[1]);
@@ -78,7 +72,6 @@ void main() {
         'https://www.chefkoch.de/rezepte/2022801328087014/Maulwurfkuchen-mit-Quark-saurer-Sahne-und-Schlagsahne.html');
     expect(sel2.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/202280/maulwurfkuchen-mit-quark-saurer-sahne-und-schlagsahne-1071992-150x150.jpg');
-    expect(sel2.rating(), '3.6');
     expect(sel2.difficulty(), 'normal');
     expect(sel2.preptime(), '75 min.');
     var sel3 = CKDocSelection(selections[2]);
@@ -88,7 +81,6 @@ void main() {
         'https://www.chefkoch.de/rezepte/1112271217262021/Kleine-Kartoffel-Speckknoedel-mit-Pfifferlingen-in-Rahm.html');
     expect(sel3.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/111227/kleine-kartoffel-speckknoedel-mit-pfifferlingen-in-rahm-117087-150x150.jpg');
-    expect(sel3.rating(), '4.23');
     expect(sel3.difficulty(), 'normal');
     expect(sel3.preptime(), '45 min.');
     var sel4 = CKDocSelection(selections[3]);
@@ -97,7 +89,6 @@ void main() {
         'https://www.chefkoch.de/rezepte/914011196708021/Kaese-Sahne-Dessert.html');
     expect(sel4.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/91401/kaese-sahne-dessert-1002666-150x150.jpg');
-    expect(sel4.rating(), '4.6');
     expect(sel4.difficulty(), 'simpel');
     expect(sel4.preptime(), '25 min.');
     var sel5 = CKDocSelection(selections[10]);
@@ -106,7 +97,6 @@ void main() {
         'https://www.chefkoch.de/rezepte/572911155974191/Gebackene-Quitten-mit-Schlagsahne.html');
     expect(sel5.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/57291/gebackene-quitten-mit-schlagsahne-1151615-150x150.jpg');
-    expect(sel5.rating(), '4.29');
     expect(sel5.difficulty(), 'simpel');
     expect(sel5.preptime(), '20 min.');
     var sel6 = CKDocSelection(selections[11]);
@@ -115,7 +105,6 @@ void main() {
         'https://www.chefkoch.de/rezepte/381531124489612/Wodka-Sahne-Likoer.html');
     expect(sel6.thumbnail(),
         'https://static.chefkoch-cdn.de/rs/bilder/38153/wodka-sahne-likoer-968928-150x150.jpg');
-    expect(sel6.rating(), '4.54');
     expect(sel6.difficulty(), 'simpel');
     expect(sel6.preptime(), '15 min.');
   });
