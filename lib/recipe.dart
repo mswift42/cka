@@ -121,9 +121,12 @@ class CKDocSelection {
     return thumbs.split('\n')[2].trim().replaceFirst(' 3x', '');
   }
 
-
   String difficulty() {
-    return cknode.querySelector(".search-list-item-difficulty").text;
+    return cknode
+        .querySelector(".recipe-difficulty")
+        .text
+        .split('\n')[1]
+        .trim();
   }
 
   String preptime() {
