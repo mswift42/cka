@@ -130,7 +130,7 @@ class CKDocSelection {
   }
 
   String preptime() {
-    return cknode.querySelector(".search-list-item-preptime").text;
+    return cknode.querySelector(".recipe-preptime").text.split('\n')[1].trim();
   }
 }
 
