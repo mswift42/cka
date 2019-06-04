@@ -118,7 +118,11 @@ class CKDocSelection {
   String thumbnail() {
     var thumbs =
         cknode.querySelector(".ds-mb-left > amp-img").attributes["srcset"];
-    return thumbs.split('\n')[2].trim().replaceFirst(' 3x', '');
+    var img = thumbs.split('\n')[2].trim().replaceFirst(' 3x', '');
+    if (img.startsWith('//img')) {
+      return 'https:$img';
+    }
+    return img;
   }
 
   String difficulty() {
