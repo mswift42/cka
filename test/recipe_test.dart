@@ -12,42 +12,35 @@ void main() {
     var ckdocsel = CKDocSelection(body.querySelector('.rsel-item'));
     expect(ckdocsel.title(), 'Bohnen mit Bohnen - Wok');
     expect(ckdocsel.url(),
-        'https://www.chefkoch.dehttps://www.chefkoch.de/rezepte/427941133819290/Bohnen-mit-Bohnen-Wok.html');
+        'https://www.chefkoch.de/rezepte/427941133819290/Bohnen-mit-Bohnen-Wok.html');
     expect(ckdocsel.thumbnail(),
         'https://img.chefkoch-cdn.de/images/crop-414x414/amp/assets/images/recipe_fallback_image.jpg');
     expect(ckdocsel.difficulty(), 'simpel');
     expect(ckdocsel.preptime(), '20 min.');
-    var selections = body.querySelectorAll('.search-list-item');
+    var selections = body.querySelectorAll('.rsel-item');
     var sel1 = CKDocSelection(selections[1]);
-    expect(sel1.title(), 'Grüne Bohnen');
+    expect(sel1.title(), 'Grüne Bohnen im Speckmantel');
     expect(sel1.thumbnail(),
-        'https://static.chefkoch-cdn.de/rs/bilder/316621/gruene-bohnen-938192-150x150.jpg');
+        'https://img.chefkoch-cdn.de/rezepte/563451154612271/bilder/1124631/crop-414x414/gruene-bohnen-im-speckmantel.jpg');
     expect(sel1.url(),
-        'https://www.chefkoch.de/rezepte/3166211471333987/Gruene-Bohnen.html');
+        'https://www.chefkoch.de/rezepte/563451154612271/Gruene-Bohnen-im-Speckmantel.html');
     expect(sel1.difficulty(), 'simpel');
-    expect(sel1.preptime(), '10 min.');
+    expect(sel1.preptime(), '30 min.');
     var sel2 = CKDocSelection(selections[2]);
-    expect(sel2.title(), 'Schupfnudel - Bohnen - Pfanne');
+    expect(sel2.title(),
+        'Mit Ziegenkäse überbackenes Entrecôte an Pfeffersauce, grünen Bohnen und Kartoffelecken');
     expect(sel2.url(),
-        'https://www.chefkoch.de/rezepte/1171381223217983/Schupfnudel-Bohnen-Pfanne.html');
+        'https://www.chefkoch.de/rezepte/836401188402726/Mit-Ziegenkaese-ueberbackenes-Entrec-te-an-Pfeffersauce-gruenen-Bohnen-und-Kartoffelecken.html');
     expect(sel2.thumbnail(),
-        'https://static.chefkoch-cdn.de/rs/bilder/117138/schupfnudel-bohnen-pfanne-1156413-150x150.jpg');
-    expect(sel2.difficulty(), 'normal');
-    expect(sel2.preptime(), '30 min.');
-    var sel3 = CKDocSelection(selections[3]);
-    expect(sel3.title(), 'Grüne Bohnen mit Speck');
-    expect(sel3.url(),
-        'https://www.chefkoch.de/rezepte/2406611380140966/Gruene-Bohnen-mit-Speck.html');
-    expect(sel3.thumbnail(),
-        'https://static.chefkoch-cdn.de/rs/bilder/240661/gruene-bohnen-mit-speck-1135575-150x150.jpg');
-    expect(sel3.difficulty(), 'normal');
-    expect(sel3.preptime(), '25 min.');
-    var sel4 = CKDocSelection(selections[10]);
+        'https://img.chefkoch-cdn.de/rezepte/836401188402726/bilder/1052195/crop-414x414/mit-ziegenkaese-ueberbackenes-entrec-te-an-pfeffersauce-gruenen-bohnen-und-kartoffelecken.jpg');
+    expect(sel2.difficulty(), 'pfiffig');
+    expect(sel2.preptime(), '40 min.');
+    var sel4 = CKDocSelection(selections[13]);
     expect(sel4.title(), 'Hähnchenbrust in Schmand mit grünen Bohnen');
     expect(sel4.url(),
         'https://www.chefkoch.de/rezepte/1752251284713110/Haehnchenbrust-in-Schmand-mit-gruenen-Bohnen.html');
     expect(sel4.thumbnail(),
-        'https://static.chefkoch-cdn.de/rs/bilder/175225/haehnchenbrust-in-schmand-mit-gruenen-bohnen-867585-150x150.jpg');
+        'https://img.chefkoch-cdn.de/rezepte/1752251284713110/bilder/867585/crop-414x414/haehnchenbrust-in-schmand-mit-gruenen-bohnen.jpg');
     expect(sel4.difficulty(), 'simpel');
     expect(sel4.preptime(), '15 min.');
   });
