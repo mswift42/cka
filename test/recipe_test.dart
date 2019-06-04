@@ -16,7 +16,7 @@ void main() {
     expect(ckdocsel.thumbnail(),
         'https://img.chefkoch-cdn.de/images/crop-414x414/amp/assets/images/recipe_fallback_image.jpg');
     expect(ckdocsel.difficulty(), 'simpel');
-    expect(ckdocsel.preptime(), '30 min.');
+    expect(ckdocsel.preptime(), '20 min.');
     var selections = body.querySelectorAll('.search-list-item');
     var sel1 = CKDocSelection(selections[1]);
     expect(sel1.title(), 'Grüne Bohnen');
