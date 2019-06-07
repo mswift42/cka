@@ -67,23 +67,23 @@ void main() {
         'https://img.chefkoch-cdn.de/rezepte/2022801328087014/bilder/1071992/crop-414x414/maulwurfkuchen-mit-quark-saurer-sahne-und-schlagsahne.jpg');
     expect(sel2.difficulty(), 'normal');
     expect(sel2.preptime(), '75 min.');
-    var sel3 = CKDocSelection(selections[5]);
-    expect(sel3.title(),
-        'Kleine Kartoffel - Speckknödel mit Pfifferlingen in Rahm');
+    var sel3 = CKDocSelection(selections[2]);
+    expect(sel3.title(), 'Käse-Sahne-Dessert');
     expect(sel3.url(),
-        'https://www.chefkoch.de/rezepte/1112271217262021/Kleine-Kartoffel-Speckknoedel-mit-Pfifferlingen-in-Rahm.html');
-    expect(sel3.thumbnail(),
-        'https://img.chefkoch-cdn.de/rezepte/1112271217262021/bilder/1052252/crop-414x414/kleine-kartoffel-speckknoedel-mit-pfifferlingen-in-rahm.jpg');
-    expect(sel3.difficulty(), 'normal');
-    expect(sel3.preptime(), '45 min.');
-    var sel4 = CKDocSelection(selections[2]);
-    expect(sel4.title(), 'Käse-Sahne-Dessert');
-    expect(sel4.url(),
         'https://www.chefkoch.de/rezepte/914011196708021/Kaese-Sahne-Dessert.html');
-    expect(sel4.thumbnail(),
+    expect(sel3.thumbnail(),
         'https://img.chefkoch-cdn.de/rezepte/914011196708021/bilder/1002666/crop-414x414/kaese-sahne-dessert.jpg');
-    expect(sel4.difficulty(), 'simpel');
-    expect(sel4.preptime(), '25 min.');
+    expect(sel3.difficulty(), 'simpel');
+    expect(sel3.preptime(), '25 min.');
+    var sel4 = CKDocSelection(selections[5]);
+    expect(sel4.title(),
+        'Kleine Kartoffel - Speckknödel mit Pfifferlingen in Rahm');
+    expect(sel4.url(),
+        'https://www.chefkoch.de/rezepte/1112271217262021/Kleine-Kartoffel-Speckknoedel-mit-Pfifferlingen-in-Rahm.html');
+    expect(sel4.thumbnail(),
+        'https://img.chefkoch-cdn.de/rezepte/1112271217262021/bilder/1052252/crop-414x414/kleine-kartoffel-speckknoedel-mit-pfifferlingen-in-rahm.jpg');
+    expect(sel4.difficulty(), 'normal');
+    expect(sel4.preptime(), '45 min.');
     var sel5 = CKDocSelection(selections[10]);
     expect(sel5.title(), 'Gebackene Quitten mit Schlagsahne');
     expect(sel5.url(),
