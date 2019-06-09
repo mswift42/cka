@@ -143,7 +143,7 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
             ),
             child: Hero(
               tag: widget.recipe.thumbnail,
-              child: _RecipeViewer(recipe: widget.recipe),
+              child: _RecipeDetailView(recipeDetail: grueneImSpeckMantel),
             ),
           ));
     }));
