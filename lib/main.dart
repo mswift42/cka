@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cka/image_chache.dart' show Icache;
 import 'package:cka/mockrecipedetail.dart';
@@ -143,7 +141,7 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
             ),
             child: Hero(
               tag: widget.recipe.thumbnail,
-              child: _RecipeDetailView(recipeDetail: grueneImSpeckMantel),
+              child: _RecipeDetailView(recipeDetail: schupfnudel),
             ),
           ));
     }));
@@ -234,9 +232,16 @@ class _RecipeDetailView extends StatefulWidget {
 class __RecipeDetailViewState extends State<_RecipeDetailView> {
   @override
   Widget build(BuildContext context) {
+    PaletteGenerator generator;
+    ImageProvider image;
     final Size _size = MediaQuery.of(context).size;
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
+
+    Future<void> _updatePaletteGenerator(ImageProvider image) async {
+      generator = await PaletteGenerator.fromImageProvider(image);
+      setState(() {});
+    }
 
     Widget _recipeIngredientsView() {
       return Column(
