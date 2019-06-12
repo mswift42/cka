@@ -243,6 +243,15 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
       setState(() {});
     }
 
+    @override
+    void initState() {
+      super.initState();
+      image = Image(
+              image: CachedNetworkImageProvider(widget.recipeDetail.thumbnail))
+          .image;
+      _updatePaletteGenerator(image);
+    }
+
     Widget _recipeIngredientsView() {
       return Column(
         children: [
