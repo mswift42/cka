@@ -4,6 +4,7 @@ import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:cka/recipe.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -256,18 +257,19 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
       return Column(
         children: [
           ListView(
-              shrinkWrap: true,
-              children: widget.recipeDetail.ingredients
-                  .map((i) => Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Row(
-                          children: <Widget>[
-                            Text(i.amount + ' '),
-                            Text(i.ingredient),
-                          ],
-                        ),
-                      ))
-                  .toList()),
+            shrinkWrap: true,
+            children: [
+              for (var ingredient in widget.recipeDetail.ingredients)
+                Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      children: <Widget>[
+                        Text(ingredient.amount + ' '),
+                        Text(ingredient.ingredient),
+                      ],
+                    )),
+            ],
+          ),
         ],
       );
     }
