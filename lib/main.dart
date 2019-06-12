@@ -231,27 +231,28 @@ class _RecipeDetailView extends StatefulWidget {
 }
 
 class __RecipeDetailViewState extends State<_RecipeDetailView> {
+  PaletteGenerator generator;
+  ImageProvider image;
+
+  Future<void> _updatePaletteGenerator(ImageProvider image) async {
+    generator = await PaletteGenerator.fromImageProvider(image);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    image =
+        Image(image: CachedNetworkImageProvider(widget.recipeDetail.thumbnail))
+            .image;
+    _updatePaletteGenerator(image);
+  }
+
   @override
   Widget build(BuildContext context) {
-    PaletteGenerator generator;
-    ImageProvider image;
     final Size _size = MediaQuery.of(context).size;
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
-
-    Future<void> _updatePaletteGenerator(ImageProvider image) async {
-      generator = await PaletteGenerator.fromImageProvider(image);
-      setState(() {});
-    }
-
-    @override
-    void initState() {
-      super.initState();
-      image = Image(
-              image: CachedNetworkImageProvider(widget.recipeDetail.thumbnail))
-          .image;
-      _updatePaletteGenerator(image);
-    }
 
     Widget _recipeIngredientsView() {
       return Column(
