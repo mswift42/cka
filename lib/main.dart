@@ -260,6 +260,9 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
           ListView(
             shrinkWrap: true,
             children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+              ),
               for (var ingredient in widget.recipeDetail.ingredients)
                 Padding(
                     padding: EdgeInsets.all(8.0),
