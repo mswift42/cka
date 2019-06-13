@@ -171,12 +171,6 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
             image: CachedNetworkImageProvider(widget.recipe.thumbnail),
             fit: BoxFit.fitWidth,
           ),
-//          (image == null) ?
-//              Image.memory(kTransparentImage),
-
-//          Image(
-//            image: image ?? Image.memory(kTransparentImage),
-//            fit: BoxFit.cover,
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black54,
