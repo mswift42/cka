@@ -163,6 +163,10 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
         footer: GridTileBar(
           backgroundColor: Colors.black54,
           title: Text(widget.recipe.title),
+          subtitle: Text("Difficulty: " +
+              widget.recipe.difficulty +
+              ", Preptime: " +
+              widget.recipe.preptime),
         ),
       ),
     );
@@ -241,26 +245,35 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
 
     Widget _recipeIngredientsView() {
-      return Column(
-        children: [
-          ListView(
-            shrinkWrap: true,
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-              ),
-              for (var ingredient in widget.recipeDetail.ingredients)
+      return Container(
+        color: bgcolor ?? Colors.white,
+        child: Column(
+          children: [
+            ListView(
+              shrinkWrap: true,
+              children: [
                 Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: <Widget>[
-                        Text(ingredient.amount + ' '),
-                        Text(ingredient.ingredient),
-                      ],
-                    )),
-            ],
-          ),
-        ],
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                ),
+                for (var ingredient in widget.recipeDetail.ingredients)
+                  Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            ingredient.amount + ' ',
+                            style: TextStyle(color: txtcolor ?? Colors.black),
+                          ),
+                          Text(
+                            ingredient.ingredient,
+                            style: TextStyle(color: txtcolor ?? Colors.black),
+                          ),
+                        ],
+                      )),
+              ],
+            ),
+          ],
+        ),
       );
     }
 
@@ -333,8 +346,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     AppBar appBar = AppBar(
         title: Text(widget.recipeDetail.title),
         bottom: TabBar(tabs: <Widget>[
-          Tab(icon: Icon(Icons.list)),
           Tab(icon: Icon(Icons.description)),
+          Tab(icon: Icon(Icons.list)),
           Tab(icon: Icon(Icons.info)),
         ]));
     return DefaultTabController(
@@ -343,8 +356,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
           appBar: appBar,
           body: TabBarView(
             children: <Widget>[
-              _recipeIngredientsView(),
               _recipeMethodView(),
+              _recipeIngredientsView(),
               _recipeInfoView(),
             ],
           )),
