@@ -261,52 +261,59 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     }
 
     Widget _recipeMethodView() {
-      return Column(
-        children: <Widget>[
-          CachedNetworkImage(
-            fit: BoxFit.fitWidth,
-            imageUrl: widget.recipeDetail.thumbnail,
-            placeholder: (context, url) => CircularProgressIndicator(),
-          ),
-          SingleChildScrollView(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                widget.recipeDetail.method,
-                style: TextStyle(
-                    color: generator?.lightMutedColor?.bodyTextColor ??
-                        Colors.black),
-              )),
-        ],
+      return Container(
+        color: generator?.lightVibrantColor?.color ?? Colors.white,
+        child: Column(
+          children: <Widget>[
+            CachedNetworkImage(
+              fit: BoxFit.fitWidth,
+              imageUrl: widget.recipeDetail.thumbnail,
+              placeholder: (context, url) => CircularProgressIndicator(),
+            ),
+            SingleChildScrollView(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  widget.recipeDetail.method,
+                  style: TextStyle(
+                      color: generator?.lightMutedColor?.bodyTextColor ??
+                          Colors.black),
+                )),
+          ],
+        ),
       );
     }
 
     Widget _recipeInfoView() {
-      return Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(0.5, 0, 0.5, 10.0),
-            child: SizedBox(
-              width: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
-              height: _size.height / 3.0,
-              child: CachedNetworkImage(
-                imageUrl: widget.recipeDetail.thumbnail,
-                fit: BoxFit.fitWidth,
-                placeholder: (context, url) => CircularProgressIndicator(),
+      return Container(
+        color: generator?.lightVibrantColor?.color ?? Colors.white,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(0.5, 0, 0.5, 10.0),
+              child: SizedBox(
+                width: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
+                height: _size.height / 3.0,
+                child: CachedNetworkImage(
+                  imageUrl: widget.recipeDetail.thumbnail,
+                  fit: BoxFit.fitWidth,
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                ),
               ),
             ),
-          ),
-          _RecipeInfoRow(
-              rowLabel: "Difficulty", rowInfo: widget.recipeDetail.difficulty),
-          _RecipeInfoRow(
-              rowLabel: "Rating", rowInfo: widget.recipeDetail.rating),
-          _RecipeInfoRow(
-              rowLabel: "Preptime", rowInfo: widget.recipeDetail.preptime),
-          _RecipeInfoRow(
-              rowLabel: "Cooking Time",
-              rowInfo: widget.recipeDetail.cookingtime == ""
-                  ? "N.A"
-                  : widget.recipeDetail.cookingtime),
-        ],
+            _RecipeInfoRow(
+                rowLabel: "Difficulty",
+                rowInfo: widget.recipeDetail.difficulty),
+            _RecipeInfoRow(
+                rowLabel: "Rating", rowInfo: widget.recipeDetail.rating),
+            _RecipeInfoRow(
+                rowLabel: "Preptime", rowInfo: widget.recipeDetail.preptime),
+            _RecipeInfoRow(
+                rowLabel: "Cooking Time",
+                rowInfo: widget.recipeDetail.cookingtime == ""
+                    ? "N.A"
+                    : widget.recipeDetail.cookingtime),
+          ],
+        ),
       );
     }
 
