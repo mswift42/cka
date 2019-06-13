@@ -215,9 +215,13 @@ class _RecipeDetailView extends StatefulWidget {
 class __RecipeDetailViewState extends State<_RecipeDetailView> {
   PaletteGenerator generator;
   ImageProvider image;
+  Color bgcolor;
+  Color txtcolor;
 
   Future<void> _updatePaletteGenerator(ImageProvider image) async {
     generator = await PaletteGenerator.fromImageProvider(image);
+    bgcolor = generator.lightVibrantColor.color;
+    txtcolor = generator.lightVibrantColor.bodyTextColor;
     setState(() {});
   }
 
@@ -262,7 +266,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
     Widget _recipeMethodView() {
       return Container(
-        color: generator?.lightVibrantColor?.color ?? Colors.white,
+        color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
             CachedNetworkImage(
@@ -301,17 +305,26 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
               ),
             ),
             _RecipeInfoRow(
-                rowLabel: "Difficulty",
-                rowInfo: widget.recipeDetail.difficulty),
+              rowLabel: "Difficulty",
+              rowInfo: widget.recipeDetail.difficulty,
+              rowTextColor: txtcolor ?? Colors.black,
+            ),
             _RecipeInfoRow(
-                rowLabel: "Rating", rowInfo: widget.recipeDetail.rating),
+                rowLabel: "Rating",
+                rowInfo: widget.recipeDetail.rating,
+                rowTextColor: txtcolor ?? Colors.black),
             _RecipeInfoRow(
-                rowLabel: "Preptime", rowInfo: widget.recipeDetail.preptime),
+              rowLabel: "Preptime",
+              rowInfo: widget.recipeDetail.preptime,
+              rowTextColor: txtcolor ?? Colors.black,
+            ),
             _RecipeInfoRow(
-                rowLabel: "Cooking Time",
-                rowInfo: widget.recipeDetail.cookingtime == ""
-                    ? "N.A"
-                    : widget.recipeDetail.cookingtime),
+              rowLabel: "Cooking Time",
+              rowInfo: widget.recipeDetail.cookingtime == ""
+                  ? "N.A"
+                  : widget.recipeDetail.cookingtime,
+              rowTextColor: txtcolor ?? Colors.black,
+            ),
           ],
         ),
       );
