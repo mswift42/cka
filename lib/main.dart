@@ -66,7 +66,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
         context,
         MaterialPageRoute(
             builder: (context) =>
-                RecipeGrid(SearchQuery(inp, 0), mockresultlist)));
+                RecipeGrid(SearchQuery(searchquery, 0), mockresultlist)));
   }
 
   @override
