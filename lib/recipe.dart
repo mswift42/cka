@@ -15,6 +15,10 @@ class Recipe {
     return Recipe(json['title'], json['url'], json['thumbnail'],
         json['difficulty'], json['preptime']);
   }
+  factory Recipe.fromCkDocSelection(CKDocSelection sel) {
+    return Recipe(sel.title(), sel.url(), sel.thumbnail(), sel.difficulty(),
+    sel.preptime());
+  }
 }
 
 class RecipeDetail {
@@ -136,6 +140,11 @@ class CKDocSelection {
   String preptime() {
     return cknode.querySelector(".recipe-preptime").text.split('\n')[1].trim();
   }
+}
+
+List<Recipe> recipes(Document doc) {
+  var sels = doc.querySelectorAll('.rsel-item');
+  sels.map((i) => Recipe())
 }
 
 class RecipeDetailDocument {
