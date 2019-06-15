@@ -15,9 +15,10 @@ class Recipe {
     return Recipe(json['title'], json['url'], json['thumbnail'],
         json['difficulty'], json['preptime']);
   }
+
   factory Recipe.fromCkDocSelection(CKDocSelection sel) {
     return Recipe(sel.title(), sel.url(), sel.thumbnail(), sel.difficulty(),
-    sel.preptime());
+        sel.preptime());
   }
 }
 
@@ -144,7 +145,7 @@ class CKDocSelection {
 
 List<Recipe> recipes(Document doc) {
   var sels = doc.querySelectorAll('.rsel-item');
-  sels.map((i) => Recipe())
+  return sels.map((i) => Recipe.fromCkDocSelection(CKDocSelection(i))).toList();
 }
 
 class RecipeDetailDocument {
