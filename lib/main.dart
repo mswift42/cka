@@ -90,17 +90,22 @@ class _RecipeSearchState extends State<RecipeSearch> {
   }
 }
 
-class RecipeGrid extends StatelessWidget {
+class RecipeGrid extends StatefulWidget {
   final SearchQuery searchQuery;
   final List<Recipe> recipes;
 
   RecipeGrid(this.searchQuery, this.recipes);
 
   @override
+  _RecipeGridState createState() => _RecipeGridState();
+}
+
+class _RecipeGridState extends State<RecipeGrid> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(searchQuery.searchterm),
+        title: Text(widget.searchQuery.searchterm),
       ),
       body: Column(
         children: <Widget>[
@@ -108,7 +113,7 @@ class RecipeGrid extends StatelessWidget {
             child: GridView.extent(
               maxCrossAxisExtent: 480.00,
               children:
-                  recipes.map((i) => RecipeSearchItem(recipe: i)).toList(),
+                  widget.recipes.map((i) => RecipeSearchItem(recipe: i)).toList(),
             ),
           ),
         ],
