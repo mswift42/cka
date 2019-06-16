@@ -101,19 +101,24 @@ class RecipeGrid extends StatefulWidget {
 }
 
 class _RecipeGridState extends State<RecipeGrid> {
+  BottomSheet bottomSheet = BottomSheet(
+    builder: (context) => Icon(Icons.add);
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.searchQuery.searchterm),
       ),
+      bottomSheet: bottomSheet,
       body: Column(
         children: <Widget>[
           Expanded(
             child: GridView.extent(
               maxCrossAxisExtent: 480.00,
-              children:
-                  widget.recipes.map((i) => RecipeSearchItem(recipe: i)).toList(),
+              children: widget.recipes
+                  .map((i) => RecipeSearchItem(recipe: i))
+                  .toList(),
             ),
           ),
         ],
