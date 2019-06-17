@@ -101,16 +101,16 @@ class RecipeGrid extends StatefulWidget {
 }
 
 class _RecipeGridState extends State<RecipeGrid> {
-  BottomSheet bottomSheet = BottomSheet(
-    builder: (context) => Icon(Icons.add);
-  );
+  bool bottomOfPage = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.searchQuery.searchterm),
       ),
-      bottomSheet: bottomSheet,
+      floatingActionButton:
+          bottomOfPage ? FloatingActionButton(onPressed: null) : Container(),
       body: Column(
         children: <Widget>[
           Expanded(
