@@ -106,7 +106,7 @@ class _RecipeGridState extends State<RecipeGrid> {
   Listener listener = Listener();
 
   _scrollListener() {
-    if ( _controller.offset >= _controller.position.maxScrollExtent) {
+    if (_controller.offset >= _controller.position.maxScrollExtent) {
       setState(() {
         bottomOfPage = true;
       });
@@ -125,14 +125,20 @@ class _RecipeGridState extends State<RecipeGrid> {
     super.dispose();
   }
 
+  void _showNextResults() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.searchQuery.searchterm),
       ),
-      floatingActionButton:
-          bottomOfPage ? FloatingActionButton(onPressed: null) : Container(),
+      floatingActionButton: bottomOfPage
+          ? FloatingActionButton(
+              onPressed: _showNextResults,
+              child: Icon(Icons.add),
+            )
+          : Container(),
       body: Column(
         children: <Widget>[
           Expanded(
