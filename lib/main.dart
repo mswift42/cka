@@ -102,20 +102,26 @@ class RecipeGrid extends StatefulWidget {
 
 class _RecipeGridState extends State<RecipeGrid> {
   bool bottomOfPage = false;
-  ScrollController controller = ScrollController();
+  ScrollController _controller = ScrollController();
   Listener listener = Listener();
 
-  _scrollListener() {}
+  _scrollListener() {
+    if ( _controller.offset >= _controller.position.maxScrollExtent) {
+      setState(() {
+        bottomOfPage = true;
+      });
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    controller.addListener(_scrollListener);
+    _controller.addListener(_scrollListener);
   }
 
   @override
   void dispose() {
-    controller.removeListener(_scrollListener);
+    _controller.removeListener(_scrollListener);
     super.dispose();
   }
 
@@ -132,7 +138,7 @@ class _RecipeGridState extends State<RecipeGrid> {
           Expanded(
             child: GridView.extent(
               maxCrossAxisExtent: 480.00,
-              controller: controller,
+              controller: _controller,
               children: widget.recipes
                   .map((i) => RecipeSearchItem(recipe: i))
                   .toList(),
