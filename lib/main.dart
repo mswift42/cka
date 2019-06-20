@@ -102,6 +102,7 @@ class RecipeGrid extends StatefulWidget {
 
 class _RecipeGridState extends State<RecipeGrid> {
   bool bottomOfPage = false;
+  bool topOfPage = false;
   ScrollController _controller = ScrollController();
   Listener listener = Listener();
 
@@ -109,6 +110,12 @@ class _RecipeGridState extends State<RecipeGrid> {
     if (_controller.offset >= _controller.position.maxScrollExtent) {
       setState(() {
         bottomOfPage = true;
+      });
+    }
+    if (_controller.offset >= _controller.position.minScrollExtent &&
+        widget.searchQuery.page > 1) {
+      setState(() {
+        topOfPage = true;
       });
     }
   }
