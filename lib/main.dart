@@ -143,7 +143,7 @@ class _RecipeGridState extends State<RecipeGrid> {
       floatingActionButton: bottomOfPage
           ? FloatingActionButton(
               onPressed: _showNextResults,
-              child: Icon(Icons.arrow_forward),
+              child: Icon(topOfPage ? Icons.arrow_back : Icons.arrow_forward),
             )
           : Container(),
       body: Column(
