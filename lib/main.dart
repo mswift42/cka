@@ -89,6 +89,26 @@ class _RecipeSearchState extends State<RecipeSearch> {
     );
   }
 }
+FutureBuilder<List<Recipe>> _showResultsBody(Future<List<Recipe>> handler, SearchQuery sq) {
+  return FutureBuilder(
+    future: handler,
+    builder: (BuildContext context, AsyncSnapshot<List<Recipe>> snapshot) {
+      switch (snapshot.connectionState) {
+        case ConnectionState.none:
+          return Container(child: Center(child: Text("Please try again.")));
+        case ConnectionState.active:
+        case ConnectionState.waiting:
+          return Container(child: Center(child: CircularProgressIndicator()));
+        case ConnectionState.done:
+          if (snapshot.hasError) {
+            return Text("Something went wrong: ${snapshot.error}");
+          }
+          return RecipeGrid(sq, snapshot.data);
+      }
+    },
+  );
+}
+
 
 class RecipeGrid extends StatefulWidget {
   final SearchQuery searchQuery;
