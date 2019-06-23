@@ -89,7 +89,9 @@ class _RecipeSearchState extends State<RecipeSearch> {
     );
   }
 }
-FutureBuilder<List<Recipe>> _showResultsBody(Future<List<Recipe>> handler, SearchQuery sq) {
+
+FutureBuilder<List<Recipe>> _showResultsBody(Future<List<Recipe>> handler,
+    SearchQuery sq) {
   return FutureBuilder(
     future: handler,
     builder: (BuildContext context, AsyncSnapshot<List<Recipe>> snapshot) {
@@ -109,6 +111,27 @@ FutureBuilder<List<Recipe>> _showResultsBody(Future<List<Recipe>> handler, Searc
   );
 }
 
+FutureBuilder<RecipeDetail> _showRecipeDetailBody(
+    Future<RecipeDetail> handler) {
+  return FutureBuilder(
+    future: handler,
+    builder: (BuildContext context, AsyncSnapshot<RecipeDetail> snapshot) {
+      switch (snapshot.connectionState) {
+        case ConnectionState.none:
+          return Container(child: Center(child: Text("Please try again.")));
+        case ConnectionState.active:
+        case ConnectionState.waiting:
+          return Container(child: Center(child: CircularProgressIndicator()));
+        case ConnectionState.done:
+          if (snapshot.hasError) {
+            return Text("Something went wrong: ${snapshot.error}");
+          }
+          return _RecipeDetailView(
+              context: context, recipeDetail: snapshot.data);
+      }
+    },
+  );
+}
 
 class RecipeGrid extends StatefulWidget {
   final SearchQuery searchQuery;
@@ -162,9 +185,9 @@ class _RecipeGridState extends State<RecipeGrid> {
       ),
       floatingActionButton: bottomOfPage
           ? FloatingActionButton(
-              onPressed: _showNextResults,
-              child: Icon(topOfPage ? Icons.arrow_back : Icons.arrow_forward),
-            )
+        onPressed: _showNextResults,
+        child: Icon(topOfPage ? Icons.arrow_back : Icons.arrow_forward),
+      )
           : Container(),
       body: Column(
         children: <Widget>[
@@ -306,7 +329,9 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
   @override
   Widget build(BuildContext context) {
-    final Size _size = MediaQuery.of(context).size;
+    final Size _size = MediaQuery
+        .of(context)
+        .size;
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
 
