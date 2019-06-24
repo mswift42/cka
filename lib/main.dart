@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'CK',
       theme: ThemeData(
-        primaryColor: Colors.green[500],
-        accentColor: Colors.lime[500],
-        primarySwatch: Colors.green,
+        primaryColor: Colors.lime[200],
+        accentColor: Colors.lime[100],
+        primarySwatch: Colors.lightGreen,
       ),
       initialRoute: '/',
       routes: {
@@ -326,6 +326,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         Image(image: CachedNetworkImageProvider(widget.recipeDetail.thumbnail))
             .image;
     _updatePaletteGenerator(image);
+    setState(() {});
   }
 
   @override
@@ -342,9 +343,6 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
             ListView(
               shrinkWrap: true,
               children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                ),
                 for (var ingredient in widget.recipeDetail.ingredients)
                   Padding(
                     padding: EdgeInsets.all(8.0),
@@ -387,9 +385,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
                   padding: EdgeInsets.all(8.0),
                   child: Text(
                     widget.recipeDetail.method,
-                    style: TextStyle(
-                        color: generator?.lightMutedColor?.bodyTextColor ??
-                            Colors.black),
+                    style: TextStyle(color: txtcolor ?? Colors.black),
                   )),
             ),
           ],
@@ -399,7 +395,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
     Widget _recipeInfoView() {
       return Container(
-        color: generator?.lightVibrantColor?.color ?? Colors.white,
+        color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
             Padding(
@@ -442,10 +438,17 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
     AppBar appBar = AppBar(
         title: Text(widget.recipeDetail.title),
+        iconTheme: IconThemeData(color: txtcolor ?? Colors.white),
+        backgroundColor: bgcolor ?? Colors.lightGreen,
+        textTheme: TextTheme(title: TextStyle(color: txtcolor ?? Colors.white)),
         bottom: TabBar(tabs: <Widget>[
-          Tab(icon: Icon(Icons.description)),
-          Tab(icon: Icon(Icons.list)),
-          Tab(icon: Icon(Icons.info)),
+          Tab(
+              icon: Icon(
+            Icons.description,
+            color: txtcolor ?? Colors.white,
+          )),
+          Tab(icon: Icon(Icons.list, color: txtcolor ?? Colors.white)),
+          Tab(icon: Icon(Icons.info, color: txtcolor ?? Colors.white)),
         ]));
     return DefaultTabController(
       length: 3,
