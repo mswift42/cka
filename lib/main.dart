@@ -3,6 +3,7 @@ import 'package:cka/image_chache.dart' show Icache;
 import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:cka/recipe.dart';
+import 'package:cka/recipe_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
@@ -62,11 +63,12 @@ class _RecipeSearchState extends State<RecipeSearch> {
     // Navigator.pushNamed(
     //   context, '/recipegrid',
     //   arguments: SearchQuery(searchquery, 120));
+    SearchQuery sq = SearchQuery(searchquery, 0);
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                RecipeGrid(SearchQuery(searchquery, 0), mockresultlist)));
+      context,
+      MaterialPageRoute(
+          builder: (context) => _showResultsBody(fetchRecipes(sq), sq)),
+    );
   }
 
   @override
@@ -90,8 +92,8 @@ class _RecipeSearchState extends State<RecipeSearch> {
   }
 }
 
-FutureBuilder<List<Recipe>> _showResultsBody(Future<List<Recipe>> handler,
-    SearchQuery sq) {
+FutureBuilder<List<Recipe>> _showResultsBody(
+    Future<List<Recipe>> handler, SearchQuery sq) {
   return FutureBuilder(
     future: handler,
     builder: (BuildContext context, AsyncSnapshot<List<Recipe>> snapshot) {
@@ -185,9 +187,9 @@ class _RecipeGridState extends State<RecipeGrid> {
       ),
       floatingActionButton: bottomOfPage
           ? FloatingActionButton(
-        onPressed: _showNextResults,
-        child: Icon(topOfPage ? Icons.arrow_back : Icons.arrow_forward),
-      )
+              onPressed: _showNextResults,
+              child: Icon(topOfPage ? Icons.arrow_back : Icons.arrow_forward),
+            )
           : Container(),
       body: Column(
         children: <Widget>[
@@ -329,9 +331,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
   @override
   Widget build(BuildContext context) {
-    final Size _size = MediaQuery
-        .of(context)
-        .size;
+    final Size _size = MediaQuery.of(context).size;
     const double _kRecipeViewerMaxWidth = 460.0;
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
 
