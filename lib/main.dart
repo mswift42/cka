@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cka/image_chache.dart' show Icache;
-import 'package:cka/mockrecipedetail.dart';
 import 'package:cka/mockrecipes.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
@@ -378,14 +377,16 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
               imageUrl: widget.recipeDetail.thumbnail,
               placeholder: (context, url) => CircularProgressIndicator(),
             ),
-            SingleChildScrollView(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  widget.recipeDetail.method,
-                  style: TextStyle(
-                      color: generator?.lightMutedColor?.bodyTextColor ??
-                          Colors.black),
-                )),
+            Expanded(
+              child: SingleChildScrollView(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.recipeDetail.method,
+                    style: TextStyle(
+                        color: generator?.lightMutedColor?.bodyTextColor ??
+                            Colors.black),
+                  )),
+            ),
           ],
         ),
       );
