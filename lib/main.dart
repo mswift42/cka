@@ -223,7 +223,7 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
 
   void _showRecipe(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      return _RecipeDetailView(recipeDetail: schupfnudel);
+      return _showRecipeDetailBody(fetchRecipeDetail(widget.recipe.url));
     }));
   }
 
