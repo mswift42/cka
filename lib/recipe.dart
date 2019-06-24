@@ -214,4 +214,3 @@ Future<Document> getPage(String url) async {
   http.Response response = await http.get(url);
   return parse(response.body);
 }
-
