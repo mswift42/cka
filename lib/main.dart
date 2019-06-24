@@ -347,7 +347,9 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
                 ),
                 for (var ingredient in widget.recipeDetail.ingredients)
                   Padding(
-                      padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
                       child: Row(
                         children: <Widget>[
                           Text(
@@ -359,7 +361,9 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
                             style: TextStyle(color: txtcolor ?? Colors.black),
                           ),
                         ],
-                      )),
+                      ),
+                    ),
+                  ),
               ],
             ),
           ],
@@ -379,6 +383,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
             ),
             Expanded(
               child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
                   padding: EdgeInsets.all(8.0),
                   child: Text(
                     widget.recipeDetail.method,

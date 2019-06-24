@@ -5,3 +5,8 @@ Future<List<Recipe>> fetchRecipes(SearchQuery searchQuery) async {
   var body = await cdoc.getDoc();
   return recipes(body);
 }
+
+Future<RecipeDetail> fetchRecipeDetail(String url) async {
+  var doc = await getPage(url);
+  return RecipeDetail.fromDoc(RecipeDetailDocument(doc));
+}
