@@ -113,7 +113,7 @@ FutureBuilder<List<Recipe>> _showResultsBody(
 }
 
 FutureBuilder<RecipeDetail> _showRecipeDetailBody(
-    Future<RecipeDetail> handler) {
+    Future<RecipeDetail> handler, String imageurl) {
   return FutureBuilder(
     future: handler,
     builder: (BuildContext context, AsyncSnapshot<RecipeDetail> snapshot) {
@@ -128,7 +128,9 @@ FutureBuilder<RecipeDetail> _showRecipeDetailBody(
             return Text("Something went wrong: ${snapshot.error}");
           }
           return _RecipeDetailView(
-              context: context, recipeDetail: snapshot.data);
+              context: context,
+              recipeDetail: snapshot.data,
+              imageurl: imageurl);
       }
     },
   );
@@ -222,7 +224,8 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
 
   void _showRecipe(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      return _showRecipeDetailBody(fetchRecipeDetail(widget.recipe.url));
+      return _showRecipeDetailBody(
+          fetchRecipeDetail(widget.recipe.url), widget.recipe.thumbnail);
     }));
   }
 
@@ -299,8 +302,9 @@ class _RecipeInfoRow extends StatelessWidget {
 class _RecipeDetailView extends StatefulWidget {
   final BuildContext context;
   final RecipeDetail recipeDetail;
+  final String imageurl;
 
-  _RecipeDetailView({this.context, this.recipeDetail});
+  _RecipeDetailView({this.context, this.recipeDetail, this.imageurl});
 
   @override
   __RecipeDetailViewState createState() => __RecipeDetailViewState();
@@ -322,9 +326,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   @override
   void initState() {
     super.initState();
-    image =
-        Image(image: CachedNetworkImageProvider(widget.recipeDetail.thumbnail))
-            .image;
+    image = Image(image: CachedNetworkImageProvider(widget.imageurl)).image;
     _updatePaletteGenerator(image);
     setState(() {});
   }
@@ -362,7 +364,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
           children: <Widget>[
             CachedNetworkImage(
               fit: BoxFit.fitWidth,
-              imageUrl: widget.recipeDetail.thumbnail,
+              imageUrl: widget.imageurl,
               placeholder: (context, url) => CircularProgressIndicator(),
             ),
             Expanded(
@@ -390,7 +392,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
                 width: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
                 height: _size.height / 3.0,
                 child: CachedNetworkImage(
-                  imageUrl: widget.recipeDetail.thumbnail,
+                  imageUrl: widget.imageurl,
                   fit: BoxFit.fitWidth,
                   placeholder: (context, url) => CircularProgressIndicator(),
                 ),
