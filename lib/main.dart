@@ -344,24 +344,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
               shrinkWrap: true,
               children: [
                 for (var ingredient in widget.recipeDetail.ingredients)
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            ingredient.amount + ' ',
-                            style: TextStyle(color: txtcolor ?? Colors.black),
-                          ),
-                          Text(
-                            ingredient.ingredient,
-                            style: TextStyle(color: txtcolor ?? Colors.black),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  new _IngredientsLine(
+                      ingredient: ingredient, txtcolor: txtcolor),
               ],
             ),
           ],
@@ -461,6 +445,39 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
               _recipeInfoView(),
             ],
           )),
+    );
+  }
+}
+
+class _IngredientsLine extends StatelessWidget {
+  const _IngredientsLine({
+    Key key,
+    @required this.ingredient,
+    @required this.txtcolor,
+  }) : super(key: key);
+
+  final RecipeIngredient ingredient;
+  final Color txtcolor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: <Widget>[
+            Text(
+              ingredient.amount + ' ',
+              style: TextStyle(color: txtcolor ?? Colors.black),
+            ),
+            Text(
+              ingredient.ingredient,
+              style: TextStyle(color: txtcolor ?? Colors.black),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
