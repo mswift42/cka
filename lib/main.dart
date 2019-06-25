@@ -340,13 +340,15 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         color: bgcolor ?? Colors.white,
         child: Column(
           children: [
-            ListView(
-              shrinkWrap: true,
-              children: [
-                for (var ingredient in widget.recipeDetail.ingredients)
-                  new _IngredientsLine(
-                      ingredient: ingredient, txtcolor: txtcolor),
-              ],
+            Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  for (var ingredient in widget.recipeDetail.ingredients)
+                    new _IngredientsLine(
+                        ingredient: ingredient, txtcolor: txtcolor),
+                ],
+              ),
             ),
           ],
         ),
