@@ -127,9 +127,7 @@ FutureBuilder<RecipeDetail> _showRecipeDetailBody(
             return Text("Something went wrong: ${snapshot.error}");
           }
           return _RecipeDetailView(
-              context: context,
-              recipeDetail: snapshot.data,
-              image: image);
+              context: context, recipeDetail: snapshot.data, image: image);
       }
     },
   );
@@ -219,10 +217,10 @@ class RecipeSearchItem extends StatefulWidget {
 
 class _RecipeSearchItemState extends State<RecipeSearchItem> {
   ImageProvider image;
+
   void _showRecipe(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-      return _showRecipeDetailBody(
-          fetchRecipeDetail(widget.recipe.url), image);
+      return _showRecipeDetailBody(fetchRecipeDetail(widget.recipe.url), image);
     }));
   }
 
@@ -352,10 +350,16 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
-            CachedNetworkImage(
+//            CachedNetworkImage(
+//              fit: BoxFit.fitWidth,
+//              imageUrl: widget.imageurl,
+//              placeholder: (context, url) => CircularProgressIndicator(),
+//            ),
+
+            FadeInImage(
+              placeholder: MemoryImage(kTransparentImage),
+              image: widget.image,
               fit: BoxFit.fitWidth,
-              imageUrl: widget.imageurl,
-              placeholder: (context, url) => CircularProgressIndicator(),
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -381,10 +385,10 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
               child: SizedBox(
                 width: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
                 height: _size.height / 3.0,
-                child: CachedNetworkImage(
-                  imageUrl: widget.imageurl,
+                child: FadeInImage(
+                  image: widget.image,
                   fit: BoxFit.fitWidth,
-                  placeholder: (context, url) => CircularProgressIndicator(),
+                  placeholder: MemoryImage(kTransparentImage),
                 ),
               ),
             ),
