@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cka/image_chache.dart' show Icache;
 import 'package:cka/mockrecipes.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
@@ -113,7 +112,7 @@ FutureBuilder<List<Recipe>> _showResultsBody(
 }
 
 FutureBuilder<RecipeDetail> _showRecipeDetailBody(
-    Future<RecipeDetail> handler, String imageurl) {
+    Future<RecipeDetail> handler, ImageProvider image) {
   return FutureBuilder(
     future: handler,
     builder: (BuildContext context, AsyncSnapshot<RecipeDetail> snapshot) {
@@ -130,7 +129,7 @@ FutureBuilder<RecipeDetail> _showRecipeDetailBody(
           return _RecipeDetailView(
               context: context,
               recipeDetail: snapshot.data,
-              imageurl: imageurl);
+              image: image);
       }
     },
   );
@@ -219,25 +218,18 @@ class RecipeSearchItem extends StatefulWidget {
 }
 
 class _RecipeSearchItemState extends State<RecipeSearchItem> {
-  Image image;
-  Icache imageCache;
-
+  ImageProvider image;
   void _showRecipe(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
       return _showRecipeDetailBody(
-          fetchRecipeDetail(widget.recipe.url), widget.recipe.thumbnail);
+          fetchRecipeDetail(widget.recipe.url), image);
     }));
   }
 
   @override
   void initState() {
     super.initState();
-    imageCache = new Icache();
-    imageCache.cachedImage(widget.recipe.thumbnail).then((image) {
-      setState(() {
-        image = image;
-      });
-    });
+    image = CachedNetworkImageProvider(widget.recipe.thumbnail);
   }
 
   @override
@@ -249,7 +241,7 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
           tag: widget.recipe.thumbnail,
           child: FadeInImage(
             placeholder: MemoryImage(kTransparentImage),
-            image: CachedNetworkImageProvider(widget.recipe.thumbnail),
+            image: image,
             fit: BoxFit.fitWidth,
           ),
         ),
@@ -302,9 +294,9 @@ class _RecipeInfoRow extends StatelessWidget {
 class _RecipeDetailView extends StatefulWidget {
   final BuildContext context;
   final RecipeDetail recipeDetail;
-  final String imageurl;
+  final ImageProvider image;
 
-  _RecipeDetailView({this.context, this.recipeDetail, this.imageurl});
+  _RecipeDetailView({this.context, this.recipeDetail, this.image});
 
   @override
   __RecipeDetailViewState createState() => __RecipeDetailViewState();
@@ -312,7 +304,6 @@ class _RecipeDetailView extends StatefulWidget {
 
 class __RecipeDetailViewState extends State<_RecipeDetailView> {
   PaletteGenerator generator;
-  ImageProvider image;
   Color bgcolor;
   Color txtcolor;
 
@@ -326,8 +317,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   @override
   void initState() {
     super.initState();
-    image = Image(image: CachedNetworkImageProvider(widget.imageurl)).image;
-    _updatePaletteGenerator(image);
+    _updatePaletteGenerator(widget.image);
     setState(() {});
   }
 
