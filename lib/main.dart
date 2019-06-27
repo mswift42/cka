@@ -316,7 +316,6 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   void initState() {
     super.initState();
     _updatePaletteGenerator(widget.image);
-    setState(() {});
   }
 
   @override
