@@ -24,8 +24,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => RecipeSearch(),
-        '/recipegrid': (context) =>
-            RecipeGrid(SearchQuery("", 0), mockresultlist),
       },
     );
   }
