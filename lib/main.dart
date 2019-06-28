@@ -136,8 +136,9 @@ FutureBuilder<RecipeDetail> _showRecipeDetailBody(
 class RecipeGrid extends StatefulWidget {
   final SearchQuery searchQuery;
   final List<Recipe> recipes;
+  final ChangeNotifier onChanged;
 
-  RecipeGrid(this.searchQuery, this.recipes);
+  RecipeGrid(this.searchQuery, this.recipes, this.onChanged);
 
   @override
   _RecipeGridState createState() => _RecipeGridState();
