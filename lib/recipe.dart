@@ -78,7 +78,7 @@ class RecipeIngredient {
 
 class SearchQuery {
   String searchterm;
-  int page;
+  String page;
 
   SearchQuery(this.searchterm, this.page);
 }
