@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cka/mockrecipes.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +35,7 @@ class RecipeSearch extends StatefulWidget {
 
 class _RecipeSearchState extends State<RecipeSearch> {
   String searchquery = '';
+  String currentPage = "0";
   final controller = TextEditingController();
 
   void _setSearchQueryText() {
@@ -59,13 +59,15 @@ class _RecipeSearchState extends State<RecipeSearch> {
     // Navigator.pushNamed(
     //   context, '/recipegrid',
     //   arguments: SearchQuery(searchquery, 120));
-    SearchQuery sq = SearchQuery(searchquery, 0);
+    SearchQuery sq = SearchQuery(searchquery, "0");
     Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => _showResultsBody(fetchRecipes(sq), sq)),
     );
   }
+
+  void _handleTap(String page)
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +91,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
 }
 
 FutureBuilder<List<Recipe>> _showResultsBody(
-    Future<List<Recipe>> handler, SearchQuery sq) {
+    Future<List<Recipe>> handler, SearchQuery sq, ValueChanged<String> cb) {
   return FutureBuilder(
     future: handler,
     builder: (BuildContext context, AsyncSnapshot<List<Recipe>> snapshot) {
@@ -103,7 +105,7 @@ FutureBuilder<List<Recipe>> _showResultsBody(
           if (snapshot.hasError) {
             return Text("Something went wrong: ${snapshot.error}");
           }
-          return RecipeGrid(sq, snapshot.data);
+          return RecipeGrid(sq, snapshot.data, cb);
       }
     },
   );
@@ -134,7 +136,7 @@ FutureBuilder<RecipeDetail> _showRecipeDetailBody(
 class RecipeGrid extends StatefulWidget {
   final SearchQuery searchQuery;
   final List<Recipe> recipes;
-  final ChangeNotifier onChanged;
+  final ValueChanged<String> onChanged;
 
   RecipeGrid(this.searchQuery, this.recipes, this.onChanged);
 
@@ -155,7 +157,7 @@ class _RecipeGridState extends State<RecipeGrid> {
       });
     }
     if (_controller.offset >= _controller.position.minScrollExtent &&
-        widget.searchQuery.page > 1) {
+        widget.searchQuery.page != "0") {
       setState(() {
         topOfPage = true;
       });
@@ -174,7 +176,9 @@ class _RecipeGridState extends State<RecipeGrid> {
     super.dispose();
   }
 
-  void _showNextResults() {}
+  void _showNextResults() {
+    widget.onChanged(nextPage(widget.searchQuery.page));
+  }
 
   @override
   Widget build(BuildContext context) {
