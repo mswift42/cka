@@ -59,15 +59,20 @@ class _RecipeSearchState extends State<RecipeSearch> {
     // Navigator.pushNamed(
     //   context, '/recipegrid',
     //   arguments: SearchQuery(searchquery, 120));
-    SearchQuery sq = SearchQuery(searchquery, "0");
+    SearchQuery sq = SearchQuery(searchquery, currentPage);
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => _showResultsBody(fetchRecipes(sq), sq)),
+          builder: (context) => _showResultsBody(fetchRecipes(sq), sq, _handleTap)),
     );
   }
 
-  void _handleTap(String page)
+  void _handleTap(String page) {
+    setState(() {
+      currentPage = page;
+    });
+    _searchRecipe(searchquery);
+  }
 
   @override
   Widget build(BuildContext context) {
