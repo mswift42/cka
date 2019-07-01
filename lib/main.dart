@@ -63,7 +63,8 @@ class _RecipeSearchState extends State<RecipeSearch> {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => _showResultsBody(fetchRecipes(sq), sq, _handleTap)),
+          builder: (context) =>
+              _showResultsBody(fetchRecipes(sq), sq, _handleTap)),
     );
   }
 
@@ -182,7 +183,11 @@ class _RecipeGridState extends State<RecipeGrid> {
   }
 
   void _showNextResults() {
-    widget.onChanged(nextPage(widget.searchQuery.page));
+    if (topOfPage) {
+      widget.onChanged(prevPage(widget.searchQuery.page));
+    } else {
+      widget.onChanged(nextPage(widget.searchQuery.page));
+    }
   }
 
   @override
