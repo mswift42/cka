@@ -372,6 +372,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
               placeholder: MemoryImage(kTransparentImage),
               image: widget.image,
               fit: BoxFit.fitWidth,
+              height: _size.height / 3,
             ),
             Expanded(
               child: SingleChildScrollView(
