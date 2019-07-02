@@ -358,6 +358,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     }
 
     Widget _recipeMethodView() {
+      bool topOfPage = true;
+      ScrollController _controller = ScrollController();
       return Container(
         color: bgcolor ?? Colors.white,
         child: Column(
@@ -376,6 +378,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
             ),
             Expanded(
               child: SingleChildScrollView(
+                  controller: _controller,
                   scrollDirection: Axis.vertical,
                   padding: EdgeInsets.all(8.0),
                   child: Text(
