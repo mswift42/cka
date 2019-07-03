@@ -317,6 +317,16 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   PaletteGenerator generator;
   Color bgcolor;
   Color txtcolor;
+  ScrollController _controller = ScrollController();
+  bool topOfPage = true;
+
+  _scrollListener() {
+    if (_controller.offset > 30.0) {
+      setState(() {
+        topOfPage = false;
+      });
+    }
+  }
 
   Future<void> _updatePaletteGenerator(ImageProvider image) async {
     generator = await PaletteGenerator.fromImageProvider(image);
@@ -329,6 +339,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   void initState() {
     super.initState();
     _updatePaletteGenerator(widget.image);
+    _controller.addListener(_scrollListener);
   }
 
   @override
