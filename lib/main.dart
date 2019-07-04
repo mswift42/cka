@@ -321,7 +321,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   bool topOfPage = true;
 
   _scrollListener() {
-    if (_controller.offset > 30.0) {
+    if (_controller.offset > 40.0) {
       setState(() {
         topOfPage = false;
       });
@@ -374,11 +374,13 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         child: Column(
           children: <Widget>[
             if (topOfPage)
-              FadeInImage(
-                placeholder: MemoryImage(kTransparentImage),
-                image: widget.image,
-                fit: BoxFit.fitWidth,
+              Container(
                 height: _size.height / 3,
+                child: FadeInImage(
+                  placeholder: MemoryImage(kTransparentImage),
+                  image: widget.image,
+                  fit: BoxFit.fill,
+                ),
               )
             else
               Container(),
