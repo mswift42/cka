@@ -369,24 +369,19 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     }
 
     Widget _recipeMethodView() {
-      bool topOfPage = true;
-      ScrollController _controller = ScrollController();
       return Container(
         color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
-//            CachedNetworkImage(
-//              fit: BoxFit.fitWidth,
-//              imageUrl: widget.imageurl,
-//              placeholder: (context, url) => CircularProgressIndicator(),
-//            ),
-
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: widget.image,
-              fit: BoxFit.fitWidth,
-              height: _size.height / 3,
-            ),
+            if (topOfPage)
+              FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: widget.image,
+                fit: BoxFit.fitWidth,
+                height: _size.height / 3,
+              )
+            else
+              Container(),
             Expanded(
               child: SingleChildScrollView(
                   controller: _controller,
