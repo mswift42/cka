@@ -374,14 +374,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         child: Column(
           children: <Widget>[
             if (topOfPage)
-              Container(
-                height: _size.height / 3,
-                child: FadeInImage(
-                  placeholder: MemoryImage(kTransparentImage),
-                  image: widget.image,
-                  fit: BoxFit.fill,
-                ),
-              )
+              buildFadeInImage()
             else
               Container(),
             Expanded(
@@ -468,6 +461,14 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
             ],
           )),
     );
+  }
+
+  FadeInImage buildFadeInImage() {
+    return FadeInImage(
+              placeholder: MemoryImage(kTransparentImage),
+              image: widget.image,
+              fit: BoxFit.fitWidth,
+            );
   }
 }
 
