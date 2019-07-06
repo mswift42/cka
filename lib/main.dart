@@ -319,6 +319,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   Color txtcolor;
   ScrollController _controller = ScrollController();
   bool topOfPage = true;
+  Duration _duration = Duration(milliseconds: 1000);
 
   _scrollListener() {
     if (_controller.offset > 40.0) {
@@ -350,6 +351,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
     Widget _recipeIngredientsView() {
       return AnimatedContainer(
+        duration: _duration,
         color: bgcolor ?? Colors.white,
         child: Column(
           children: [
@@ -370,6 +372,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
     Widget _recipeMethodView() {
       return AnimatedContainer(
+        duration: _duration,
         color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
@@ -391,6 +394,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
     Widget _recipeInfoView() {
       return AnimatedContainer(
+        duration: _duration,
         color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
@@ -462,6 +466,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
   Widget buildFadeInImage() {
     return AnimatedContainer(
+      duration: _duration,
       child: FadeInImage(
         placeholder: MemoryImage(kTransparentImage),
         image: widget.image,
