@@ -349,7 +349,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     final bool _fullWidth = _size.width < _kRecipeViewerMaxWidth;
 
     Widget _recipeIngredientsView() {
-      return Container(
+      return AnimatedContainer(
         color: bgcolor ?? Colors.white,
         child: Column(
           children: [
@@ -369,7 +369,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     }
 
     Widget _recipeMethodView() {
-      return Container(
+      return AnimatedContainer(
         color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
@@ -390,7 +390,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     }
 
     Widget _recipeInfoView() {
-      return Container(
+      return AnimatedContainer(
         color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
@@ -461,7 +461,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   }
 
   Widget buildFadeInImage() {
-    return Container(
+    return AnimatedContainer(
       child: FadeInImage(
         placeholder: MemoryImage(kTransparentImage),
         image: widget.image,
