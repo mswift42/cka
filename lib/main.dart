@@ -373,10 +373,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
-            if (topOfPage)
-              buildFadeInImage()
-            else
-              Container(),
+            if (topOfPage) buildFadeInImage() else Container(),
             Expanded(
               child: SingleChildScrollView(
                   controller: _controller,
@@ -463,12 +460,14 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     );
   }
 
-  FadeInImage buildFadeInImage() {
-    return FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: widget.image,
-              fit: BoxFit.fitWidth,
-            );
+  Widget buildFadeInImage() {
+    return Container(
+      child: FadeInImage(
+        placeholder: MemoryImage(kTransparentImage),
+        image: widget.image,
+        fit: BoxFit.fitWidth,
+      ),
+    );
   }
 }
 
