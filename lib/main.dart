@@ -376,7 +376,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         color: bgcolor ?? Colors.white,
         child: Column(
           children: <Widget>[
-            if (topOfPage) buildFadeInImage() else Container(),
+            buildFadeInImage(),
             Expanded(
               child: SingleChildScrollView(
                   controller: _controller,
@@ -465,8 +465,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   }
 
   Widget buildFadeInImage() {
-    return AnimatedContainer(
-      duration: _duration,
+    return Visibility(
+      visible: topOfPage,
       child: FadeInImage(
         placeholder: MemoryImage(kTransparentImage),
         image: widget.image,
