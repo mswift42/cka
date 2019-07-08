@@ -464,9 +464,11 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     );
   }
 
-  Widget buildFadeInImage(double height) {
+  Widget buildFadeInImage(double mh) {
     return Container(
-      height: height,
+      constraints: BoxConstraints(
+        maxHeight: mh,
+      ),
       child: Visibility(
         visible: topOfPage,
         child: FadeInImage(
