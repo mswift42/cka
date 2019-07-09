@@ -163,5 +163,12 @@ void main() {
     expect(rd.ingredients[5].ingredient, 'Pfeffer');
     expect(rd.ingredients[6].amount, 'etwas');
     expect(rd.ingredients[6].ingredient, 'Sonnenblumenöl');
+
+    file = File('test/testhtml/zimtschnecken.html');
+    contents = file.readAsStringSync();
+    body = parse(contents);
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Zimtschnecken mit Sahneguss');
+    expect(rd.difficulty, 'normal');
   });
 }
