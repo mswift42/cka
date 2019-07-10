@@ -170,5 +170,7 @@ void main() {
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Zimtschnecken mit Sahneguss');
     expect(rd.difficulty, 'normal');
+    expect(rd.cookingtime, 'ca. 20 Min.');
+    expect(rd.resttime, 'ca. 1 Std. 30 Min.');
   });
 }
