@@ -209,6 +209,20 @@ class RecipeDetailDocument {
     return pi['Arbeitszeit'];
   }
 
+  List<String> _cookingtTimeLine(Map pi) {
+    var line = pi['Kochzeit'];
+    if (line == null) {
+      return 'N/A,N/A'.split(',');
+    }
+    var sub = line.indexOf('Ruhezeit');
+    if (sub == -1){
+      return '$line,N/A'.split(',');
+    }
+    var ct = line.substring(0, sub);
+    var rh = line.substring(sub);
+    return '$ct,$rh'.split(',');
+  }
+
   String cookingtime(Map pi) {
     return pi['Kochzeit'] ?? 'N/A';
   }
