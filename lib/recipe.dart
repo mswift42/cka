@@ -28,6 +28,7 @@ class RecipeDetail {
   String difficulty;
   String preptime;
   String cookingtime;
+  String resttime;
   String thumbnail;
   List<RecipeIngredient> ingredients;
   String method;
@@ -38,6 +39,7 @@ class RecipeDetail {
       this.difficulty,
       this.preptime,
       this.cookingtime,
+      this.resttime,
       this.thumbnail,
       this.ingredients,
       this.method});
@@ -49,6 +51,7 @@ class RecipeDetail {
         difficulty: json['difficulty'],
         preptime: json['preptime'],
         cookingtime: json['cookingtime'],
+        resttime: json['resttime'],
         thumbnail: json['thumbnail'],
         ingredients: json['ingredients'],
         method: json['method']);
@@ -62,6 +65,7 @@ class RecipeDetail {
       difficulty: doc.difficulty(pi),
       preptime: doc.preptime(pi),
       cookingtime: doc.cookingtime(pi),
+      resttime: doc.resttime(pi),
       thumbnail: doc.thumbnail(),
       ingredients: doc.ingredients(),
       method: doc.method(),
@@ -207,6 +211,15 @@ class RecipeDetailDocument {
 
   String cookingtime(Map pi) {
     return pi['Kochzeit'] ?? 'N/A';
+  }
+
+  String resttime(Map pi) {
+    var ct = pi['Kochzeit'];
+    if (ct == null) {
+      return 'NA';
+    }
+    var sub = ct.indexOf("Ruhezeit");
+    return ct.substring(sub);
   }
 
   String thumbnail() {
