@@ -215,7 +215,7 @@ class RecipeDetailDocument {
       return 'N/A,N/A'.split(',');
     }
     var sub = line.indexOf('Ruhezeit');
-    if (sub == -1){
+    if (sub == -1) {
       return '$line,N/A'.split(',');
     }
     var ct = line.substring(0, sub);
@@ -224,16 +224,13 @@ class RecipeDetailDocument {
   }
 
   String cookingtime(Map pi) {
-    return pi['Kochzeit'] ?? 'N/A';
+    var line = _cookingtTimeLine(pi);
+    return line[0];
   }
 
   String resttime(Map pi) {
-    var ct = pi['Kochzeit'];
-    if (ct == null) {
-      return 'NA';
-    }
-    var sub = ct.indexOf("Ruhezeit");
-    return ct.substring(sub);
+    var line = _cookingtTimeLine(pi);
+    return line[1];
   }
 
   String thumbnail() {
