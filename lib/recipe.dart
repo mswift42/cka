@@ -192,11 +192,13 @@ class RecipeDetailDocument {
         .text
         .replaceAll("\n", "")
         .replaceAll("Koch-/Backzeit", "Kochzeit")
-        .replaceAll("keine Angabe", "NA");
+        .replaceAll("keine Angabe", "N/A");
     var sections = preptext.split("/");
     sections.forEach((i) {
       var split = i.trim().split(":");
-      result[split[0]] = split[1].trim();
+      if (split.length == 2) {
+        result[split[0]] = split[1].trim();
+      }
     });
     return result;
   }
@@ -225,12 +227,12 @@ class RecipeDetailDocument {
 
   String cookingtime(Map pi) {
     var line = _cookingtTimeLine(pi);
-    return line[0];
+    return line[0].trim();
   }
 
   String resttime(Map pi) {
     var line = _cookingtTimeLine(pi);
-    return line[1];
+    return line[1].replaceFirst("Ruhezeit:", "").trim();
   }
 
   String thumbnail() {
