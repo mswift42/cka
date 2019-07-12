@@ -1,14 +1,21 @@
 import 'dart:io';
 
 import 'package:cka/recipe.dart';
+import 'package:html/dom.dart';
 import 'package:html/parser.dart';
 import 'package:test/test.dart';
+
+Document _body(String filename) {
+  File file = File(filename);
+  var contents = file.readAsStringSync();
+  return parse(contents);
+}
 
 void main() {
   test('parse ck results page', () {
     File file = File('test/testhtml/bohnen.html');
     var contents = file.readAsStringSync();
-    var body = parse(contents);
+    Document body = parse(contents);
     var ckdocsel = CKDocSelection(body.querySelector('.rsel-item'));
     expect(ckdocsel.title(), 'Bohnen mit Bohnen - Wok');
     expect(ckdocsel.url(),
