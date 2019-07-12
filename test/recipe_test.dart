@@ -13,9 +13,7 @@ Document _body(String filename) {
 
 void main() {
   test('parse ck results page', () {
-    File file = File('test/testhtml/bohnen.html');
-    var contents = file.readAsStringSync();
-    Document body = parse(contents);
+    Document body = _body('test/testhtml/bohnen.html');
     var ckdocsel = CKDocSelection(body.querySelector('.rsel-item'));
     expect(ckdocsel.title(), 'Bohnen mit Bohnen - Wok');
     expect(ckdocsel.url(),
@@ -53,9 +51,7 @@ void main() {
   });
 
   test('parse results page with sahne html file', () {
-    File file = File('test/testhtml/sahne.html');
-    var contents = file.readAsStringSync();
-    var body = parse(contents);
+    var body = _body('test/testhtml/sahne.html');
     var selections = body.querySelectorAll('.rsel-item');
     var sel1 = CKDocSelection(selections[0]);
     expect(sel1.title(), 'Pasta mit Sahne - Rahm - Zitronen - Sauce');
@@ -110,9 +106,7 @@ void main() {
   });
 
   test('parse Recipe detail page', () {
-    File file = File('test/testhtml/gruene_bohnen_im_speckmantel.html');
-    var contents = file.readAsStringSync();
-    var body = parse(contents);
+    var body = _body('test/testhtml/gruene_bohnen_im_speckmantel.html');
     var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Grüne Bohnen im Speckmantel');
     expect(rd.difficulty, 'simpel');
@@ -127,9 +121,7 @@ void main() {
     expect(rd.ingredients[7].amount, '1\u00a0EL');
     expect(rd.ingredients[7].ingredient, 'Butter');
 
-    file = File('test/testhtml/schupfnudel.html');
-    contents = file.readAsStringSync();
-    body = parse(contents);
+    body = _body('test/testhtml/schupfnudel.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Schupfnudel - Bohnen - Pfanne');
     expect(rd.difficulty, 'normal');
@@ -148,9 +140,7 @@ void main() {
     expect(rd.ingredients[7].amount, '');
     expect(rd.ingredients[7].ingredient, 'Olivenöl');
 
-    file = File('test/testhtml/gruene_bohnen_mit_speck.html');
-    contents = file.readAsStringSync();
-    body = parse(contents);
+    body = _body('test/testhtml/gruene_bohnen_mit_speck.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Grüne Bohnen mit Speck');
     expect(rd.difficulty, 'normal');
@@ -171,9 +161,7 @@ void main() {
     expect(rd.ingredients[6].amount, 'etwas');
     expect(rd.ingredients[6].ingredient, 'Sonnenblumenöl');
 
-    file = File('test/testhtml/zimtschnecken.html');
-    contents = file.readAsStringSync();
-    body = parse(contents);
+    body = _body('test/testhtml/zimtschnecken.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Zimtschnecken mit Sahneguss');
     expect(rd.difficulty, 'normal');
