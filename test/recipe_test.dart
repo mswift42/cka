@@ -160,12 +160,22 @@ void main() {
     expect(rd.ingredients[5].ingredient, 'Pfeffer');
     expect(rd.ingredients[6].amount, 'etwas');
     expect(rd.ingredients[6].ingredient, 'Sonnenblumenöl');
+  });
 
-    body = _body('test/testhtml/zimtschnecken.html');
-    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+  test('test cookingTimeLine', () {
+    var body = _body('test/testhtml/zimtschnecken.html');
+    var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Zimtschnecken mit Sahneguss');
     expect(rd.difficulty, 'normal');
     expect(rd.cookingtime, 'ca. 20 Min.');
     expect(rd.resttime, 'ca. 1 Std. 30 Min.');
+
+    body = _body('test/testhtml/hefezopf.html');
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Friedas genialer Hefezopf');
+    expect(rd.difficulty, 'normal');
+    expect(rd.cookingtime, 'ca. 45 Min.');
+    expect(rd.resttime, 'ca. 2 Std.');
+    expect(rd.preptime, 'ca. 30 Min.');
   });
 }
