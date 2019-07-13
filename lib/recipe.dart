@@ -196,42 +196,35 @@ class RecipeDetailDocument {
     var sections = preptext.split("/");
     sections.forEach((i) {
       var split = i.trim().split(":");
-      print(split);
-      result[split[0]] = split[1].trim();
+      if (split[0] == 'Kochzeit') {
+        print('Kochzeit split: ${split}');
+        print(split.length);
+        result['Kochzeit'] = split[1];
+        if (split.length > 2) {
+          result['Ruhezeit'] = split[2];
+        }
+      } else {
+        result[split[0]] = split[1];
+      }
     });
     return result;
   }
 
   String difficulty(Map pi) {
-    return pi['Schwierigkeitsgrad'];
+    return pi['Schwierigkeitsgrad']?.trim();
   }
 
   String preptime(Map pi) {
-    return pi['Arbeitszeit'];
+    return pi['Arbeitszeit']?.trim();
   }
 
-  List<String> _cookingtTimeLine(Map pi) {
-    var line = pi['Kochzeit'];
-    if (line == null) {
-      return 'N/A,N/A'.split(',');
-    }
-    var sub = line.indexOf('Ruhezeit');
-    if (sub == -1) {
-      return '$line,N/A'.split(',');
-    }
-    var ct = line.substring(0, sub);
-    var rh = line.substring(sub);
-    return '$ct,$rh'.split(',');
-  }
 
   String cookingtime(Map pi) {
-    var line = _cookingtTimeLine(pi);
-    return line[0].trim();
+    return pi['Kochzeit']?.trim() ?? 'N/A';
   }
 
   String resttime(Map pi) {
-    var line = _cookingtTimeLine(pi);
-    return line[1].replaceFirst("Ruhezeit:", "").trim();
+    return pi['Ruhezeit'] ?? 'N/A';
   }
 
   String thumbnail() {
