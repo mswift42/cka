@@ -192,13 +192,12 @@ class RecipeDetailDocument {
         .text
         .replaceAll("\n", "")
         .replaceAll("Koch-/Backzeit", "Kochzeit")
-        .replaceAll("keine Angabe", "N/A");
+        .replaceAll("keine Angabe", "NA");
     var sections = preptext.split("/");
     sections.forEach((i) {
       var split = i.trim().split(":");
-      if (split.length == 2) {
-        result[split[0]] = split[1].trim();
-      }
+      print(split);
+      result[split[0]] = split[1].trim();
     });
     return result;
   }
