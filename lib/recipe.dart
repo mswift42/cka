@@ -218,13 +218,13 @@ class RecipeDetailDocument {
     return pi['Arbeitszeit']?.trim();
   }
 
-
   String cookingtime(Map pi) {
-    return pi['Kochzeit']?.trim() ?? 'N/A';
+    var reg = RegExp(r"ca\.\s\d+\sMin\.");
+    return reg.stringMatch(pi['Kochzeit']);
   }
 
   String resttime(Map pi) {
-    return pi['Ruhezeit'] ?? 'N/A';
+    return pi['Ruhezeit']?.trim() ?? 'N/A';
   }
 
   String thumbnail() {
