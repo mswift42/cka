@@ -162,7 +162,7 @@ void main() {
     expect(rd.ingredients[6].ingredient, 'Sonnenblumenöl');
   });
 
-  test('test cookingTimeLine', () {
+  test('test resttime', () {
     var body = _body('test/testhtml/zimtschnecken.html');
     var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Zimtschnecken mit Sahneguss');
@@ -177,5 +177,13 @@ void main() {
     expect(rd.cookingtime, 'ca. 45 Min.');
     expect(rd.resttime, 'ca. 2 Std.');
     expect(rd.preptime, 'ca. 30 Min.');
+
+    body = _body('test/testhtml/pflaumenkuchen.html');
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Hefe-Pflaumenkuchen');
+    expect(rd.difficulty, 'normal');
+    expect(rd.cookingtime, 'ca. 30 Min.');
+    expect(rd.preptime, 'ca. 45 Min.');
+    expect(rd.resttime, 'ca. 1 Std.');
   });
 }
