@@ -197,8 +197,6 @@ class RecipeDetailDocument {
     sections.forEach((i) {
       var split = i.trim().split(":");
       if (split[0] == 'Kochzeit') {
-        print('Kochzeit split: ${split}');
-        print(split.length);
         result['Kochzeit'] = split[1];
         if (split.length > 2) {
           result['Ruhezeit'] = split[2];
@@ -220,7 +218,8 @@ class RecipeDetailDocument {
 
   String cookingtime(Map pi) {
     var reg = RegExp(r"ca\.\s\d+\sMin\.");
-    return reg.stringMatch(pi['Kochzeit']);
+    var ct = pi['Kochzeit'] ?? '';
+    return reg.stringMatch(ct) ?? 'N/A';
   }
 
   String resttime(Map pi) {
