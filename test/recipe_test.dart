@@ -185,5 +185,21 @@ void main() {
     expect(rd.cookingtime, 'ca. 30 Min.');
     expect(rd.preptime, 'ca. 45 Min.');
     expect(rd.resttime, 'ca. 1 Std.');
+
+    body = _body('test/testhtml/dampfnudel.html');
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Salzige Dampfnudeln');
+    expect(rd.difficulty, 'normal');
+    expect(rd.cookingtime, 'ca. 15 Min.');
+    expect(rd.preptime, 'ca. 30 Min.');
+    expect(rd.resttime, 'ca. 1 Std.');
+
+    body = _body('test/testhtml/brot_im_brater.html');
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Rustikales Brot im Bräter');
+    expect(rd.difficulty, 'simpel');
+    expect(rd.preptime, 'ca. 20 Min.');
+    expect(rd.cookingtime, 'N/A');
+    expect(rd.resttime, 'ca. 15 Std.');
   });
 }
