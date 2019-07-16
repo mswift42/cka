@@ -185,30 +185,17 @@ class RecipeDetailDocument {
     return rat.replaceFirst('ø', '').replaceAll(",", ".").substring(1);
   }
 
-  Map<String, String> _prepInfo() {
-    var result = Map<String, String>();
+  String _prepInfo() {
     var preptext = cdoc
         .querySelector("#preparation-info")
         .text
         .replaceAll("\n", "")
         .replaceAll("Koch-/Backzeit", "Kochzeit")
         .replaceAll("keine Angabe", "NA");
-    var sections = preptext.split("/");
-    sections.forEach((i) {
-      var split = i.trim().split(":");
-      if (split[0] == 'Kochzeit') {
-        result['Kochzeit'] = split[1];
-        if (split.length > 2) {
-          result['Ruhezeit'] = split[2];
-        }
-      } else {
-        result[split[0]] = split[1];
-      }
-    });
-    return result;
+    return preptext;
   }
 
-  String difficulty(Map pi) {
+  String difficulty(String pi) {
     return pi['Schwierigkeitsgrad']?.trim();
   }
 
