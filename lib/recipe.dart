@@ -196,21 +196,21 @@ class RecipeDetailDocument {
   }
 
   String difficulty(String pi) {
-    return pi['Schwierigkeitsgrad']?.trim();
+    var reg = RegExp(r'(simpel)|(normal)|(pfiffig)');
+    return reg.stringMatch(pi);
   }
 
-  String preptime(Map pi) {
-    return pi['Arbeitszeit']?.trim();
+  String preptime(String pi) {
+    return '';
   }
 
-  String cookingtime(Map pi) {
+  String cookingtime(String pi) {
     var reg = RegExp(r"ca\.\s\d+\sMin\.");
-    var ct = pi['Kochzeit'] ?? '';
-    return reg.stringMatch(ct) ?? 'N/A';
+    return reg.stringMatch(pi) ?? 'N/A';
   }
 
-  String resttime(Map pi) {
-    return pi['Ruhezeit']?.trim() ?? 'N/A';
+  String resttime(String pi) {
+    return '';
   }
 
   String thumbnail() {
