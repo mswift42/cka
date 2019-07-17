@@ -207,7 +207,7 @@ class RecipeDetailDocument {
 
   String cookingtime(String pi) {
     var reg = RegExp(r'(?:Koc.*:\s+)(\w+\.\s+\d+\s+\w+\.)');
-    return reg.allMatches(pi)?.first?.group(1) ?? 'N/A';
+    return reg.firstMatch(pi)?.group(1) ?? 'N/A';
   }
 
   String resttime(String pi) {
