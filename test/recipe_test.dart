@@ -194,7 +194,7 @@ void main() {
     expect(rd.preptime, 'ca. 30 Min.');
     expect(rd.resttime, 'ca. 1 Std.');
 
-    body = _body('test/testhtml/brot_im_brater.html');
+    body = _body('test/testhtml/brot_im_braeter.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Rustikales Brot im Bräter');
     expect(rd.difficulty, 'simpel');
