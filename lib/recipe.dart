@@ -201,12 +201,13 @@ class RecipeDetailDocument {
   }
 
   String preptime(String pi) {
-    return '';
+    var reg = RegExp(r'(?:Arbeitszeit:\s+)(\w+\.\s+\d+\s+\w+\.)');
+    return reg.allMatches(pi).first.group(1);
   }
 
   String cookingtime(String pi) {
-    var reg = RegExp(r"ca\.\s\d+\sMin\.");
-    return reg.stringMatch(pi) ?? 'N/A';
+    var reg = RegExp(r'(?:Koc.*:\s+)(\w+\.\s+\d+\s+\w+\.)');
+    return reg.allMatches(pi)?.first?.group(1) ?? 'N/A';
   }
 
   String resttime(String pi) {
