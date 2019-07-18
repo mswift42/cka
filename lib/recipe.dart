@@ -211,7 +211,9 @@ class RecipeDetailDocument {
   }
 
   String resttime(String pi) {
-    return '';
+    var reg =
+        RegExp(r'(?:Ruhezeit:\s+)(\w+\.\s+\d+\s+\w+\.\s+\d+)(\s+\d+\s+\w+\.)?');
+    return reg.firstMatch(pi)?.group(1) ?? 'N/A';
   }
 
   String thumbnail() {
