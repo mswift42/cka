@@ -211,8 +211,15 @@ class RecipeDetailDocument {
   }
 
   String resttime(String pi) {
-    var reg =
-        RegExp(r'(?:Ruhezeit:\s+)(\w+\.\s+\d+\s+\w+\.\s+\d+)(\s+\d+\s+\w+\.)?');
+    var reg = RegExp(r'(?:Ruhezeit:\s+)(\w+\.\s+\d+\s+)(Std.)|(Min.)');
+    print('Matches Length: ${reg.allMatches(pi).toList().length}');
+    var res = '';
+    for (var match in reg.allMatches(pi).toList()) {
+      if (match != null) {
+        print('Group count: ${match.groupCount}');
+      }
+    }
+    print('Result: $res');
     return reg.firstMatch(pi)?.group(1) ?? 'N/A';
   }
 
