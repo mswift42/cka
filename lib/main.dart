@@ -113,6 +113,7 @@ FutureBuilder<List<Recipe>> _showResultsBody(
           }
           return RecipeGrid(sq, snapshot.data, cb);
       }
+      return null;
     },
   );
 }
@@ -135,6 +136,7 @@ FutureBuilder<RecipeDetail> _showRecipeDetailBody(
           return _RecipeDetailView(
               context: context, recipeDetail: snapshot.data, image: image);
       }
+      return null;
     },
   );
 }
