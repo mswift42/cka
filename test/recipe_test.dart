@@ -162,20 +162,18 @@ void main() {
     expect(rd.ingredients[6].ingredient, 'Sonnenblumenöl');
   });
 
-  test('test resttime', () {
+  test('test prep info line', () {
     var body = _body('test/testhtml/zimtschnecken.html');
     var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Zimtschnecken mit Sahneguss');
     expect(rd.difficulty, 'normal');
     expect(rd.cookingtime, 'ca. 20 Min.');
-    expect(rd.resttime, 'ca. 1 Std. 30 Min.');
 
     body = _body('test/testhtml/hefezopf.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Friedas genialer Hefezopf');
     expect(rd.difficulty, 'normal');
     expect(rd.cookingtime, 'ca. 45 Min.');
-    expect(rd.resttime, 'ca. 2 Std.');
     expect(rd.preptime, 'ca. 30 Min.');
 
     body = _body('test/testhtml/pflaumenkuchen.html');
@@ -184,7 +182,6 @@ void main() {
     expect(rd.difficulty, 'normal');
     expect(rd.cookingtime, 'ca. 30 Min.');
     expect(rd.preptime, 'ca. 45 Min.');
-    expect(rd.resttime, 'ca. 1 Std.');
 
     body = _body('test/testhtml/dampfnudel.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
@@ -192,7 +189,6 @@ void main() {
     expect(rd.difficulty, 'normal');
     expect(rd.cookingtime, 'ca. 15 Min.');
     expect(rd.preptime, 'ca. 30 Min.');
-    expect(rd.resttime, 'ca. 1 Std.');
 
     body = _body('test/testhtml/brot_im_braeter.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
@@ -200,6 +196,5 @@ void main() {
     expect(rd.difficulty, 'simpel');
     expect(rd.preptime, 'ca. 20 Min.');
     expect(rd.cookingtime, 'N/A');
-    expect(rd.resttime, 'ca. 15 Std.');
   });
 }
