@@ -28,7 +28,6 @@ class RecipeDetail {
   String difficulty;
   String preptime;
   String cookingtime;
-  String resttime;
   String thumbnail;
   List<RecipeIngredient> ingredients;
   String method;
@@ -39,7 +38,6 @@ class RecipeDetail {
       this.difficulty,
       this.preptime,
       this.cookingtime,
-      this.resttime,
       this.thumbnail,
       this.ingredients,
       this.method});
@@ -51,7 +49,6 @@ class RecipeDetail {
         difficulty: json['difficulty'],
         preptime: json['preptime'],
         cookingtime: json['cookingtime'],
-        resttime: json['resttime'],
         thumbnail: json['thumbnail'],
         ingredients: json['ingredients'],
         method: json['method']);
@@ -65,7 +62,6 @@ class RecipeDetail {
       difficulty: doc.difficulty(pi),
       preptime: doc.preptime(pi),
       cookingtime: doc.cookingtime(pi),
-      resttime: doc.resttime(pi),
       thumbnail: doc.thumbnail(),
       ingredients: doc.ingredients(),
       method: doc.method(),
@@ -207,19 +203,6 @@ class RecipeDetailDocument {
 
   String cookingtime(String pi) {
     var reg = RegExp(r'(?:Kochzeit:\s+)(\w+\.\s+\d+\s+\w+\.)');
-    return reg.firstMatch(pi)?.group(1) ?? 'N/A';
-  }
-
-  String resttime(String pi) {
-    var reg = RegExp(r'(?:Ruhezeit:\s+)(\w+\.\s+\d+\s+)(Std.)|(Min.)');
-    print('Matches Length: ${reg.allMatches(pi).toList().length}');
-    var res = '';
-    for (var match in reg.allMatches(pi).toList()) {
-      if (match != null) {
-        print('Group count: ${match.groupCount}');
-      }
-    }
-    print('Result: $res');
     return reg.firstMatch(pi)?.group(1) ?? 'N/A';
   }
 
