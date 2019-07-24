@@ -379,15 +379,9 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         child: ListView(
           children: <Widget>[
             buildFadeInImage(_size),
-            Expanded(
-              child: SingleChildScrollView(
-                  controller: _controller,
-                  scrollDirection: Axis.vertical,
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    widget.recipeDetail.method,
-                    style: TextStyle(color: txtcolor ?? Colors.black),
-                  )),
+            Text(
+              widget.recipeDetail.method,
+              style: TextStyle(color: txtcolor ?? Colors.black),
             ),
           ],
         ),
