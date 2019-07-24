@@ -376,7 +376,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
       return AnimatedContainer(
         duration: _duration,
         color: bgcolor ?? Colors.white,
-        child: Column(
+        child: ListView(
           children: <Widget>[
             buildFadeInImage(_size),
             Expanded(
