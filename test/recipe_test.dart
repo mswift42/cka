@@ -203,5 +203,12 @@ void main() {
     expect(rd.difficulty, 'simpel');
     expect(rd.preptime, 'ca. 20 Min.');
     expect(rd.cookingtime, 'N/A');
+
+    body = _body('test/testhtml/schneemoussetorte.html');
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Schneemoussetorte mit Rhabarber');
+    expect(rd.difficulty, 'normal');
+    expect(rd.preptime, 'ca. 1 Std. 30 Min.');
+    expect(rd.cookingtime, 'N/A');
   });
 }
