@@ -422,9 +422,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
             ),
             _RecipeInfoRow(
               rowLabel: "Cooking Time",
-              rowInfo: widget.recipeDetail.cookingtime == ""
-                  ? "N.A"
-                  : widget.recipeDetail.cookingtime,
+              rowInfo: widget.recipeDetail.cookingtime,
               rowTextColor: txtcolor ?? Colors.black,
             ),
           ],
