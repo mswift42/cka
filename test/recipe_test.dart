@@ -196,5 +196,12 @@ void main() {
     expect(rd.difficulty, 'simpel');
     expect(rd.preptime, 'ca. 20 Min.');
     expect(rd.cookingtime, 'N/A');
+
+    body = _body('test/testhtml/joghurtbombe.html');
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    expect(rd.title, 'Joghurtbombe');
+    expect(rd.difficulty, 'simpel');
+    expect(rd.preptime, 'ca. 20 Min.');
+    expect(rd.cookingtime, 'N/A');
   });
 }
