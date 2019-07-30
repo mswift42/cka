@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cka/last_search_service.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
 }
 
 class RecipeSearch extends StatefulWidget {
+  final  LastSearchService searchService = LastSearchService();
   @override
   _RecipeSearchState createState() => _RecipeSearchState();
 }
@@ -36,6 +38,7 @@ class RecipeSearch extends StatefulWidget {
 class _RecipeSearchState extends State<RecipeSearch> {
   String searchquery = '';
   String currentPage = "0";
+  Set<String> _lastSearches = Set();
   final controller = TextEditingController();
 
   void _setSearchQueryText() {
@@ -46,6 +49,11 @@ class _RecipeSearchState extends State<RecipeSearch> {
   void initState() {
     super.initState();
     controller.addListener(_setSearchQueryText);
+    widget.searchService.readSearches().then((List value) {
+      setState(() {
+        _lastSearches = Set.from(value) ?? Set();
+      });
+    });
   }
 
   @override
@@ -56,9 +64,6 @@ class _RecipeSearchState extends State<RecipeSearch> {
   }
 
   void _searchRecipe(String inp) {
-    // Navigator.pushNamed(
-    //   context, '/recipegrid',
-    //   arguments: SearchQuery(searchquery, 120));
     SearchQuery sq = SearchQuery(searchquery, currentPage);
     Navigator.push(
       context,
