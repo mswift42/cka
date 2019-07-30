@@ -64,13 +64,17 @@ class _RecipeSearchState extends State<RecipeSearch> {
   }
 
   void _searchRecipe(String inp) {
-    SearchQuery sq = SearchQuery(searchquery, currentPage);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) =>
-              _showResultsBody(fetchRecipes(sq), sq, _handleTap)),
-    );
+    if (inp != '') {
+      _lastSearches.add(inp);
+      SearchQuery sq = SearchQuery(searchquery, currentPage);
+      widget.searchService.writeSearches(_lastSearches.toList());
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                _showResultsBody(fetchRecipes(sq), sq, _handleTap)),
+      );
+    }
   }
 
   void _handleTap(String page) {
