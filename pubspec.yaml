@@ -27,6 +27,7 @@ dependencies:
   palette_generator: ^0.2.0
   transparent_image: ^1.0.0
   html: ^0.14.0
+  path_provider: ^1.2.0
 
 dev_dependencies:
   test:
