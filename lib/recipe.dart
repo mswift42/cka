@@ -27,7 +27,6 @@ class RecipeDetail {
   String rating;
   String difficulty;
   String preptime;
-  String cookingtime;
   String thumbnail;
   List<RecipeIngredient> ingredients;
   String method;
@@ -37,7 +36,6 @@ class RecipeDetail {
       this.rating,
       this.difficulty,
       this.preptime,
-      this.cookingtime,
       this.thumbnail,
       this.ingredients,
       this.method});
@@ -48,20 +46,17 @@ class RecipeDetail {
         rating: json['rating'],
         difficulty: json['difficulty'],
         preptime: json['preptime'],
-        cookingtime: json['cookingtime'],
         thumbnail: json['thumbnail'],
         ingredients: json['ingredients'],
         method: json['method']);
   }
 
   factory RecipeDetail.fromDoc(RecipeDetailDocument doc) {
-    var pi = doc._prepInfo();
     return RecipeDetail(
       title: doc.title(),
       rating: doc.rating(),
-      difficulty: doc.difficulty(pi),
-      preptime: doc.preptime(pi),
-      cookingtime: doc.cookingtime(pi),
+      difficulty: doc.difficulty(),
+      preptime: doc.preptime(),
       thumbnail: doc.thumbnail(),
       ingredients: doc.ingredients(),
       method: doc.method(),
@@ -192,18 +187,11 @@ class RecipeDetailDocument {
   }
 
   String difficulty(String pi) {
-    var reg = RegExp(r'(simpel)|(normal)|(pfiffig)');
-    return reg.stringMatch(pi);
+    return cdoc.querySelector('.recipe-difficulty').text.trim();
   }
 
-  String preptime(String pi) {
-    var reg = RegExp(r'(?:Arbeitszeit:\s+)(\w+\.\s+\d+\s+\w+\.)');
-    return reg.firstMatch(pi)?.group(1) ?? 'N/A';
-  }
-
-  String cookingtime(String pi) {
-    var reg = RegExp(r'(?:Kochzeit:\s+)(\w+\.\s+\d+\s+\w+\.)');
-    return reg.firstMatch(pi)?.group(1) ?? 'N/A';
+  String preptime() {
+    return cdoc.querySelector('.recipe-preptime').text.trim();
   }
 
   String thumbnail() {
