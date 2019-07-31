@@ -26,7 +26,7 @@ class RecipeDetail {
   String title;
   String rating;
   String difficulty;
-  String preptime;
+  String cookingtime;
   String thumbnail;
   List<RecipeIngredient> ingredients;
   String method;
@@ -35,28 +35,28 @@ class RecipeDetail {
       {this.title,
       this.rating,
       this.difficulty,
-      this.preptime,
+      this.cookingtime,
       this.thumbnail,
       this.ingredients,
       this.method});
 
-  factory RecipeDetail.fromJson(Map<String, dynamic> json) {
-    return RecipeDetail(
-        title: json['title'],
-        rating: json['rating'],
-        difficulty: json['difficulty'],
-        preptime: json['preptime'],
-        thumbnail: json['thumbnail'],
-        ingredients: json['ingredients'],
-        method: json['method']);
-  }
+//  factory RecipeDetail.fromJson(Map<String, dynamic> json) {
+//    return RecipeDetail(
+//        title: json['title'],
+//        rating: json['rating'],
+//        difficulty: json['difficulty'],
+//        cookingtime: json['cookingtime'],
+//        thumbnail: json['thumbnail'],
+//        ingredients: json['ingredients'],
+//        method: json['method']);
+//  }
 
   factory RecipeDetail.fromDoc(RecipeDetailDocument doc) {
     return RecipeDetail(
       title: doc.title(),
       rating: doc.rating(),
       difficulty: doc.difficulty(),
-      preptime: doc.preptime(),
+      cookingtime: doc.cookingtime(),
       thumbnail: doc.thumbnail(),
       ingredients: doc.ingredients(),
       method: doc.method(),
@@ -176,21 +176,11 @@ class RecipeDetailDocument {
     return rat.replaceFirst('ø', '').replaceAll(",", ".").substring(1);
   }
 
-  String _prepInfo() {
-    var preptext = cdoc
-        .querySelector("#preparation-info")
-        .text
-        .replaceAll("\n", "")
-        .replaceAll("Koch-/Backzeit", "Kochzeit")
-        .replaceAll("keine Angabe", "NA");
-    return preptext;
-  }
-
-  String difficulty(String pi) {
+  String difficulty() {
     return cdoc.querySelector('.recipe-difficulty').text.trim();
   }
 
-  String preptime() {
+  String cookingtime() {
     return cdoc.querySelector('.recipe-preptime').text.trim();
   }
 
