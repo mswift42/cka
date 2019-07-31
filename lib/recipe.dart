@@ -172,8 +172,7 @@ class RecipeDetailDocument {
   }
 
   String rating() {
-    var rat = cdoc.querySelector(".rating__average-rating").text;
-    return rat.replaceFirst('ø', '').replaceAll(",", ".").substring(1);
+    return cdoc.querySelector('.ds-rating-avg > strong').text.trim();
   }
 
   String difficulty() {
