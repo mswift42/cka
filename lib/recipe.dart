@@ -168,7 +168,7 @@ class RecipeDetailDocument {
   RecipeDetailDocument(this.cdoc);
 
   String title() {
-    return cdoc.querySelector(".page-title").text;
+    return cdoc.querySelector('h1').text.trim();
   }
 
   String rating() {
