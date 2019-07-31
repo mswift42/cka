@@ -184,7 +184,9 @@ class RecipeDetailDocument {
   }
 
   String thumbnail() {
-    return cdoc.querySelector('.slideshow-image').attributes['src'];
+    var thumbs = cdoc.querySelector('.bi-recipe-slider-open > amp-img').attributes['srcset'];
+    var img = thumbs.split('\n')[2].trim().replaceFirst(' 600w', '');
+    return img;
   }
 
   String method() {
