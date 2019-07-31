@@ -426,11 +426,6 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
                 rowInfo: widget.recipeDetail.rating,
                 rowTextColor: txtcolor ?? Colors.black),
             _RecipeInfoRow(
-              rowLabel: "Preptime",
-              rowInfo: widget.recipeDetail.preptime,
-              rowTextColor: txtcolor ?? Colors.black,
-            ),
-            _RecipeInfoRow(
               rowLabel: "Cooking Time",
               rowInfo: widget.recipeDetail.cookingtime,
               rowTextColor: txtcolor ?? Colors.black,
