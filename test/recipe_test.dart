@@ -112,7 +112,6 @@ void main() {
     expect(rd.difficulty, 'simpel');
     expect(rd.thumbnail,
         'https://static.chefkoch-cdn.de/ck.de/rezepte/56/56345/1124631-420x280-fix-gruene-bohnen-im-speckmantel.jpg');
-    expect(rd.preptime, 'ca. 30 Min.');
     expect(rd.cookingtime, 'ca. 15 Min.');
     expect(rd.ingredients[0].amount, '800\u00a0g');
     expect(rd.ingredients[0].ingredient, 'Bohnen, frische');
@@ -127,7 +126,6 @@ void main() {
     expect(rd.difficulty, 'normal');
     expect(rd.thumbnail,
         'https://static.chefkoch-cdn.de/ck.de/rezepte/117/117138/1156413-420x280-fix-schupfnudel-bohnen-pfanne.jpg');
-    expect(rd.preptime, 'ca. 30 Min.');
     expect(rd.cookingtime, 'N/A');
     expect(rd.rating, '4.37');
     expect(rd.ingredients.length, 8);
@@ -146,7 +144,6 @@ void main() {
     expect(rd.difficulty, 'normal');
     expect(rd.thumbnail,
         'https://static.chefkoch-cdn.de/ck.de/rezepte/240/240661/1135575-420x280-fix-gruene-bohnen-mit-speck.jpg');
-    expect(rd.preptime, 'ca. 25 Min.');
     expect(rd.cookingtime, 'ca. 20 Min.');
     expect(rd.rating, '4.67');
     expect(rd.ingredients.length, 7);
@@ -174,41 +171,38 @@ void main() {
     expect(rd.title, 'Friedas genialer Hefezopf');
     expect(rd.difficulty, 'normal');
     expect(rd.cookingtime, 'ca. 45 Min.');
-    expect(rd.preptime, 'ca. 30 Min.');
 
     body = _body('test/testhtml/pflaumenkuchen.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Hefe-Pflaumenkuchen');
     expect(rd.difficulty, 'normal');
     expect(rd.cookingtime, 'ca. 30 Min.');
-    expect(rd.preptime, 'ca. 45 Min.');
 
     body = _body('test/testhtml/dampfnudel.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Salzige Dampfnudeln');
     expect(rd.difficulty, 'normal');
     expect(rd.cookingtime, 'ca. 15 Min.');
-    expect(rd.preptime, 'ca. 30 Min.');
 
     body = _body('test/testhtml/brot_im_braeter.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Rustikales Brot im Bräter');
     expect(rd.difficulty, 'simpel');
-    expect(rd.preptime, 'ca. 20 Min.');
     expect(rd.cookingtime, 'N/A');
 
     body = _body('test/testhtml/joghurtbombe.html');
     rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Joghurtbombe');
     expect(rd.difficulty, 'simpel');
-    expect(rd.preptime, 'ca. 20 Min.');
     expect(rd.cookingtime, 'N/A');
 
-    body = _body('test/testhtml/schneemoussetorte.html');
-    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+  });
+
+  test('cooking time > 60 min.', () {
+    var body = _body('test/testhtml/schneemoussetorte.html');
+    var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
     expect(rd.title, 'Schneemoussetorte mit Rhabarber');
     expect(rd.difficulty, 'normal');
-    expect(rd.preptime, 'ca. 1 Std. 30 Min.');
     expect(rd.cookingtime, 'N/A');
   });
 }
