@@ -4,7 +4,6 @@ var grueneImSpeckMantel = RecipeDetail(
   title: "Grüne Bohnen im Speckmantel",
   rating: "4.49",
   difficulty: "simpel",
-  preptime: "ca. 30 Min.",
   cookingtime: "ca. 15 Min.",
   thumbnail:
       "https://static.chefkoch-cdn.de/ck.de/rezepte/56/56345/1124631-420x280-fix-gruene-bohnen-im-speckmantel.jpg",
@@ -17,7 +16,6 @@ var schupfnudel = RecipeDetail(
   title: "Schupfnudel - Bohnen - Pfanne",
   rating: "4.37",
   difficulty: "normal",
-  preptime: "ca. 30 Min.",
   cookingtime: "",
   thumbnail:
       "https://static.chefkoch-cdn.de/ck.de/rezepte/117/117138/1156413-420x280-fix-schupfnudel-bohnen-pfanne.jpg",
