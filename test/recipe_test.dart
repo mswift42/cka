@@ -111,7 +111,7 @@ void main() {
     expect(rd.title, 'Grüne Bohnen im Speckmantel');
     expect(rd.difficulty, 'simpel');
     expect(rd.thumbnail,
-        'https://static.chefkoch-cdn.de/ck.de/rezepte/56/56345/1124631-420x280-fix-gruene-bohnen-im-speckmantel.jpg');
+        'https://img.chefkoch-cdn.de/rezepte/563451154612271/bilder/1124631/crop-600x400/gruene-bohnen-im-speckmantel.jpg');
     expect(rd.cookingtime, 'ca. 15 Min.');
     expect(rd.ingredients[0].amount, '800\u00a0g');
     expect(rd.ingredients[0].ingredient, 'Bohnen, frische');
@@ -195,7 +195,6 @@ void main() {
     expect(rd.title, 'Joghurtbombe');
     expect(rd.difficulty, 'simpel');
     expect(rd.cookingtime, 'N/A');
-
   });
 
   test('cooking time > 60 min.', () {
