@@ -176,7 +176,12 @@ class RecipeDetailDocument {
   }
 
   String difficulty() {
-    return cdoc.querySelector('.recipe-difficulty').text.trim();
+    return cdoc
+        .querySelector('.recipe-difficulty')
+        .text
+        .replaceAll('\n', '')
+        .replaceAll('', '')
+        .trim();
   }
 
   String cookingtime() {
@@ -184,7 +189,9 @@ class RecipeDetailDocument {
   }
 
   String thumbnail() {
-    var thumbs = cdoc.querySelector('.bi-recipe-slider-open > amp-img').attributes['srcset'];
+    var thumbs = cdoc
+        .querySelector('.bi-recipe-slider-open > amp-img')
+        .attributes['srcset'];
     var img = thumbs.split('\n')[2].trim().replaceFirst(' 600w', '');
     return img;
   }
