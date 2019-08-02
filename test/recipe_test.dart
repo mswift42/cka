@@ -112,12 +112,12 @@ void main() {
     expect(rd.difficulty, 'simpel');
     expect(rd.thumbnail,
         'https://img.chefkoch-cdn.de/rezepte/563451154612271/bilder/1124631/crop-600x400/gruene-bohnen-im-speckmantel.jpg');
-    expect(rd.cookingtime, 'ca. 15 Min.');
-    expect(rd.ingredients[0].amount, '800\u00a0g');
+    expect(rd.cookingtime, '30 Min.');
+    expect(rd.ingredients[0].amount, '800 g');
     expect(rd.ingredients[0].ingredient, 'Bohnen, frische');
-    expect(rd.ingredients[1].amount, '1\u00a0Bund');
+    expect(rd.ingredients[1].amount, '1 Bund');
     expect(rd.ingredients[1].ingredient, 'Bohnenkraut');
-    expect(rd.ingredients[7].amount, '1\u00a0EL');
+    expect(rd.ingredients[7].amount, '1 EL');
     expect(rd.ingredients[7].ingredient, 'Butter');
 
     body = _body('test/testhtml/schupfnudel.html');
@@ -129,9 +129,9 @@ void main() {
     expect(rd.cookingtime, 'N/A');
     expect(rd.rating, '4.37');
     expect(rd.ingredients.length, 8);
-    expect(rd.ingredients[0].amount, '500\u00a0g');
+    expect(rd.ingredients[0].amount, '500 g');
     expect(rd.ingredients[0].ingredient, 'Schupfnudeln (Kühlregal)');
-    expect(rd.ingredients[1].amount, '200\u00a0g');
+    expect(rd.ingredients[1].amount, '200 g');
     expect(rd.ingredients[1].ingredient, 'Schinken, gekochter');
     expect(rd.ingredients[6].amount, 'n. B.');
     expect(rd.ingredients[6].ingredient, 'Salz und Pfeffer');
@@ -147,11 +147,11 @@ void main() {
     expect(rd.cookingtime, 'ca. 20 Min.');
     expect(rd.rating, '4.67');
     expect(rd.ingredients.length, 7);
-    expect(rd.ingredients[0].amount, '500\u00a0g');
+    expect(rd.ingredients[0].amount, '500 g');
     expect(rd.ingredients[0].ingredient, 'Bohnen, grüne, frisch oder TK');
-    expect(rd.ingredients[1].amount, '1\u00a0Pck.');
+    expect(rd.ingredients[1].amount, '1 Pck.');
     expect(rd.ingredients[1].ingredient, 'Speck');
-    expect(rd.ingredients[2].amount, '30\u00a0g');
+    expect(rd.ingredients[2].amount, '30 g');
     expect(rd.ingredients[2].ingredient, 'Butter');
     expect(rd.ingredients[5].amount, '');
     expect(rd.ingredients[5].ingredient, 'Pfeffer');
