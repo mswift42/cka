@@ -185,7 +185,9 @@ class RecipeDetailDocument {
   }
 
   String cookingtime() {
-    return cdoc.querySelector('.recipe-preptime').text.trim();
+    var ct = cdoc.querySelector('.recipe-preptime').text;
+    var split = ct.split('\n');
+    return split[1].trim();
   }
 
   String thumbnail() {
