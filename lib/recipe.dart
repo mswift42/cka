@@ -172,7 +172,7 @@ class RecipeDetailDocument {
   }
 
   String rating() {
-    return cdoc.querySelector('.ds-rating-avg > strong').text.trim();
+    return cdoc.querySelector('.ds-rating-avg>strong').text.trim();
   }
 
   String difficulty() {
