@@ -204,10 +204,14 @@ class RecipeDetailDocument {
 
   List<RecipeIngredient> ingredients() {
     var ingredients = List<RecipeIngredient>();
-    var ingtable = cdoc.querySelectorAll('.incredients>tbody>tr');
+    var ingtable = cdoc.querySelectorAll('.ingredients>tbody>tr');
     ingtable.forEach((i) {
-      var amount = i.querySelector('.amount').text.trim();
-      var ing = i.querySelector('td:last-child').text.trim();
+      var amount = i.querySelector('.td-left').text.trim();
+      var amsplit = amount.split(' ');
+      if (amsplit.length > 2) {
+        amount = amsplit.first + ' ' + amsplit.last;
+      }
+      var ing = i.querySelector('.td-right').text.trim();
       ingredients.add(RecipeIngredient(amount, ing));
     });
     return ingredients;
