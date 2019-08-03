@@ -206,4 +206,11 @@ void main() {
     expect(rd.difficulty, 'normal');
     expect(rd.cookingtime, '90 Min.');
   });
+
+  test('test "method" method', () {
+    var body = _body('test/testhtml/schneemoussetorte.html');
+    var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+   var txt = _body('test/testhtml/schneemoussetortemethod.txt');
+   expect(rd.method, txt);
+  });
 }
