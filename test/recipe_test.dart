@@ -210,7 +210,26 @@ void main() {
   test('test "method" method', () {
     var body = _body('test/testhtml/schneemoussetorte.html');
     var rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
-   var txt = _body('test/testhtml/schneemoussetortemethod.txt');
-   expect(rd.method, txt);
+    var file = File('test/testhtml/schneemoussetortemethod.txt');
+    var txt = file.readAsStringSync();
+    expect(rd.method, txt);
+
+    body = _body('test/testhtml/zimtschnecken.html');
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    file = File('test/testhtml/zimtschneckenmethod.txt');
+    txt = file.readAsStringSync();
+    expect(rd.method, txt);
+
+    body = _body('test/testhtml/gruene_bohnen_im_speckmantel.html');
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    file = File('test/testhtml/gruene_bohnen_im_speckmantel_method.txt');
+    txt = file.readAsStringSync();
+    expect(rd.method, txt);
+
+    body = _body('test/testhtml/gruene_bohnen_mit_speck.html');
+    rd = RecipeDetail.fromDoc(RecipeDetailDocument(body));
+    file = File('test/testhtml/gruene_bohnen_mit_speck_method.txt');
+    txt = file.readAsStringSync();
+    expect(rd.method, txt);
   });
 }
