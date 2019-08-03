@@ -199,7 +199,7 @@ class RecipeDetailDocument {
   }
 
   String method() {
-    return cdoc.querySelectorAll('.ds-box')[44].text.trimLeft();
+    return cdoc.querySelector('.rds-recipe-meta+.ds-box').text.trimLeft();
   }
 
   List<RecipeIngredient> ingredients() {
