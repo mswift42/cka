@@ -85,6 +85,20 @@ class _RecipeSearchState extends State<RecipeSearch> {
     _searchRecipe(searchquery);
   }
 
+  void _handleDelete(String value) {
+    setState(() {
+      _lastSearches.remove(value);
+    });
+  }
+
+  void _handlePillTap(String inp) {
+    setState(() {
+      searchquery = inp;
+      controller.text = inp;
+      _searchRecipe(searchquery);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +113,8 @@ class _RecipeSearchState extends State<RecipeSearch> {
               controller: controller,
               onSubmitted: _searchRecipe,
             ),
-          )
+          ),
+          LastSearchGrid(_handleDelete, _handlePillTap, _lastSearches.toList());
         ],
       ),
     );
