@@ -114,7 +114,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
               onSubmitted: _searchRecipe,
             ),
           ),
-          LastSearchGrid(_handleDelete, _handlePillTap, _lastSearches.toList());
+          LastSearchGrid(_handleDelete, _handlePillTap, _lastSearches.toList()),
         ],
       ),
     );
