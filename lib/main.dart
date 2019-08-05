@@ -361,6 +361,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
       image,
       maximumColorCount: 8,
     );
+    bgcolor = generator?.lightMutedColor?.color ?? Colors.white;
+    txtcolor = generator?.lightMutedColor?.bodyTextColor ?? Colors.black;
     setState(() {});
   }
 
@@ -368,8 +370,6 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   void initState() {
     super.initState();
     _updatePaletteGenerator(widget.image);
-    bgcolor = generator.lightVibrantColor.color;
-    txtcolor = generator.lightVibrantColor.bodyTextColor;
     _controller.addListener(_scrollListener);
   }
 
