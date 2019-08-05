@@ -344,6 +344,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   PaletteGenerator generator;
   Color bgcolor;
   Color txtcolor;
+  Color appiconcolor = Colors.black;
   ScrollController _controller = ScrollController();
   bool topOfPage = true;
   Duration _duration = Duration(milliseconds: 1000);
@@ -363,6 +364,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     );
     bgcolor = generator?.lightMutedColor?.color ?? Colors.white;
     txtcolor = generator?.lightMutedColor?.bodyTextColor ?? Colors.black;
+    appiconcolor = generator?.lightMutedColor?.titleTextColor;
     setState(() {});
   }
 
@@ -382,7 +384,7 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     Widget _recipeIngredientsView() {
       return AnimatedContainer(
         duration: _duration,
-        color: bgcolor ?? Colors.white,
+        color: bgcolor,
         child: Column(
           children: [
             Expanded(
@@ -403,13 +405,13 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     Widget _recipeMethodView() {
       return AnimatedContainer(
         duration: _duration,
-        color: bgcolor ?? Colors.white,
+        color: bgcolor,
         child: ListView(
           children: <Widget>[
             buildFadeInImage(_size),
             Text(
               widget.recipeDetail.method,
-              style: TextStyle(color: txtcolor ?? Colors.black),
+              style: TextStyle(color: txtcolor),
             ),
           ],
         ),
@@ -419,14 +421,14 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     Widget _recipeInfoView() {
       return AnimatedContainer(
         duration: _duration,
-        color: bgcolor ?? Colors.white,
+        color: bgcolor,
         child: Column(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.fromLTRB(0.5, 0, 0.5, 10.0),
               child: SizedBox(
                 width: _fullWidth ? _size.width : _kRecipeViewerMaxWidth,
-                height: _size.height / 3.0,
+                height: _size.height / 2.0,
                 child: FadeInImage(
                   image: widget.image,
                   fit: BoxFit.fitWidth,
@@ -437,16 +439,16 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
             _RecipeInfoRow(
               rowLabel: "Difficulty",
               rowInfo: widget.recipeDetail.difficulty,
-              rowTextColor: txtcolor ?? Colors.black,
+              rowTextColor: txtcolor,
             ),
             _RecipeInfoRow(
                 rowLabel: "Rating",
                 rowInfo: widget.recipeDetail.rating,
-                rowTextColor: txtcolor ?? Colors.black),
+                rowTextColor: txtcolor),
             _RecipeInfoRow(
               rowLabel: "Cooking Time",
               rowInfo: widget.recipeDetail.cookingtime,
-              rowTextColor: txtcolor ?? Colors.black,
+              rowTextColor: txtcolor,
             ),
           ],
         ),
@@ -455,17 +457,17 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
 
     AppBar appBar = AppBar(
         title: Text(widget.recipeDetail.title),
-        iconTheme: IconThemeData(color: txtcolor ?? Colors.white),
-        backgroundColor: bgcolor ?? Colors.lightGreen,
-        textTheme: TextTheme(title: TextStyle(color: txtcolor ?? Colors.white)),
+        iconTheme: IconThemeData(color: appiconcolor),
+        backgroundColor: bgcolor,
+        textTheme: TextTheme(title: TextStyle(color: txtcolor)),
         bottom: TabBar(tabs: <Widget>[
           Tab(
               icon: Icon(
             Icons.description,
-            color: txtcolor ?? Colors.white,
+            color: txtcolor,
           )),
-          Tab(icon: Icon(Icons.list, color: txtcolor ?? Colors.white)),
-          Tab(icon: Icon(Icons.info, color: txtcolor ?? Colors.white)),
+          Tab(icon: Icon(Icons.list, color: appiconcolor)),
+          Tab(icon: Icon(Icons.info, color: appiconcolor)),
         ]));
     return DefaultTabController(
       length: 3,
