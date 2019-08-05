@@ -357,9 +357,10 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   }
 
   Future<void> _updatePaletteGenerator(ImageProvider image) async {
-    generator = await PaletteGenerator.fromImageProvider(image);
-    bgcolor = generator.lightVibrantColor.color;
-    txtcolor = generator.lightVibrantColor.bodyTextColor;
+    generator = await PaletteGenerator.fromImageProvider(
+      image,
+      maximumColorCount: 8,
+    );
     setState(() {});
   }
 
@@ -367,6 +368,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   void initState() {
     super.initState();
     _updatePaletteGenerator(widget.image);
+    bgcolor = generator.lightVibrantColor.color;
+    txtcolor = generator.lightVibrantColor.bodyTextColor;
     _controller.addListener(_scrollListener);
   }
 
@@ -559,6 +562,7 @@ class LastSearchGrid extends StatelessWidget {
     ));
   }
 }
+
 class LastSearchWidget extends StatelessWidget {
   final String value;
   final ValueChanged<String> onDeleted;
