@@ -490,14 +490,10 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         maxHeight: size.height / 2.4,
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 4.0, 0, 0),
-        child: Visibility(
-          visible: topOfPage,
-          child: FadeInImage(
-            placeholder: MemoryImage(kTransparentImage),
-            image: widget.image,
-            fit: BoxFit.fitWidth,
-          ),
+        padding: const EdgeInsets.fromLTRB(0, 4.0, 0, 4.0),
+        child: Image(
+          image: widget.image,
+          fit: BoxFit.fitWidth,
         ),
       ),
     );
