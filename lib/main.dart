@@ -358,13 +358,16 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   }
 
   Future<void> _updatePaletteGenerator(ImageProvider image) async {
+    print(image.toString());
     generator = await PaletteGenerator.fromImageProvider(
       image,
       maximumColorCount: 8,
     );
-    bgcolor = generator?.lightMutedColor?.color ?? Colors.white;
-    txtcolor = generator?.lightMutedColor?.bodyTextColor ?? Colors.black;
-    appiconcolor = generator?.lightMutedColor?.titleTextColor;
+    print('Palette Colors length: $generator.colors.length');
+    bgcolor = generator.lightMutedColor?.color ?? Colors.white;
+    print('BG color: $bgcolor');
+    txtcolor = generator.lightMutedColor?.bodyTextColor ?? Colors.black;
+    appiconcolor = generator.lightMutedColor?.titleTextColor;
     setState(() {});
   }
 
