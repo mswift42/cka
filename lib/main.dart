@@ -257,6 +257,7 @@ class RecipeSearchItem extends StatefulWidget {
 
 class _RecipeSearchItemState extends State<RecipeSearchItem> {
   ImageProvider image;
+  PaletteGenerator generator;
 
   void _showRecipe(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
@@ -268,6 +269,7 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
   void initState() {
     super.initState();
     image = CachedNetworkImageProvider(widget.recipe.thumbnail);
+
   }
 
   @override
@@ -333,8 +335,10 @@ class _RecipeDetailView extends StatefulWidget {
   final BuildContext context;
   final RecipeDetail recipeDetail;
   final ImageProvider image;
+  final PaletteGenerator generator;
 
-  _RecipeDetailView({this.context, this.recipeDetail, this.image});
+  _RecipeDetailView({this.context, this.recipeDetail, this.image,
+  this.generator});
 
   @override
   __RecipeDetailViewState createState() => __RecipeDetailViewState();
