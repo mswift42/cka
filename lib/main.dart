@@ -407,9 +407,12 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
         child: ListView(
           children: <Widget>[
             buildFadeInImage(_size),
-            Text(
-              widget.recipeDetail.method,
-              style: TextStyle(color: txtcolor),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(2.0, 1.0, 2.0, 1.0),
+              child: Text(
+                widget.recipeDetail.method,
+                style: TextStyle(color: txtcolor),
+              ),
             ),
           ],
         ),
