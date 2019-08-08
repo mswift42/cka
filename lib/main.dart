@@ -371,8 +371,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
       maximumColorCount: 8,
     );
     bgcolor = generator.lightMutedColor?.color ?? Colors.white;
-    txtcolor = generator.lightMutedColor?.bodyTextColor ?? Colors.black;
-    appiconcolor = generator.lightMutedColor?.titleTextColor;
+    txtcolor = generator.lightMutedColor?.bodyTextColor ?? Colors.black87;
+    appiconcolor = generator.lightMutedColor?.titleTextColor ?? Colors.black87;
     setState(() {});
   }
 
