@@ -143,8 +143,8 @@ FutureBuilder<List<Recipe>> _showResultsBody(
   );
 }
 
-FutureBuilder<RecipeDetail> _showRecipeDetailBody(Future<RecipeDetail> handler,
-    ImageProvider image, PaletteGenerator generator) {
+FutureBuilder<RecipeDetail> _showRecipeDetailBody(
+    Future<RecipeDetail> handler, ImageProvider image) {
   return FutureBuilder(
     future: handler,
     builder: (BuildContext context, AsyncSnapshot<RecipeDetail> snapshot) {
@@ -162,7 +162,6 @@ FutureBuilder<RecipeDetail> _showRecipeDetailBody(Future<RecipeDetail> handler,
             context: context,
             recipeDetail: snapshot.data,
             image: image,
-            generator: generator,
           );
       }
       return null;
@@ -261,14 +260,12 @@ class RecipeSearchItem extends StatefulWidget {
 
 class _RecipeSearchItemState extends State<RecipeSearchItem> {
   ImageProvider image;
-  PaletteGenerator generator;
 
   void _showRecipe(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
       return _showRecipeDetailBody(
         fetchRecipeDetail(widget.recipe.url),
         image,
-        generator,
       );
     }));
   }
@@ -277,15 +274,6 @@ class _RecipeSearchItemState extends State<RecipeSearchItem> {
   void initState() {
     super.initState();
     image = CachedNetworkImageProvider(widget.recipe.thumbnail);
-    _updatePaletteGenerator(image);
-  }
-
-  Future<void> _updatePaletteGenerator(ImageProvider image) async {
-    generator = await PaletteGenerator.fromImageProvider(
-      image,
-      maximumColorCount: 8,
-    );
-    setState(() {});
   }
 
   @override
@@ -377,14 +365,22 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     }
   }
 
+  Future<void> _updatePaletteGenerator(ImageProvider image) async {
+    generator = await PaletteGenerator.fromImageProvider(
+      image,
+      maximumColorCount: 8,
+    );
+    bgcolor = generator.lightMutedColor?.color ?? Colors.white;
+    txtcolor = generator.lightMutedColor?.bodyTextColor ?? Colors.black;
+    appiconcolor = generator.lightMutedColor?.titleTextColor;
+    setState(() {});
+  }
 
   @override
   void initState() {
     super.initState();
+    _updatePaletteGenerator(widget.image);
     _controller.addListener(_scrollListener);
-    bgcolor = widget.generator.lightMutedColor?.color;
-    txtcolor = widget.generator.lightMutedColor?.bodyTextColor;
-    appiconcolor = widget.generator.lightMutedColor?.titleTextColor;
   }
 
   @override
