@@ -355,7 +355,6 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   Color appiconcolor = Colors.black;
   Duration _duration = Duration(milliseconds: 1000);
 
-
   Future<void> _updatePaletteGenerator(ImageProvider image) async {
     generator = await PaletteGenerator.fromImageProvider(
       image,
@@ -457,7 +456,10 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
     }
 
     AppBar appBar = AppBar(
-        title: Text(widget.recipeDetail.title),
+        title: Text(
+          widget.recipeDetail.title,
+          style: TextStyle(color: txtcolor),
+        ),
         iconTheme: IconThemeData(color: appiconcolor),
         backgroundColor: bgcolor,
         textTheme: TextTheme(title: TextStyle(color: txtcolor)),
