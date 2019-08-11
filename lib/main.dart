@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cka/last_search_service.dart';
+import 'package:cka/page_results_service.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:transparent_image/transparent_image.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -185,6 +187,7 @@ class _RecipeGridState extends State<RecipeGrid> {
   bool topOfPage = false;
   ScrollController _controller = ScrollController();
   Listener listener = Listener();
+  PageResultsService _prs = PageResultsService();
 
   _scrollListener() {
     if (_controller.offset >= _controller.position.maxScrollExtent) {
@@ -214,9 +217,9 @@ class _RecipeGridState extends State<RecipeGrid> {
 
   void _showNextResults() {
     if (topOfPage) {
-      widget.onChanged(prevPage(widget.searchQuery.page));
+      widget.onChanged(_prs.prevPage(widget.searchQuery.page));
     } else {
-      widget.onChanged(nextPage(widget.searchQuery.page));
+      widget.onChanged(_prs.nextPage(widget.searchQuery.page));
     }
   }
 
