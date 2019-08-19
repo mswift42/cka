@@ -193,12 +193,14 @@ class _RecipeGridState extends State<RecipeGrid> {
     if (_controller.offset >= _controller.position.maxScrollExtent) {
       setState(() {
         bottomOfPage = true;
+        topOfPage = false;
       });
     }
-    if (_controller.offset >= _controller.position.minScrollExtent &&
+    if (_controller.offset <= _controller.position.minScrollExtent &&
         widget.searchQuery.page != "0") {
       setState(() {
         topOfPage = true;
+        bottomOfPage = false;
       });
     }
   }
