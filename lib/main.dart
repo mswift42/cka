@@ -184,23 +184,14 @@ class RecipeGrid extends StatefulWidget {
 
 class _RecipeGridState extends State<RecipeGrid> {
   bool bottomOfPage = false;
-  bool topOfPage = false;
   ScrollController _controller = ScrollController();
   Listener listener = Listener();
   PageResultsService _prs = PageResultsService();
 
   _scrollListener() {
-    if (_controller.offset >= _controller.position.maxScrollExtent) {
+    if (_controller.offset >= _controller.position.maxScrollExtent - 40.0) {
       setState(() {
         bottomOfPage = true;
-        topOfPage = false;
-      });
-    }
-    if (_controller.offset <= _controller.position.minScrollExtent &&
-        widget.searchQuery.page != "0") {
-      setState(() {
-        topOfPage = true;
-        bottomOfPage = false;
       });
     }
   }
@@ -218,11 +209,7 @@ class _RecipeGridState extends State<RecipeGrid> {
   }
 
   void _showNextResults() {
-    if (topOfPage) {
-      widget.onChanged(_prs.prevPage(widget.searchQuery.page));
-    } else {
       widget.onChanged(_prs.nextPage(widget.searchQuery.page));
-    }
   }
 
   @override
@@ -234,7 +221,7 @@ class _RecipeGridState extends State<RecipeGrid> {
       floatingActionButton: bottomOfPage
           ? FloatingActionButton(
               onPressed: _showNextResults,
-              child: Icon(topOfPage ? Icons.arrow_back : Icons.arrow_forward),
+              child: Icon(Icons.arrow_forward),
             )
           : Container(),
       body: Column(
