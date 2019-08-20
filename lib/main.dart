@@ -9,9 +9,9 @@ import 'package:palette_generator/palette_generator.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 
-void main() => runApp(MyApp());
+void main() => runApp(CKApp());
 
-class MyApp extends StatelessWidget {
+class CKApp extends StatelessWidget {
   // This widget is the root of your application.
 
   @override
