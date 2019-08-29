@@ -10,3 +10,9 @@ Future<RecipeDetail> fetchRecipeDetail(String url) async {
   var doc = await getPage(url);
   return RecipeDetail.fromDoc(RecipeDetailDocument(doc));
 }
+
+class SearchFilter {
+  String criterion;
+
+  SearchFilter(this.criterion);
+}
