@@ -13,6 +13,9 @@ Future<RecipeDetail> fetchRecipeDetail(String url) async {
 
 class SearchFilter {
   String criterion;
+  String abbrev;
 
-  SearchFilter(this.criterion);
+  SearchFilter(this.criterion, this.abbrev);
 }
+
+
