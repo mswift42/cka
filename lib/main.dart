@@ -107,6 +107,12 @@ class _RecipeSearchState extends State<RecipeSearch> {
     });
   }
 
+  void _handleActiveFilterChanged(SearchFilter searchFilter) {
+    setState(() {
+      activeFilter = searchFilter;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,9 +129,9 @@ class _RecipeSearchState extends State<RecipeSearch> {
             ),
           ),
           Row(
-            children: searchFilters
+            children: _searchFilters
                 .map((i) =>
-                    _radioWidget(i, activeFilter, handleActiveFilterChaned))
+                    _radioWidget(i, activeFilter, _handleActiveFilterChanged))
                 .toList(),
           ),
           LastSearchGrid(_handleDelete, _handlePillTap, _lastSearches.toList()),
