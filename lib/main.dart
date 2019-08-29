@@ -42,6 +42,13 @@ class _RecipeSearchState extends State<RecipeSearch> {
   String currentPage = "0";
   Set<String> _lastSearches = Set();
   final controller = TextEditingController();
+  SearchFilter activeFilter = _searchFilters[0];
+
+  static final List<SearchFilter> _searchFilters = [
+    SearchFilter("relevanz", ""),
+    SearchFilter("bewertung", "o8"),
+    SearchFilter("datum", "o3"),
+  ];
 
   void _setSearchQueryText() {
     searchquery = controller.text;
@@ -114,6 +121,12 @@ class _RecipeSearchState extends State<RecipeSearch> {
               controller: controller,
               onSubmitted: _searchRecipe,
             ),
+          ),
+          Row(
+            children: searchFilters
+                .map((i) =>
+                    _radioWidget(i, activeFilter, handleActiveFilterChaned))
+                .toList(),
           ),
           LastSearchGrid(_handleDelete, _handlePillTap, _lastSearches.toList()),
         ],
