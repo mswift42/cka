@@ -8,7 +8,6 @@ import 'package:flutter/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-
 void main() => runApp(CKApp());
 
 class CKApp extends StatelessWidget {
@@ -123,6 +122,20 @@ class _RecipeSearchState extends State<RecipeSearch> {
   }
 }
 
+Widget _radioWidget(SearchFilter value, SearchFilter groupvalue,
+    ValueChanged<SearchFilter> handler) {
+  return Row(
+    children: <Widget>[
+      Text(value.criterion),
+      Radio<SearchFilter>(
+        value: value,
+        groupValue: groupvalue,
+        onChanged: handler,
+      ),
+    ],
+  );
+}
+
 FutureBuilder<List<Recipe>> _showResultsBody(
     Future<List<Recipe>> handler, SearchQuery sq, ValueChanged<String> cb) {
   return FutureBuilder(
@@ -209,7 +222,7 @@ class _RecipeGridState extends State<RecipeGrid> {
   }
 
   void _showNextResults() {
-      widget.onChanged(_prs.nextPage(widget.searchQuery.page));
+    widget.onChanged(_prs.nextPage(widget.searchQuery.page));
   }
 
   @override
