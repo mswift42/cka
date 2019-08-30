@@ -18,8 +18,8 @@ class CKApp extends StatelessWidget {
     return MaterialApp(
       title: 'CK',
       theme: ThemeData(
-        primaryColor: Colors.lime[200],
-        accentColor: Colors.lime[100],
+        primaryColor: Colors.blueGrey[400],
+        accentColor: Colors.blueGrey[500],
         primarySwatch: Colors.lightGreen,
       ),
       initialRoute: '/',

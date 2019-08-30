@@ -1,7 +1,8 @@
 import 'package:cka/recipe.dart';
 
 Future<List<Recipe>> fetchRecipes(SearchQuery searchQuery) async {
-  var cdoc = CKDocument(searchQuery.searchterm, searchQuery.page.toString());
+  var cdoc = CKDocument(searchQuery.searchterm, searchQuery.page.toString(),
+      searchQuery.searchFilter.abbrev);
   var body = await cdoc.getDoc();
   return recipes(body);
 }
@@ -17,5 +18,3 @@ class SearchFilter {
 
   SearchFilter(this.criterion, this.abbrev);
 }
-
-
