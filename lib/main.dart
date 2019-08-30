@@ -75,7 +75,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
   void _searchRecipe(String inp) {
     if (inp != '') {
       _lastSearches.add(inp);
-      SearchQuery sq = SearchQuery(searchquery, currentPage);
+      SearchQuery sq = SearchQuery(searchquery, currentPage, activeFilter);
       widget.searchService.writeSearches(_lastSearches.toList());
       Navigator.push(
         context,
@@ -111,6 +111,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
     setState(() {
       activeFilter = searchFilter;
     });
+    _searchRecipe(searchquery);
   }
 
   @override

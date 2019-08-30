@@ -1,3 +1,4 @@
+import 'package:cka/recipe_service.dart';
 import 'package:html/dom.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
@@ -74,8 +75,9 @@ class RecipeIngredient {
 class SearchQuery {
   String searchterm;
   String page;
+  SearchFilter searchFilter;
 
-  SearchQuery(this.searchterm, this.page);
+  SearchQuery(this.searchterm, this.page, this.searchFilter);
 }
 
 
