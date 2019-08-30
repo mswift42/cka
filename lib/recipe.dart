@@ -86,8 +86,9 @@ const CKPrefix = 'https://www.chefkoch.de';
 class CKDocument {
   String searchterm;
   String page;
+  String searchfilter;
 
-  CKDocument(this.searchterm, this.page);
+  CKDocument(this.searchterm, this.page, this.searchfilter);
 
   Future<String> getCKPage() async {
     http.Response response = await http.get(queryUrl());
@@ -95,7 +96,7 @@ class CKDocument {
   }
 
   String queryUrl() {
-    return '$CKPrefix/rs/s${page}o8/$searchterm/Rezepte.html';
+    return '$CKPrefix/rs/s$page$searchfilter/$searchterm/Rezepte.html';
   }
 
   Future<Document> getDoc() async {
