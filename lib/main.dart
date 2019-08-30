@@ -130,6 +130,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: _searchFilters
                 .map((i) =>
                     _radioWidget(i, activeFilter, _handleActiveFilterChanged))
@@ -145,6 +146,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
 Widget _radioWidget(SearchFilter value, SearchFilter groupvalue,
     ValueChanged<SearchFilter> handler) {
   return Row(
+    mainAxisAlignment: MainAxisAlignment.end,
     children: <Widget>[
       Text(value.criterion),
       Radio<SearchFilter>(
