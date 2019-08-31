@@ -4,9 +4,11 @@ import 'package:cka/page_results_service.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'dart:ui' as ui;
 
 void main() => runApp(CKApp());
 
@@ -365,7 +367,7 @@ class _RecipeInfoRow extends StatelessWidget {
 class _RecipeDetailView extends StatefulWidget {
   final BuildContext context;
   final RecipeDetail recipeDetail;
-  final ImageProvider image;
+  final Image image;
   final PaletteGenerator generator;
 
   _RecipeDetailView(
@@ -382,8 +384,8 @@ class __RecipeDetailViewState extends State<_RecipeDetailView> {
   Color appiconcolor = Colors.black;
   Duration _duration = Duration(milliseconds: 1000);
 
-  Future<void> _updatePaletteGenerator(ImageProvider image) async {
-    generator = await PaletteGenerator.fromImageProvider(
+  Future<void> _updatePaletteGenerator(ui.Image image) async {
+    generator = await PaletteGenerator.fromImage(
       image,
       maximumColorCount: 8,
     );
