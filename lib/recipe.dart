@@ -71,7 +71,7 @@ class RecipeDetail {
       'difficulty': difficulty,
       'cookingtime': cookingtime,
       'thumbnail': thumbnail,
-      'ingredients': ingredients.toJson(),
+      'ingredients': ingredients.map((i) => i.toJson()).toList(),
       'method': method,
     };
   }
@@ -82,6 +82,16 @@ class RecipeIngredient {
   String ingredient;
 
   RecipeIngredient(this.amount, this.ingredient);
+
+  RecipeIngredient.fromJson(Map<String, dynamic> json)
+  : amount = json['amount'],
+    ingredient = json['ingredient'];
+
+  Map<String, dynamic> toJson() =>
+      {
+        'amount': amount,
+        'ingredient': ingredient
+      };
 }
 
 class SearchQuery {
