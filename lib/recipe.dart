@@ -41,16 +41,16 @@ class RecipeDetail {
       this.ingredients,
       this.method});
 
-//  factory RecipeDetail.fromJson(Map<String, dynamic> json) {
-//    return RecipeDetail(
-//        title: json['title'],
-//        rating: json['rating'],
-//        difficulty: json['difficulty'],
-//        cookingtime: json['cookingtime'],
-//        thumbnail: json['thumbnail'],
-//        ingredients: json['ingredients'],
-//        method: json['method']);
-//  }
+  factory RecipeDetail.fromJson(Map<String, dynamic> json) {
+    return RecipeDetail(
+        title: json['title'],
+        rating: json['rating'],
+        difficulty: json['difficulty'],
+        cookingtime: json['cookingtime'],
+        thumbnail: json['thumbnail'],
+        ingredients: json['ingredients'],
+        method: json['method']);
+  }
 
   factory RecipeDetail.fromDoc(RecipeDetailDocument doc) {
     return RecipeDetail(
@@ -62,6 +62,18 @@ class RecipeDetail {
       ingredients: doc.ingredients(),
       method: doc.method(),
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'rating': rating,
+      'difficulty': difficulty,
+      'cookingtime': cookingtime,
+      'thumbnail': thumbnail,
+      'ingredients': ingredients.toJson(),
+      'method': method,
+    };
   }
 }
 
