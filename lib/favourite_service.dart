@@ -16,9 +16,20 @@ class FavouriteService {
     return File('$path/$_favouritesFile');
   }
 
-  Future<File> writeFavourites(List<Map<String,dynamic>> favourites) async {
+  Future<File> writeFavourites(List<Map<String, dynamic>> favourites) async {
     final file = await _localFile;
     String json = jsonEncode(favourites);
     return file.writeAsString(json);
+  }
+
+  Future<List<Map<String, dynamic>>> readFavourites() async {
+    try {
+      final file = await _localFile;
+      String contents = await file.readAsString();
+      return jsonDecode(contents);
+    } catch (e) {
+      print(e)
+    }
+    return null;
   }
 }
