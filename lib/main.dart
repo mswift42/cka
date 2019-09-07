@@ -114,11 +114,21 @@ class _RecipeSearchState extends State<RecipeSearch> {
     _searchRecipe(searchquery);
   }
 
+  void _handleFavouriteViewPressed() {
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('CK'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: _handleFavouriteViewPressed,
+          )
+        ],
       ),
       body: Column(
         children: <Widget>[
