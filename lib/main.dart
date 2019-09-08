@@ -115,7 +115,14 @@ class _RecipeSearchState extends State<RecipeSearch> {
   }
 
   void _handleFavouriteViewPressed() {
+    SearchQuery sq = SearchQuery("Favoriten", "0", activeFilter);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RecipeGrid(sq, _favourites, null)
 
+      )
+    )
   }
 
   @override
@@ -630,3 +637,5 @@ class LastSearchWidget extends StatelessWidget {
     );
   }
 }
+
+

@@ -29,6 +29,7 @@ class FavouriteService {
       return jsonDecode(contents);
     } catch (e) {
       print(e)
+      ;
     }
     return null;
   }
