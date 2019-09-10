@@ -3,6 +3,7 @@ import 'package:cka/last_search_service.dart';
 import 'package:cka/page_results_service.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
+import 'package:cka/fvaourites_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
@@ -32,7 +33,6 @@ class CKApp extends StatelessWidget {
 
 class RecipeSearch extends StatefulWidget {
   final LastSearchService searchService = LastSearchService();
-
   @override
   _RecipeSearchState createState() => _RecipeSearchState();
 }
@@ -43,6 +43,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
   Set<String> _lastSearches = Set();
   final controller = TextEditingController();
   SearchFilter activeFilter = _searchFilters[0];
+  Set<RecipeDetail> _favourites = {};
 
   static final List<SearchFilter> _searchFilters = [
     SearchFilter("relevanz", ""),
@@ -115,14 +116,11 @@ class _RecipeSearchState extends State<RecipeSearch> {
   }
 
   void _handleFavouriteViewPressed() {
-    SearchQuery sq = SearchQuery("Favoriten", "0", activeFilter);
     Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => RecipeGrid(sq, _favourites, null)
-
-      )
-    )
+        context,
+        MaterialPageRoute(
+          builder: (context) => FavouritesView(favourites: _favourites.toList(),)
+        ));
   }
 
   @override
@@ -637,5 +635,3 @@ class LastSearchWidget extends StatelessWidget {
     );
   }
 }
-
-
