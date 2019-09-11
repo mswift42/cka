@@ -210,7 +210,7 @@ FutureBuilder<RecipeDetail> _showRecipeDetailBody(
           if (snapshot.hasError) {
             return Text("Something went wrong: ${snapshot.error}");
           }
-          return _RecipeDetailView(
+          return RecipeDetailView(
             context: context,
             recipeDetail: snapshot.data,
             image: image,
@@ -377,20 +377,20 @@ class _RecipeInfoRow extends StatelessWidget {
   }
 }
 
-class _RecipeDetailView extends StatefulWidget {
+class RecipeDetailView extends StatefulWidget {
   final BuildContext context;
   final RecipeDetail recipeDetail;
   final ImageProvider image;
   final PaletteGenerator generator;
 
-  _RecipeDetailView(
+  RecipeDetailView(
       {this.context, this.recipeDetail, this.image, this.generator});
 
   @override
-  __RecipeDetailViewState createState() => __RecipeDetailViewState();
+  _RecipeDetailViewState createState() => _RecipeDetailViewState();
 }
 
-class __RecipeDetailViewState extends State<_RecipeDetailView> {
+class _RecipeDetailViewState extends State<RecipeDetailView> {
   PaletteGenerator generator;
   Color bgcolor;
   Color txtcolor;

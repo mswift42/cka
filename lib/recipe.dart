@@ -21,6 +21,7 @@ class Recipe {
     return Recipe(sel.title(), sel.url(), sel.thumbnail(), sel.difficulty(),
         sel.preptime());
   }
+
 }
 
 class RecipeDetail {
