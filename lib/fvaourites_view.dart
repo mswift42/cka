@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cka/main.dart';
 import 'package:cka/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -44,6 +45,16 @@ class _FavouriteState extends State<Favourite> {
   void initState() {
     super.initState();
     image = CachedNetworkImageProvider(widget.recipeDetail.thumbnail);
+  }
+
+  void _showFavourite(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      return RecipeDetailView(
+        context: context,
+        recipeDetail: widget.recipeDetail,
+        image: image,
+      );
+    }));
   }
 
   @override
