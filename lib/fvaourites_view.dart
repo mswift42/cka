@@ -57,22 +57,39 @@ class _FavouriteState extends State<Favourite> {
     }));
   }
 
+  void _onDeletePressed() {
+    setState(() {
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => _showFavourite(context),
-      child: GridTile(
-        child: FadeInImage(
-          placeholder: MemoryImage(kTransparentImage),
-          image: image,
-          fit: BoxFit.fitWidth,
-        ),
-        footer: GridTileBar(
-          backgroundColor: Colors.black54,
-          title: Text(widget.recipeDetail.title),
-          subtitle: Text(
-              "Difficulty :${widget.recipeDetail.difficulty} ,Cooking Time: ${widget.recipeDetail.cookingtime} "),
-        ),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            top: 4.0,
+            left: 4.0,
+            child: IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: _onDeletePressed,
+            ),
+          ),
+          GridTile(
+            child: FadeInImage(
+              placeholder: MemoryImage(kTransparentImage),
+              image: image,
+              fit: BoxFit.fitWidth,
+            ),
+            footer: GridTileBar(
+              backgroundColor: Colors.black54,
+              title: Text(widget.recipeDetail.title),
+              subtitle: Text(
+                  "Difficulty :${widget.recipeDetail.difficulty} ,Cooking Time: ${widget.recipeDetail.cookingtime} "),
+            ),
+          ),
+        ],
       ),
     );
   }
