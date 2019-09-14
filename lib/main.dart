@@ -1,15 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cka/favourite_model.dart';
+import 'package:cka/fvaourites_view.dart';
 import 'package:cka/last_search_service.dart';
 import 'package:cka/page_results_service.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
-import 'package:cka/fvaourites_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
+import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-void main() => runApp(CKApp());
+void main() => runApp(
+      ChangeNotifierProvider(
+        builder: (context) => FavouriteModel(),
+        child: CKApp(),
+      ),
+    );
 
 class CKApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -33,6 +40,7 @@ class CKApp extends StatelessWidget {
 
 class RecipeSearch extends StatefulWidget {
   final LastSearchService searchService = LastSearchService();
+
   @override
   _RecipeSearchState createState() => _RecipeSearchState();
 }
@@ -119,8 +127,9 @@ class _RecipeSearchState extends State<RecipeSearch> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => FavouritesView(favourites: _favourites.toList(),)
-        ));
+            builder: (context) => FavouritesView(
+                  favourites: _favourites.toList(),
+                )));
   }
 
   @override
