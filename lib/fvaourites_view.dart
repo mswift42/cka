@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cka/main.dart';
 import 'package:cka/recipe.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:cka/favourite_model.dart';
 
 class FavouritesView extends StatefulWidget {
   final List<RecipeDetail> favourites;
@@ -16,15 +18,20 @@ class FavouritesView extends StatefulWidget {
 class _FavouritesViewState extends State<FavouritesView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Favoriten"),
-      ),
-      body: GridView.extent(
-        maxCrossAxisExtent: 480.00,
-        children:
-            widget.favourites.map((i) => Favourite(recipeDetail: i)).toList(),
-      ),
+    return Consumer<FavouriteModel>(
+      builder: (context, favourite, child) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("Favoriten"),
+          ),
+          body: GridView.extent(
+            maxCrossAxisExtent: 480.00,
+            children: widget.favourites
+                .map((i) => Favourite(recipeDetail: i))
+                .toList(),
+          ),
+        );
+      },
     );
   }
 }
@@ -58,8 +65,7 @@ class _FavouriteState extends State<Favourite> {
   }
 
   void _onDeletePressed() {
-    setState(() {
-    });
+    setState(() {});
   }
 
   @override
