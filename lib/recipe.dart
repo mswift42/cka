@@ -1,7 +1,9 @@
 import 'package:cka/recipe_service.dart';
+import 'package:flutter/material.dart' hide Element;
 import 'package:html/dom.dart';
 import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
+import 'package:quiver/core.dart' show hash2;
 
 class Recipe {
   String title;
@@ -21,17 +23,17 @@ class Recipe {
     return Recipe(sel.title(), sel.url(), sel.thumbnail(), sel.difficulty(),
         sel.preptime());
   }
-
 }
 
+@immutable
 class RecipeDetail {
-  String title;
-  String rating;
-  String difficulty;
-  String cookingtime;
-  String thumbnail;
-  List<RecipeIngredient> ingredients;
-  String method;
+  final String title;
+  final String rating;
+  final String difficulty;
+  final String cookingtime;
+  final String thumbnail;
+  final List<RecipeIngredient> ingredients;
+  final String method;
 
   RecipeDetail(
       {this.title,
@@ -76,7 +78,16 @@ class RecipeDetail {
       'method': method,
     };
   }
+
+  @override
+  bool operator ==(Object other) =>
+      other is RecipeDetail && other.thumbnail == thumbnail;
+
+  @override
+  int get hashCode => hash2(title.hashCode, thumbnail.hashCode);
 }
+
+
 
 class RecipeIngredient {
   String amount;
@@ -85,14 +96,10 @@ class RecipeIngredient {
   RecipeIngredient(this.amount, this.ingredient);
 
   RecipeIngredient.fromJson(Map<String, dynamic> json)
-  : amount = json['amount'],
-    ingredient = json['ingredient'];
+      : amount = json['amount'],
+        ingredient = json['ingredient'];
 
-  Map<String, dynamic> toJson() =>
-      {
-        'amount': amount,
-        'ingredient': ingredient
-      };
+  Map<String, dynamic> toJson() => {'amount': amount, 'ingredient': ingredient};
 }
 
 class SearchQuery {
@@ -102,7 +109,6 @@ class SearchQuery {
 
   SearchQuery(this.searchterm, this.page, this.searchFilter);
 }
-
 
 const CKPrefix = 'https://www.chefkoch.de';
 
