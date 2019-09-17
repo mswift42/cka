@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cka/favourite_model.dart';
 import 'package:cka/main.dart';
 import 'package:cka/recipe.dart';
@@ -30,37 +29,22 @@ class FavouritesView extends StatelessWidget {
   }
 }
 
-class Favourite extends StatefulWidget {
+class Favourite extends StatelessWidget {
+  Favourite({Key key, this.recipeDetail, this.image}) : super(key: key);
   final RecipeDetail recipeDetail;
-
-  Favourite({Key key, this.recipeDetail}) : super(key: key);
-
-  @override
-  _FavouriteState createState() => _FavouriteState();
-}
-
-class _FavouriteState extends State<Favourite> {
-  ImageProvider image;
-
-  @override
-  void initState() {
-    super.initState();
-    image = CachedNetworkImageProvider(widget.recipeDetail.thumbnail);
-  }
+  final ImageProvider image;
 
   void _showFavourite(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
       return RecipeDetailView(
         context: context,
-        recipeDetail: widget.recipeDetail,
+        recipeDetail: recipeDetail,
         image: image,
       );
     }));
   }
 
-  void _onDeletePressed() {
-    setState(() {});
-  }
+  void _onDeletePressed() {}
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +68,9 @@ class _FavouriteState extends State<Favourite> {
             ),
             footer: GridTileBar(
               backgroundColor: Colors.black54,
-              title: Text(widget.recipeDetail.title),
+              title: Text(recipeDetail.title),
               subtitle: Text(
-                  "Difficulty :${widget.recipeDetail.difficulty} ,Cooking Time: ${widget.recipeDetail.cookingtime} "),
+                  "Difficulty :${recipeDetail.difficulty} ,Cooking Time: ${recipeDetail.cookingtime} "),
             ),
           ),
         ],
