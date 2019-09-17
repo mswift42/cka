@@ -1,21 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cka/favourite_model.dart';
 import 'package:cka/main.dart';
 import 'package:cka/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:cka/favourite_model.dart';
 
-class FavouritesView extends StatefulWidget {
+class FavouritesView extends StatelessWidget {
   final List<RecipeDetail> favourites;
 
   const FavouritesView({Key key, this.favourites}) : super(key: key);
 
-  @override
-  _FavouritesViewState createState() => _FavouritesViewState();
-}
-
-class _FavouritesViewState extends State<FavouritesView> {
   @override
   Widget build(BuildContext context) {
     return Consumer<FavouriteModel>(
@@ -26,9 +21,8 @@ class _FavouritesViewState extends State<FavouritesView> {
           ),
           body: GridView.extent(
             maxCrossAxisExtent: 480.00,
-            children: widget.favourites
-                .map((i) => Favourite(recipeDetail: i))
-                .toList(),
+            children:
+                favourites.map((i) => Favourite(recipeDetail: i)).toList(),
           ),
         );
       },
