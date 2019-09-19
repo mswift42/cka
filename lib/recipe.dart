@@ -87,8 +87,6 @@ class RecipeDetail {
   int get hashCode => hash2(title.hashCode, thumbnail.hashCode);
 }
 
-
-
 class RecipeIngredient {
   String amount;
   String ingredient;

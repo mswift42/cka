@@ -30,9 +30,11 @@ class FavouritesView extends StatelessWidget {
 }
 
 class Favourite extends StatelessWidget {
-  Favourite({Key key, this.recipeDetail, this.image}) : super(key: key);
+  Favourite({Key key, this.recipeDetail, this.image, this.isFavourite})
+      : super(key: key);
   final RecipeDetail recipeDetail;
   final ImageProvider image;
+  final bool isFavourite;
 
   void _showFavourite(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class FavouriteModel extends ChangeNotifier {
   final List<RecipeDetail> _favourites = [];
 
-  UnmodifiableListView<RecipeDetail> get items =>
+  UnmodifiableListView<RecipeDetail> get favouites =>
       UnmodifiableListView(_favourites);
 
   void delete(RecipeDetail favourite) {
