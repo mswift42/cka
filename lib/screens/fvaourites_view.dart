@@ -12,19 +12,19 @@ class FavouritesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<FavouriteModel>(
-      builder: (context, favourite, child) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("Favoriten"),
-          ),
-          body: GridView.extent(
-            maxCrossAxisExtent: 480.00,
-            children:
-                favourites.map((i) => Favourite(recipeDetail: i)).toList(),
-          ),
-        );
-      },
+    var favlist = Provider.of<FavouriteModel>(context);
+    var favourites = favlist.favouites;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Favoriten"),
+      ),
+      body: GridView.extent(
+        maxCrossAxisExtent: 480.00,
+        children: favourites
+            .map((i) =>
+                Favourite(recipeDetail: i, isFavourite: favourites.contains(i)))
+            .toList(),
+      ),
     );
   }
 }
