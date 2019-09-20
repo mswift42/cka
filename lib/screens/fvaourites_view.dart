@@ -20,21 +20,16 @@ class FavouritesView extends StatelessWidget {
       ),
       body: GridView.extent(
         maxCrossAxisExtent: 480.00,
-        children: favourites
-            .map((i) =>
-                Favourite(recipeDetail: i, isFavourite: favourites.contains(i)))
-            .toList(),
+        children: favourites.map((i) => Favourite(recipeDetail: i)).toList(),
       ),
     );
   }
 }
 
 class Favourite extends StatelessWidget {
-  Favourite({Key key, this.recipeDetail, this.image, this.isFavourite})
-      : super(key: key);
+  Favourite({Key key, this.recipeDetail, this.image}) : super(key: key);
   final RecipeDetail recipeDetail;
   final ImageProvider image;
-  final bool isFavourite;
 
   void _showFavourite(BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
@@ -46,10 +41,13 @@ class Favourite extends StatelessWidget {
     }));
   }
 
-  void _onDeletePressed() {}
-
   @override
   Widget build(BuildContext context) {
+    var favlist = Provider.of<FavouriteModel>(context);
+    void _onDeletePressed() {
+      favlist.delete(recipeDetail);
+    }
+
     return GestureDetector(
       onTap: () => _showFavourite(context),
       child: Stack(
