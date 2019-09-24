@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cka/favourite_model.dart';
 import 'package:cka/last_search_service.dart';
+import 'package:cka/models/favourite.dart';
 import 'package:cka/page_results_service.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
