@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cka/favourite_model.dart';
-import 'package:cka/fvaourites_view.dart';
 import 'package:cka/last_search_service.dart';
 import 'package:cka/page_results_service.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
+import 'package:cka/screens/fvaourites_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';

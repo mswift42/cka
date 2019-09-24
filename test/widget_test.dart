@@ -6,6 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:cka/main.dart';
+import 'package:cka/screens/fvaourites_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -27,5 +28,10 @@ void main() {
     expect(searchFilterFinder2, findsOneWidget);
     final textFieldFinder = find.byType(TextField);
     expect(textFieldFinder, findsOneWidget);
+  });
+
+  testWidgets('FavouriteWidgets have a delete icon',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(FavouritesView());
   });
 }
