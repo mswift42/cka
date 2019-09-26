@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 class LastSearchModel extends ChangeNotifier {
   List<String> _savedSearches = [];
+  var _searchService = LastSearchService();
   void lastSearches() async {
-    var searchService = LastSearchService();
-    var searches = await searchService.readSearches();
+    var searches = await _searchService.readSearches();
     _savedSearches = searches;
   }
 
@@ -16,11 +16,13 @@ class LastSearchModel extends ChangeNotifier {
 
   void add(String search) {
     _savedSearches.add(search);
+    _searchService.writeSearches(_savedSearches);
     notifyListeners();
   }
 
   void remove(String search) {
     _savedSearches.remove(search);
+    _searchService.writeSearches(_savedSearches);
     notifyListeners();
   }
 }
