@@ -13,8 +13,8 @@ Future<RecipeDetail> fetchRecipeDetail(String url) async {
 }
 
 class SearchFilter {
-  String criterion;
-  String abbrev;
+  final String criterion;
+  final String abbrev;
 
-  SearchFilter(this.criterion, this.abbrev);
+  const SearchFilter(this.criterion, this.abbrev);
 }
