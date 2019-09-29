@@ -1,5 +1,5 @@
-import 'package:cka/favourite_model.dart';
 import 'package:cka/main.dart';
+import 'package:cka/models/favourite.dart';
 import 'package:cka/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

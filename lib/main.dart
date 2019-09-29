@@ -4,7 +4,7 @@ import 'package:cka/models/favourite.dart';
 import 'package:cka/page_results_service.dart';
 import 'package:cka/recipe.dart';
 import 'package:cka/recipe_service.dart';
-import 'package:cka/screens/fvaourites_view.dart';
+import 'package:cka/screens/fvaourites.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:palette_generator/palette_generator.dart';
