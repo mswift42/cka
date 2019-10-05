@@ -9,7 +9,9 @@ class SearchFilterModel extends ChangeNotifier {
     SearchFilter("datum", "o3"),
   ];
 
-  void activeFilter(SearchFilter filter) {
+  SearchFilter get activeFilter => _activeFilter;
+
+  set activeFilter(SearchFilter filter) {
     _activeFilter = filter;
     notifyListeners();
   }
