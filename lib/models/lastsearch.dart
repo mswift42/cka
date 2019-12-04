@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:cka/last_search_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +5,7 @@ import 'package:flutter/material.dart';
 class LastSearchModel extends ChangeNotifier {
   List<String> _savedSearches = [];
   var _searchService = LastSearchService();
+
   void lastSearches() async {
     var searches = await _searchService.readSearches();
     _savedSearches = searches;
