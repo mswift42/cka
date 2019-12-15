@@ -13,4 +13,9 @@ class FavouriteModel extends ChangeNotifier {
     _favourites.remove(favourite);
     notifyListeners();
   }
+
+  void add(RecipeDetail favourite) {
+    _favourites.add(favourite);
+    notifyListeners();
+  }
 }
