@@ -405,6 +405,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
   Color txtcolor;
   Color appiconcolor = Colors.black;
   Duration _duration = Duration(milliseconds: 1000);
+  bool isFavourite = false;
 
   Future<void> _updatePaletteGenerator(ImageProvider image) async {
     generator = await PaletteGenerator.fromImageProvider(
@@ -456,7 +457,16 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
         color: bgcolor,
         child: ListView(
           children: <Widget>[
-            buildFadeInImage(_size),
+            Stack(
+              children: [
+                buildFadeInImage(_size),
+                Container(
+                  child: Icon(
+                      isFavourite ? Icons.favorite : Icons.favorite_border),
+                  alignment: Alignment.bottomRight,
+                ),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(2.0, 1.0, 2.0, 1.0),
               child: Text(
