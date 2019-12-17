@@ -424,6 +424,12 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
     _updatePaletteGenerator(widget.image);
   }
 
+  void handleFavouriteButtonPress() {
+    setState(() {
+      isFavourite = !isFavourite;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
@@ -460,10 +466,9 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
             Stack(
               children: [
                 buildFadeInImage(_size),
-                IconButton(
-                  color: appiconcolor,
+                FloatingActionButton(
                   onPressed: handleFavouriteButtonPress,
-                  icon: Icon(
+                  child: Icon(
                       isFavourite ? Icons.favorite : Icons.favorite_border),
                 ),
               ],
