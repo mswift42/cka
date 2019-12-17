@@ -460,10 +460,11 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
             Stack(
               children: [
                 buildFadeInImage(_size),
-                Container(
-                  child: Icon(
+                IconButton(
+                  color: appiconcolor,
+                  onPressed: handleFavouriteButtonPress,
+                  icon: Icon(
                       isFavourite ? Icons.favorite : Icons.favorite_border),
-                  alignment: Alignment.bottomRight,
                 ),
               ],
             ),
