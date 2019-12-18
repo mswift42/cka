@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cka/recipe.dart';
 import 'package:path_provider/path_provider.dart';
 
 class FavouriteService {
@@ -22,15 +23,19 @@ class FavouriteService {
     return file.writeAsString(json);
   }
 
-  Future<List<Map<String, dynamic>>> readFavourites() async {
+  Future<List<Map<String, dynamic>>> _readFavourites() async {
     try {
       final file = await _localFile;
       String contents = await file.readAsString();
       return jsonDecode(contents);
     } catch (e) {
-      print(e)
-      ;
+      print(e);
     }
     return null;
+  }
+
+  Future<List<RecipeDetail>> favouites() async {
+    var favs = await _readFavourites();
+    return favs.map((i) => RecipeDetail.fromJson(i)).toList();
   }
 }
