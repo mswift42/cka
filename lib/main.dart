@@ -466,10 +466,13 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
             Stack(
               children: [
                 buildFadeInImage(_size),
-                FloatingActionButton(
-                  onPressed: handleFavouriteButtonPress,
-                  child: Icon(
-                      isFavourite ? Icons.favorite : Icons.favorite_border),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                    onPressed: handleFavouriteButtonPress,
+                    child: Icon(
+                        isFavourite ? Icons.favorite : Icons.favorite_border),
+                  ),
                 ),
               ],
             ),
