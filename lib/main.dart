@@ -532,7 +532,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
         ),
         iconTheme: IconThemeData(color: appiconcolor),
         backgroundColor: bgcolor,
-        textTheme: TextTheme(title: TextStyle(color: txtcolor)),
+        textTheme: TextTheme(headline6: TextStyle(color: txtcolor)),
         bottom: TabBar(tabs: <Widget>[
           Tab(
               icon: Icon(
